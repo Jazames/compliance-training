@@ -1,0 +1,53 @@
+# scratchpad.md — Project intent + raw notes (non-question statements)
+
+- This chat is for a corporate compliance training parody game.
+- It’s a choose your own adventure game around corporate compliance.
+- The game should be web-hosted, possibly as a single page on GitHub Pages.
+- It should start in a corporate art style.
+- If the player only makes “square” choices, they can complete the game pretty much like standard corporate harassment/compliance training quizzes.
+- If the player chooses obviously wrong options, the game should slowly morph into a different genre.
+- Potential morph genres:
+  - Anime dating sim
+  - Survival game
+  - Heist/espionage/charisma rogue game
+- It would be hilarious if the art style slowly morphed as the player gets deeper into one of those genres.
+- One approach for morphing: hidden layers to characters that become less transparent (e.g., an “anime beautifying” layer).
+- For mechanics, there is already a social engine in a repo:
+  - Uses Haidt’s moral foundations + Big Five personality traits
+  - Guides NPC responses to player input
+  - Needs to be dug up and polished
+- Characters should use flat, 2D sprites that can move limbs and talk.
+- Desired animation approach: sprite skeleton with reusable animations; attach different drawings to parts so animation work is reused across characters.
+- Visual direction: closer to crisp corporate vector art (may or may not actually be vectors).
+- Concern: vector art difficulty for adding an anime dating sim layer.
+- The characters should become both stylized and attractive, but subtly more attractive (e.g., noticeable muscles on men).
+- Visual novel style, exclusively side walking.
+- The player needs to be able to complete the game as though it’s a straight-faced compliance training.
+- The player clicks “Exit course” in the corner.
+- There should be scenes where the player is choosing things to do on their phone (sending texts, buying things).
+- Characters should occasionally hold objects.
+- Expected runtime scale:
+  - Max ~5 characters on screen, typically 2–3
+  - No more than 4 props active at a time on any character
+- Plot handling:
+  - Events happen and the player is offered choices.
+  - Later, the dating sim or survival portions might introduce mechanics beyond clicking options.
+- Each choice carries moral/personality weight.
+- Moral/personality weight affects NPC reactions and can enable other events.
+- Mental model: hallway of doors; each room is a scene; choices determine which doors are open.
+- Preference: event queue approach for pacing/selection.
+- Endings desired (game completion):
+  - Completing the course
+  - Getting married
+  - Succeeding in a heist
+  - Surviving and escaping
+  - A darkly satirical “arrested” ending
+- Desire: good and bad ending for each genre.
+- Recovery model:
+  - Player can recover up to a tipping point.
+  - After tipping point, player may be stuck with only good/bad endings.
+- Tipping point should be an irreversible action.
+  - things like entering an obviously restricted area, schtupping someone in the office, snooping around for restricted information.
+- Should have the harassment training open the door to the dating sim, 
+- the slip trip and fall safety training opens the door to a dungeon crawler genre in the basement,
+- and the cyber security training opens up the heist genre.
