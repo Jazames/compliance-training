@@ -17,6 +17,7 @@ Project spirit and creative direction lives in `scratchpad.md` (treat as canon).
 
 - Vite (render/build engine) + React + TypeScript
 - Static build output for GitHub Pages (`dist/`)
+- ESLint for code linting (`npm run lint`)
 - Rive runtime for character animation:
   - `@rive-app/react-canvas`
 
@@ -287,6 +288,12 @@ Build output:
 - `npm run build`
 - Publish `dist/`
 
+Validation commands:
+- `npm run lint` (ESLint)
+- `npm run typecheck` (TypeScript project checks)
+- `npm run build` (typecheck + Vite production build)
+- `npm run verify` (lint + build; preferred pre-push check)
+
 ### GitHub Actions
 - On push to `main`, install deps, build Vite app, and deploy `dist/` to Pages.
 - Ensure `.riv` files remain under `public/` so they are copied into the static build.
@@ -309,6 +316,7 @@ Build output:
 - Avoid "AI soup" plot routing: social engine influences reactions/unlocks, not core spine routing (at least initially).
 - Reuse Rive rigs via consistent inputs and bone naming.
 - Prefer Vite-friendly browser APIs and static assets that work under a non-root base path (`/compliance-training/`).
+- Before declaring work complete, run `npm run verify` (or explain why it could not be run).
 
 ---
 
