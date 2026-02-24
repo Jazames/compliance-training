@@ -1,0 +1,203 @@
+:root {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  color: #101418;
+  background: #d7dde3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.6), transparent 45%),
+    linear-gradient(180deg, #e8edf2 0%, #cdd5dd 100%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.training-chrome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 auto 12px;
+  max-width: 980px;
+  padding: 10px 12px;
+  border: 1px solid #b7c2cd;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+.training-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(420px, 100%);
+}
+
+.training-progress__bar {
+  height: 10px;
+  flex: 1;
+  border-radius: 999px;
+  background: #dbe3eb;
+  overflow: hidden;
+}
+
+.training-progress__fill {
+  height: 100%;
+  background: linear-gradient(90deg, #315a8b, #3f77b8);
+}
+
+.chrome-button {
+  border: 1px solid #8a97a6;
+  border-radius: 10px;
+  background: #fff;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.scene-root {
+  position: relative;
+  margin: 0 auto;
+  max-width: 980px;
+  min-height: 620px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #a6b2bf;
+  background: linear-gradient(180deg, #bccbda 0%, #aab9c8 38%, #94a7b9 100%);
+}
+
+.scene-root::before,
+.scene-root::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+.scene-root::before {
+  background: radial-gradient(circle at 75% 25%, rgba(255, 182, 193, 0.5), transparent 42%);
+  opacity: var(--romance-overlay, 0);
+}
+
+.scene-root::after {
+  background:
+    linear-gradient(transparent 49%, rgba(0, 0, 0, 0.2) 50%, transparent 51%),
+    linear-gradient(180deg, rgba(5, 12, 21, 0.55), transparent);
+  background-size: 100% 6px, 100% 100%;
+  opacity: var(--heist-overlay, 0);
+}
+
+.scene-stage {
+  position: absolute;
+  inset: 0;
+  padding: 16px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.scene-title-strip {
+  align-self: start;
+  justify-self: start;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(16, 20, 24, 0.1);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.hud-cluster {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.meter-chip {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(16, 20, 24, 0.12);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.dialogue-panel {
+  position: relative;
+  z-index: 1;
+  padding: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(180deg, rgba(12, 18, 24, 0.05), rgba(255, 255, 255, 0.78));
+  backdrop-filter: blur(8px);
+}
+
+.dialogue-box {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid #bac4d0;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.dialogue-box h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.dialogue-box p {
+  margin: 0;
+  line-height: 1.35;
+}
+
+.choice-list {
+  display: grid;
+  gap: 10px;
+}
+
+.choice-button {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #aebac7;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.choice-button:hover {
+  background: #fff;
+  border-color: #8797aa;
+}
+
+@media (max-width: 700px) {
+  .app-shell {
+    padding: 10px;
+  }
+
+  .scene-root {
+    min-height: 520px;
+  }
+
+  .training-chrome {
+    flex-wrap: wrap;
+  }
+
+  .training-progress {
+    width: 100%;
+  }
+}
+

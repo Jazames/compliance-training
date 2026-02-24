@@ -1,23 +1,23 @@
-# agents.md — Corporate Compliance Training Parody VN (GitHub Pages)
+# agents.md - Corporate Compliance Training Parody VN (GitHub Pages)
 
-This repo is a **web-hosted, single-page visual novel / choose-your-own-adventure parody** of corporate compliance training.
+This repo is a web-hosted, single-page visual novel / choose-your-own-adventure parody of corporate compliance training.
 
 It must support:
-- A **straight-faced compliance course** path (player can finish like a normal training quiz and click **Exit course**).
-- A “**genre drift**” system where obviously wrong choices gradually morph presentation/genre (dating sim, heist/rogue, survival).
-- **Rive**-animated 2D characters (skeletal rig + outfits/props) rendered in the browser.
-- A plot engine based on **scenes + choices**, later extensible to minigames.
-- Deployment to **GitHub Pages** under user **Jazames**.
+- A straight-faced compliance course path (player can finish like a normal training quiz and click `Exit course`).
+- A "genre drift" system where obviously wrong choices gradually morph presentation/genre (dating sim, heist/rogue, survival).
+- Rive-animated 2D characters (skeletal rig + outfits/props) rendered in the browser.
+- A plot engine based on scenes + choices, later extensible to minigames.
+- Deployment to GitHub Pages under user `Jazames`.
 
-Project “spirit” and creative direction lives in: **`scratchpad.md`** (treat as canon).
+Project spirit and creative direction lives in `scratchpad.md` (treat as canon).
 
 ---
 
 ## Tech stack
 
-- **Next.js (App Router)** + **TypeScript**
-- **Static export** for GitHub Pages
-- **Rive** runtime for character animation:
+- Vite (render/build engine) + React + TypeScript
+- Static build output for GitHub Pages (`dist/`)
+- Rive runtime for character animation:
   - `@rive-app/react-canvas`
 
 ---
@@ -36,19 +36,19 @@ Story is defined as data (TS objects or JSON). Each scene:
 Single source of truth for:
 - `flags: Record<string, boolean>`
 - `meters: { compliance, romanceDrift, heistDrift, survivalDrift, ... }`
-- `npcState` (optional): relationship/affinity, plus outputs from the user’s social engine
+- `npcState` (optional): relationship/affinity, plus outputs from the user's social engine
 - `inventory` / `equipped` (props/outfits)
 - `queue: Event[]` (event queue / deferred consequences)
 - `locks`: per-genre commitment/lock tracking
 
 ### 3) Runtime layer (renderer + scheduler)
-- Renders the current scene.
+- Renders the current scene in a Vite/React SPA.
 - Applies choice effects to state.
 - Schedules the next scene using:
-  - deterministic mainline progression **plus**
-  - an **event queue** and optional “interrupt” scenes
+  - deterministic mainline progression plus
+  - an event queue and optional interrupt scenes
 - Drives Rive inputs (talking, walk, outfitId, propId, attractivenessDrift, etc.)
-- Maintains “training chrome” (header/progress/Exit course) even during drift.
+- Maintains training chrome (header/progress/Exit course) even during drift.
 
 ---
 
@@ -56,10 +56,10 @@ Single source of truth for:
 
 ### Scene types
 Minimum set:
-- `trainingSlide` — straight compliance slide + quiz choices.
-- `dialogueScene` — VN textbox + characters + choices.
-- `phoneScene` — interactive phone UI overlay (HTML-based).
-- (Later) `minigameScene` — launches a minigame component and returns a result.
+- `trainingSlide` - straight compliance slide + quiz choices.
+- `dialogueScene` - VN textbox + characters + choices.
+- `phoneScene` - interactive phone UI overlay (HTML-based).
+- (Later) `minigameScene` - launches a minigame component and returns a result.
 
 ### Scene interface (suggested)
 Keep it simple and serializable.
@@ -71,7 +71,7 @@ export interface SceneDef {
   id: string;
   type: SceneType;
 
-  /** Optional: used for progress display in “training mode”. */
+  /** Optional: used for progress display in "training mode". */
   trainingStep?: number;
 
   /** Visuals */
@@ -138,7 +138,7 @@ After a choice:
 
 Guardrails:
 - priority ordering
-- cooldowns (don’t repeat beats)
+- cooldowns (do not repeat beats)
 - one-shots (single-use events)
 - per-category caps (optional)
 
@@ -147,15 +147,15 @@ Guardrails:
 ## Genre drift + commitment lock-in
 
 ### Recoverable drift (pre-commit)
-Meters can rise/fall. Player can “recover” via compliance-correct choices.
+Meters can rise/fall. Player can recover via compliance-correct choices.
 
 ### Tipping point (irreversible action)
 A genre becomes locked only when:
-- drift is high **and**
-- the player takes an explicit **irreversible commit action** (a flag)
+- drift is high and
+- the player takes an explicit irreversible commit action (a flag)
 
 Example:
-- `romanceCommit = true` triggered by a clearly risky “corporate phrased” choice.
+- `romanceCommit = true` triggered by a clearly risky "corporate phrased" choice.
 
 Lock condition:
 - `romanceLocked = romanceDrift >= 0.8 && romanceCommit`
@@ -173,20 +173,20 @@ Endings to support (per scratchpad spirit):
 - Married (romance good/bad)
 - Heist success/failure
 - Survival escape/failure
-- Additional satirical “arrested” variant (keep names fictionalized)
+- Additional satirical "arrested" variant (keep names fictionalized)
 
 ---
 
 ## Rive integration
 
 ### Rendering approach
-VN-style: **one Rive canvas per character**, positioned with CSS on a shared scene root.
+VN-style: one Rive canvas per character, positioned with CSS on a shared scene root.
 
 - Background is HTML/CSS layers.
 - Characters are absolutely positioned canvases.
 - Dialogue UI overlays on top.
 
-This is simplest and deploys cleanly to GitHub Pages.
+This is simple and deploys cleanly to GitHub Pages with Vite static assets.
 
 ### Rive inputs convention
 Each character `.riv` should expose a consistent set of inputs so animations are reusable:
@@ -204,34 +204,33 @@ Outfits/props:
 - `propLeftId: number`
 - `propHeadId: number`
 - `propBackId: number`
-(or similar “slots”; keep it ≤4 active per character)
+(or similar slots; keep it <=4 active per character)
 
 Colors (flat fill):
 - `outfitPrimaryColor`, `outfitSecondaryColor`, `accentColor`, `hairColor`, etc.
 
 ### Walking
-Use **in-place** walk cycle in Rive.
+Use in-place walk cycle in Rive.
 Move character across screen in app by updating CSS `left`/`bottom` (or transforms).
 When moving: set `speed > 0`. When stopped: `speed = 0`.
 
 ### Backgrounds
 Use static images/vectors + overlay layers, crossfaded by drift meters:
-- corporate → bland office
-- romance → bokeh/sparkle overlay
-- heist → scanlines/darkness
-- survival → vignette/grain/desaturation
+- corporate -> bland office
+- romance -> bokeh/sparkle overlay
+- heist -> scanlines/darkness
+- survival -> vignette/grain/desaturation
 
 ---
 
 ## Repo layout (suggested)
 
-```
-/app
-  /game
-    page.tsx               # main game page
-  /layout.tsx
-
+```text
+/index.html
+/vite.config.ts
 /src
+  /main.tsx                # Vite entry
+  /App.tsx                 # main game shell
   /engine
     gameState.ts           # state model + reducer
     sceneTypes.ts          # TS types
@@ -244,7 +243,7 @@ Use static images/vectors + overlay layers, crossfaded by drift meters:
     TrainingChrome.tsx     # header/progress/Exit course
     DialogueBox.tsx
     ChoiceList.tsx
-    PhoneOverlay.tsx
+    PhoneOverlay.tsx       # later (optional)
   /rive
     RiveCharacter.tsx      # wrapper for loading + setting inputs
 /public
@@ -252,6 +251,8 @@ Use static images/vectors + overlay layers, crossfaded by drift meters:
     *.riv
   /bg
     *.webp
+/.github/workflows
+  deploy-pages.yml
 ```
 
 ---
@@ -259,44 +260,42 @@ Use static images/vectors + overlay layers, crossfaded by drift meters:
 ## Deployment (GitHub Pages)
 
 ### Repo + Pages
-- GitHub user: **Jazames**
-- Use a repo like: `compliance-parody` (or whatever you create)
-- Configure GitHub Pages to publish from:
-  - GitHub Actions (recommended), or
-  - `/docs` or `/out` branch output (less ideal)
+- GitHub user: `Jazames`
+- Repo: `compliance-training`
+- URL: `https://jazames.github.io/compliance-training/`
+- Configure GitHub Pages to publish from GitHub Actions (recommended).
 
-### Next.js static export
-Use static output suitable for Pages:
-- Set `output: 'export'`
-- Set `basePath` to `/<repoName>` (unless using a custom domain)
-- Set `assetPrefix` similarly if needed
-- Use relative asset paths where possible
+### Vite static build for Pages
+Use Vite's `base` config for the repo path:
+- Set `base: '/compliance-training/'` in `vite.config.ts`
+- Put static assets in `public/`
+- Reference public assets with root-relative paths (Vite rewrites for `base`)
 
-Example `next.config.js` (adjust repo name):
-```js
-const repoName = 'compliance-parody';
+Example `vite.config.ts`:
 
-module.exports = {
-  output: 'export',
-  basePath: `/${repoName}`,
-  assetPrefix: `/${repoName}/`,
-  images: { unoptimized: true },
-};
+```ts
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  base: '/compliance-training/',
+});
 ```
 
 Build output:
-- `next build` then `next export` (or just `next build` with `output: 'export'` depending on version)
-- Publish `/out`
+- `npm run build`
+- Publish `dist/`
 
 ### GitHub Actions
-- On push to `main`, build and deploy `/out` to Pages.
-- Ensure Rive files are under `/public` and referenced with basePath-safe URLs.
+- On push to `main`, install deps, build Vite app, and deploy `dist/` to Pages.
+- Ensure `.riv` files remain under `public/` so they are copied into the static build.
 
 ---
 
 ## Content authoring workflow (pragmatic)
 
-1. Keep the “compliance course” mainline short and complete.
+1. Keep the compliance course mainline short and complete.
 2. Add drift detours as interrupt scenes, controlled by queue/scheduler.
 3. Add irreversible commit actions that lock a genre.
 4. Add good/bad endings per genre as terminal scenes.
@@ -304,12 +303,15 @@ Build output:
 ---
 
 ## Coding guardrails for agents
+
 - Keep story data separate from rendering.
 - Keep deterministic mainline; use queue/interrupts for chaos.
-- Avoid “AI soup” plot routing: social engine influences reactions/unlocks, not core spine routing (at least initially).
+- Avoid "AI soup" plot routing: social engine influences reactions/unlocks, not core spine routing (at least initially).
 - Reuse Rive rigs via consistent inputs and bone naming.
+- Prefer Vite-friendly browser APIs and static assets that work under a non-root base path (`/compliance-training/`).
 
 ---
 
 ## Source of truth
-- **`scratchpad.md`** is the project’s tone, purpose, and creative constraints. Use it as direction for writing scenes, UI humor, and genre drift beats.
+
+- `scratchpad.md` is the project's tone, purpose, and creative constraints. Use it as direction for writing scenes, UI humor, and genre drift beats.
