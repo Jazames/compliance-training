@@ -1,0 +1,32 @@
+<!doctype html><html><head><title>Rive export check</title></head><body>
+<h1>Rive export check</h1><div id="checks" style="display:flex;gap:20px"></div>
+<script type="module">
+import { Rive, RuntimeLoader } from '@rive-app/canvas';
+import wasmUrl from '@rive-app/canvas/rive.wasm?url';
+RuntimeLoader.setWasmUrl(wasmUrl);
+for (const name of ['generic-man', 'generic-woman']) {
+  const section = document.createElement('section');
+  section.innerHTML = `<h2>${name}</h2><canvas style="width:250px;height:400px"></canvas><p></p><pre>Loading</pre>`;
+  document.querySelector('#checks').append(section);
+  const report = section.querySelector('pre');
+  const r = new Rive({
+    canvas: section.querySelector('canvas'),
+    src: `${import.meta.env.BASE_URL}rive/compliance-characters.riv`,
+    artboard: name, stateMachines: 'State Machine 1', autoBind:false, autoplay:true,
+    onLoadError: e => { report.textContent = `FAIL ${JSON.stringify(e)}`; },
+    onLoad: () => {
+      const model = r.viewModelByName('CharacterData');
+      const instance = model?.instanceByName(name === 'generic-man' ? 'Instance' : 'Instance 1');
+      if (!instance) { report.textContent = 'FAIL missing instance'; return; }
+      r.bindViewModelInstance(instance);
+      r.resizeDrawingSurfaceToCanvas();
+      report.textContent = JSON.stringify({artboard:name,animations:r.animationNames,stateMachines:r.stateMachineNames,properties:model.properties,instances:model.instanceNames},null,2);
+      for (const amount of [0,0.5,1]) {
+        const button = document.createElement('button'); button.textContent = String(amount);
+        button.onclick = () => { instance.number('numberProperty').value = amount; };
+        section.querySelector('p').append(button);
+      }
+    }
+  });
+}
+</script></body></html>

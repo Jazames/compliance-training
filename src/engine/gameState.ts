@@ -14,7 +14,7 @@ export interface GameState {
 
 export function createInitialGameState(): GameState {
   return {
-    currentSceneId: 'training_intro',
+    currentSceneId: 'drink_question',
     flags: {},
     meters: {
       compliance: 0.5,
@@ -30,4 +30,3 @@ export function createInitialGameState(): GameState {
     },
   };
 }
-

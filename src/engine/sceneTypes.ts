@@ -33,6 +33,9 @@ export interface DialogueLine {
 
 export interface CharacterPlacement {
   id: string;
+  name: string;
+  artboard: 'generic-man' | 'generic-woman';
+  side: 'left' | 'right';
   pose?: string;
   x?: number;
 }
@@ -57,4 +60,3 @@ export interface MeterState {
   heistDrift: number;
   survivalDrift: number;
 }
-

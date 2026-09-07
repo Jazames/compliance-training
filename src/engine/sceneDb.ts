@@ -1,6 +1,116 @@
 import type { SceneDef } from './sceneTypes';
 
 export const SCENES: Record<string, SceneDef> = {
+  drink_question: {
+    id: 'drink_question',
+    type: 'dialogueScene',
+    trainingStep: 1,
+    backgroundKey: 'office-social',
+    title: 'Knowledge Check 1: Respectful social invitations',
+    body:
+      'At an optional after-work gathering, Priya is ordering refreshments. She would like to offer her coworker Daniel an alcoholic drink. What is the most appropriate approach?',
+    characters: [
+      {
+        id: 'priya',
+        name: 'Priya',
+        artboard: 'generic-woman',
+        side: 'left',
+        pose: 'offer',
+      },
+      {
+        id: 'daniel',
+        name: 'Daniel',
+        artboard: 'generic-man',
+        side: 'right',
+        pose: 'idle',
+      },
+    ],
+    nextSceneId: 'drink_feedback_correct',
+    choices: [
+      {
+        id: 'offer_without_pressure',
+        label:
+          'Offer alcoholic and non-alcoholic options once, make clear there is no pressure, and respect the answer.',
+        goto: 'drink_feedback_correct',
+        effects: [{ kind: 'addMeter', key: 'compliance', amount: 0.15 }],
+      },
+      {
+        id: 'order_couples_cocktail',
+        label:
+          'Order two “Conflict of Interest” cocktails and describe them as a team-building exercise.',
+        goto: 'drink_feedback_romance',
+        effects: [{ kind: 'addMeter', key: 'romanceDrift', amount: 0.35 }],
+      },
+      {
+        id: 'make_it_career_relevant',
+        label: 'Mention that participation is optional, but declining may be noted at calibration time.',
+        goto: 'drink_feedback_pressure',
+        effects: [{ kind: 'addMeter', key: 'heistDrift', amount: 0.2 }],
+      },
+    ],
+  },
+  drink_feedback_correct: {
+    id: 'drink_feedback_correct',
+    type: 'trainingSlide',
+    trainingStep: 2,
+    title: 'Correct',
+    body:
+      'A respectful offer gives the other person a genuine choice. Do not pressure them, ask why they declined, or connect drinking to workplace belonging or opportunity.',
+    nextSceneId: 'hallway_question',
+    choices: [
+      {
+        id: 'continue_after_drink_question',
+        label: 'Continue',
+        effects: [],
+      },
+    ],
+  },
+  drink_feedback_romance: {
+    id: 'drink_feedback_romance',
+    type: 'dialogueScene',
+    trainingStep: 2,
+    title: 'Not quite',
+    body:
+      'Inventing a couples’ cocktail does not convert romantic pressure into professional development. The Learning Portal has nevertheless recorded “unexpected chemistry.”',
+    characters: [
+      {
+        id: 'priya',
+        name: 'Priya',
+        artboard: 'generic-woman',
+        side: 'left',
+      },
+      {
+        id: 'daniel',
+        name: 'Daniel',
+        artboard: 'generic-man',
+        side: 'right',
+      },
+    ],
+    nextSceneId: 'hallway_question',
+    choices: [
+      {
+        id: 'continue_after_romance_feedback',
+        label: 'Acknowledge chemistry-related compliance guidance',
+        effects: [],
+      },
+    ],
+  },
+  drink_feedback_pressure: {
+    id: 'drink_feedback_pressure',
+    type: 'trainingSlide',
+    trainingStep: 2,
+    title: 'Incorrect',
+    body:
+      'A choice is not voluntary when it carries an implied workplace consequence. Keep alcohol separate from performance, advancement, and team acceptance.',
+    nextSceneId: 'hallway_question',
+    choices: [
+      {
+        id: 'continue_after_pressure_feedback',
+        label: 'Review the definition of “optional” and continue',
+        effects: [],
+      },
+    ],
+  },
   training_intro: {
     id: 'training_intro',
     type: 'trainingSlide',
@@ -109,10 +219,9 @@ export const SCENES: Record<string, SceneDef> = {
       {
         id: 'restart',
         label: 'Restart training',
-        goto: 'training_intro',
+        goto: 'drink_question',
         effects: [],
       },
     ],
   },
 };
-
