@@ -9,6 +9,24 @@ export function applyEffects(state: GameState, effects: EffectDef[]): GameState 
   let next = state;
 
   for (const effect of effects) {
+    if (effect.kind === 'setPlayerEyeColor') {
+      if (/^#[0-9a-f]{6}$/i.test(effect.color)) next = { ...next, playerEyeColor: effect.color };
+      continue;
+    }
+    if (effect.kind === 'setPlayerHairColor') {
+      if ([effect.color, effect.accentColor].every((color) => /^#[0-9a-f]{6}$/i.test(color))) {
+        next = { ...next, playerHairColor: effect.color, playerHairAccentColor: effect.accentColor };
+      }
+      continue;
+    }
+
+    if (effect.kind === 'setPlayerSkinColor') {
+      if (/^#[0-9a-f]{6}$/i.test(effect.color)) {
+        next = { ...next, playerSkinColor: effect.color };
+      }
+      continue;
+    }
+
     if (effect.kind === 'setFlag') {
       next = {
         ...next,
@@ -16,6 +34,14 @@ export function applyEffects(state: GameState, effects: EffectDef[]): GameState 
           ...next.flags,
           [effect.key]: effect.value,
         },
+      };
+      continue;
+    }
+
+    if (effect.kind === 'setPlayerCharacter') {
+      next = {
+        ...next,
+        playerCharacterId: effect.characterId,
       };
       continue;
     }
@@ -41,4 +67,3 @@ export function applyEffects(state: GameState, effects: EffectDef[]): GameState 
 
   return next;
 }
-

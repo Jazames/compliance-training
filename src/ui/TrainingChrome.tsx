@@ -1,16 +1,18 @@
 interface TrainingChromeProps {
   step: number;
   totalSteps: number;
+  playerName?: string;
   onExitCourse: () => void;
 }
 
-export function TrainingChrome({ step, totalSteps, onExitCourse }: TrainingChromeProps) {
+export function TrainingChrome({ step, totalSteps, playerName, onExitCourse }: TrainingChromeProps) {
   const progress = totalSteps > 0 ? Math.min(1, Math.max(0, step / totalSteps)) : 0;
 
   return (
     <header className="training-chrome">
       <div>
         <strong>Corporate Learning Portal</strong>
+        {playerName ? <span className="player-name">Playing as {playerName}</span> : null}
       </div>
       <div className="training-progress" aria-label={`Training progress ${step} of ${totalSteps}`}>
         <span>
@@ -26,4 +28,3 @@ export function TrainingChrome({ step, totalSteps, onExitCourse }: TrainingChrom
     </header>
   );
 }
-

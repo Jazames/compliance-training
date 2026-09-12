@@ -1,51 +1,143 @@
-import type { SceneDef } from './sceneTypes';
+import type { CharacterPlacement, SceneDef } from './sceneTypes';
+import { HAIR_COLORS } from './hairColors';
+import { EYE_COLORS } from './eyeColors';
+
+const BREAK_ROOM_CHARACTERS: CharacterPlacement[] = [
+  { id: 'daniel', name: 'Daniel', artboard: 'generic-man', side: 'left' },
+  { id: 'rachel', name: 'Rachel', artboard: 'generic-woman', side: 'right' },
+];
+
+
 
 export const SCENES: Record<string, SceneDef> = {
+  training_welcome: {
+    id: 'training_welcome',
+    type: 'dialogueScene',
+    trainingStep: 0,
+    sceneLabel: 'Annual compliance training',
+    backgroundKey: 'studio-chair',
+    title: 'Course Facilitator',
+    body:
+      'Welcome to your compliance training. All of our employees must master the skills necessary to maintain a professional workplace and avoid creating legal liability. As you approach the following scenarios, consider if there is any possible context in which a certain judgement would be incorrect, and then assume such a possible context. Best of luck.',
+    characters: [
+      {
+        id: 'facilitator',
+        name: 'Course Facilitator',
+        artboard: 'generic-woman',
+        side: 'center',
+        action: 'talk',
+        framing: 'presenter',
+      },
+    ],
+    fadeOnExit: true,
+    choices: [
+      {
+        id: 'begin_scenarios',
+        label: 'Begin training',
+        goto: 'drink_question',
+        effects: [],
+      },
+    ],
+  },
   drink_question: {
     id: 'drink_question',
     type: 'dialogueScene',
     trainingStep: 1,
-    backgroundKey: 'office-social',
-    title: 'Knowledge Check 1: Respectful social invitations',
+    sceneLabel: 'Break room · 3:47 PM',
+    backgroundKey: 'break-room',
+    entryDelayMs: 1400,
+    entryText: 'Daniel approaches as Rachel fills a glass of water.',
+    title: 'Which statement is acceptable for Daniel or Rachel to say?',
     body:
-      'At an optional after-work gathering, Priya is ordering refreshments. She would like to offer her coworker Daniel an alcoholic drink. What is the most appropriate approach?',
-    characters: [
+      'Choose the response you believe is acceptable. Your selection also determines which employee you will play for the rest of the course.',
+    dialogue: [
+      { speaker: 'Rachel', text: 'Exciting day, huh?' },
       {
-        id: 'priya',
-        name: 'Priya',
-        artboard: 'generic-woman',
-        side: 'left',
-        pose: 'offer',
+        speaker: 'Daniel',
+        text: "Yeah, I haven't been this stressed since the restructuring announcement.",
       },
+      { speaker: 'Rachel', text: 'Definitely a high cortisol day.' },
+    ],
+    characters: [
       {
         id: 'daniel',
         name: 'Daniel',
         artboard: 'generic-man',
+        side: 'left',
+        entryAction: 'walk',
+      },
+      {
+        id: 'rachel',
+        name: 'Rachel',
+        artboard: 'generic-woman',
         side: 'right',
-        pose: 'idle',
       },
     ],
     nextSceneId: 'drink_feedback_correct',
     choices: [
       {
-        id: 'offer_without_pressure',
+        id: 'daniel_offer_beer',
+        speaker: 'Daniel',
         label:
-          'Offer alcoholic and non-alcoholic options once, make clear there is no pressure, and respect the answer.',
-        goto: 'drink_feedback_correct',
-        effects: [{ kind: 'addMeter', key: 'compliance', amount: 0.15 }],
-      },
-      {
-        id: 'order_couples_cocktail',
-        label:
-          'Order two “Conflict of Interest” cocktails and describe them as a team-building exercise.',
-        goto: 'drink_feedback_romance',
-        effects: [{ kind: 'addMeter', key: 'romanceDrift', amount: 0.35 }],
-      },
-      {
-        id: 'make_it_career_relevant',
-        label: 'Mention that participation is optional, but declining may be noted at calibration time.',
+          "I've got a semi-secret stash of beer in my desk, want a can to get you through the rest of the day?",
         goto: 'drink_feedback_pressure',
-        effects: [{ kind: 'addMeter', key: 'heistDrift', amount: 0.2 }],
+        effects: [
+          { kind: 'setPlayerCharacter', characterId: 'daniel' },
+          { kind: 'addMeter', key: 'compliance', amount: -0.2 },
+          { kind: 'addMeter', key: 'romanceDrift', amount: 0.1 },
+        ],
+      },
+      {
+        id: 'daniel_happy_hour',
+        speaker: 'Daniel',
+        label: "Too bad we can't take a break for happy hour down the street before the next meeting.",
+        goto: 'drink_feedback_pressure',
+        effects: [
+          { kind: 'setPlayerCharacter', characterId: 'daniel' },
+          { kind: 'addMeter', key: 'compliance', amount: -0.1 },
+        ],
+      },
+      {
+        id: 'daniel_good_luck',
+        speaker: 'Daniel',
+        label: 'Well, good luck in the next meeting.',
+        goto: 'drink_feedback_correct',
+        effects: [
+          { kind: 'setPlayerCharacter', characterId: 'daniel' },
+          { kind: 'addMeter', key: 'compliance', amount: 0.15 },
+        ],
+      },
+      {
+        id: 'rachel_white_claw',
+        speaker: 'Rachel',
+        label: 'Want to split a White Claw before the next meeting?',
+        goto: 'drink_feedback_pressure',
+        effects: [
+          { kind: 'setPlayerCharacter', characterId: 'rachel' },
+          { kind: 'addMeter', key: 'compliance', amount: -0.2 },
+          { kind: 'addMeter', key: 'romanceDrift', amount: 0.1 },
+        ],
+      },
+      {
+        id: 'rachel_nausea',
+        speaker: 'Rachel',
+        label: 'Maybe it’s a good time to develop nausea and head home sick.',
+        goto: 'drink_feedback_avoidance',
+        effects: [
+          { kind: 'setPlayerCharacter', characterId: 'rachel' },
+          { kind: 'addMeter', key: 'compliance', amount: -0.05 },
+          { kind: 'addMeter', key: 'survivalDrift', amount: 0.1 },
+        ],
+      },
+      {
+        id: 'rachel_director',
+        speaker: 'Rachel',
+        label: "Hopefully the director doesn't have anything else to bring up.",
+        goto: 'drink_feedback_correct',
+        effects: [
+          { kind: 'setPlayerCharacter', characterId: 'rachel' },
+          { kind: 'addMeter', key: 'compliance', amount: 0.15 },
+        ],
       },
     ],
   },
@@ -55,8 +147,8 @@ export const SCENES: Record<string, SceneDef> = {
     trainingStep: 2,
     title: 'Correct',
     body:
-      'A respectful offer gives the other person a genuine choice. Do not pressure them, ask why they declined, or connect drinking to workplace belonging or opportunity.',
-    nextSceneId: 'hallway_question',
+      'Correct. A neutral expression of support or concern does not introduce alcohol into the workday or encourage an employee to misrepresent their health.',
+    nextSceneId: 'skin_color_question',
     choices: [
       {
         id: 'continue_after_drink_question',
@@ -101,8 +193,8 @@ export const SCENES: Record<string, SceneDef> = {
     trainingStep: 2,
     title: 'Incorrect',
     body:
-      'A choice is not voluntary when it carries an implied workplace consequence. Keep alcohol separate from performance, advancement, and team acceptance.',
-    nextSceneId: 'hallway_question',
+      'Incorrect. Offering or proposing alcohol during the workday—especially before another meeting—is not an appropriate response to a coworker’s stress.',
+    nextSceneId: 'skin_color_question',
     choices: [
       {
         id: 'continue_after_pressure_feedback',
@@ -110,6 +202,158 @@ export const SCENES: Record<string, SceneDef> = {
         effects: [],
       },
     ],
+  },
+  drink_feedback_avoidance: {
+    id: 'drink_feedback_avoidance',
+    type: 'trainingSlide',
+    trainingStep: 2,
+    title: 'Not recommended',
+    body:
+      'Employees may take legitimate sick leave, but planning to manufacture symptoms is not the preferred stress-management technique in this module.',
+    nextSceneId: 'skin_color_question',
+    choices: [
+      {
+        id: 'continue_after_avoidance_feedback',
+        label: 'Continue',
+        effects: [],
+      },
+    ],
+  },
+  skin_color_question: {
+    id: 'skin_color_question',
+    type: 'dialogueScene',
+    trainingStep: 2,
+    sceneLabel: 'Break room · Personalized sensitivity assessment',
+    backgroundKey: 'break-room',
+    characters: BREAK_ROOM_CHARACTERS,
+    dialogue: [
+      { speaker: 'Daniel', text: 'Apparently our new employee portraits have to match the corporate color palette. Does skin come in Approved Quarterly Blue?' },
+      { speaker: 'Rachel', text: 'Only after the budget meeting. Otherwise you have to submit a swatch to Procurement.' },
+      { speaker: 'Learning Portal', text: 'PAUSE. A skin-color joke has been detected. Before we can determine how inappropriate this was, please personalize your potential grievance.' },
+    ],
+    title: 'Jokes about which skin color would offend you personally the most?',
+    body: 'Move the slider to the shade that would make the joke feel directed at you. Your answer will also set your character’s skin tone. All answers receive the same amount of institutional concern.',
+    skinTonePicker: true,
+    choices: [{
+      id: 'confirm_skin_tone',
+      label: 'This shade would offend me personally',
+      goto: 'skin_color_recorded',
+      effects: [],
+    }],
+  },
+  skin_color_recorded: {
+    id: 'skin_color_recorded',
+    type: 'dialogueScene',
+    trainingStep: 2,
+    sceneLabel: 'Employee likeness updated',
+    backgroundKey: 'break-room',
+    characters: BREAK_ROOM_CHARACTERS,
+    title: 'Your concern has been color-matched.',
+    body: 'The portal has updated your employee likeness. No shade is a more acceptable target for workplace jokes. Please continue while we file this under “personalization.”',
+    nextSceneId: 'restroom_question',
+    choices: [{ id: 'continue_after_skin_color', label: 'Acknowledge receipt of my complexion', effects: [] }],
+  },
+  salon_gift_card: {
+    id: 'salon_gift_card',
+    type: 'dialogueScene',
+    trainingStep: 5,
+    sceneLabel: 'Employee rewards · Final personalization question',
+    backgroundKey: 'break-room',
+    characters: BREAK_ROOM_CHARACTERS,
+    dialogue: [
+      { speaker: 'Learning Portal', text: 'Congratulations! You have won a free gift card to a local salon: Split Ends & Benefits.' },
+      { speaker: 'Learning Portal', text: 'Your prize covers one hair-color appointment. Please demonstrate your understanding of the dress code before redeeming this entirely spontaneous reward.' },
+    ],
+    title: 'Which dress-code-appropriate color would you like to dye your hair?',
+    body: 'Choose your new hair color to redeem your salon gift card.',
+    choices: HAIR_COLORS.map(({ label, color, accentColor, natural }) => ({
+      id: `hair_${label.toLowerCase().replaceAll(' ', '_')}`,
+      label,
+      swatch: color,
+      goto: natural ? 'salon_natural' : 'salon_bright',
+      effects: [
+        { kind: 'setPlayerHairColor', color, accentColor },
+        { kind: 'setFlag', key: 'characterCreationComplete', value: true },
+      ],
+    })),
+  },
+  salon_natural: {
+    id: 'salon_natural',
+    type: 'dialogueScene',
+    trainingStep: 5,
+    sceneLabel: 'Salon reward redeemed',
+    backgroundKey: 'break-room',
+    characters: BREAK_ROOM_CHARACTERS,
+    title: 'Dress code assessment',
+    body: 'Excellent choice, natural hair colors are always appropriate.',
+    nextSceneId: 'hallway_question',
+    choices: [{ id: 'continue_after_natural_hair', label: 'Continue', effects: [] }],
+  },
+  salon_bright: {
+    id: 'salon_bright',
+    type: 'dialogueScene',
+    trainingStep: 5,
+    sceneLabel: 'Salon reward redeemed',
+    backgroundKey: 'break-room',
+    characters: BREAK_ROOM_CHARACTERS,
+    title: 'Dress code assessment',
+    body: `Excellent choice. Unnatural colors may have been frowned upon in the 1950s, but this is ${new Date().getFullYear()} and any color that is authentic to your personality is permitted.`,
+    nextSceneId: 'hallway_question',
+    choices: [{ id: 'continue_after_bright_hair', label: 'Continue', effects: [] }],
+  },
+  restroom_question: {
+    id: 'restroom_question', type: 'dialogueScene', trainingStep: 3,
+    sceneLabel: 'Restroom · Professional proximity', interaction: 'restroom',
+    title: 'Which available fixture is appropriate to use?',
+    body: 'A coworker is already here. Choose a free fixture.',
+    choices: [
+      { id: 'restroom_near', label: 'Use the neighboring fixture', goto: 'restroom_comfort', effects: [] },
+      { id: 'restroom_middle', label: 'Leave one fixture between you', goto: 'restroom_space', effects: [] },
+      { id: 'restroom_far', label: 'Use the farthest fixture', goto: 'restroom_space', effects: [] },
+    ],
+  },
+  restroom_comfort: {
+    id: 'restroom_comfort', type: 'trainingSlide', trainingStep: 3,
+    title: 'Good', body: 'Good, coworkers should be comfortable with each other in the restrooms.',
+    nextSceneId: 'mirror_question',
+    choices: [{ id: 'look_in_mirror', label: 'Wash your hands and look in the mirror', effects: [] }],
+  },
+  restroom_space: {
+    id: 'restroom_space', type: 'trainingSlide', trainingStep: 3,
+    title: 'Good', body: 'Giving coworkers space in the restroom is always polite.',
+    nextSceneId: 'mirror_question',
+    choices: [{ id: 'look_in_mirror', label: 'Wash your hands and look in the mirror', effects: [] }],
+  },
+  mirror_question: {
+    id: 'mirror_question', type: 'dialogueScene', trainingStep: 3,
+    sceneLabel: 'Restroom mirror · Self-assessment', characters: BREAK_ROOM_CHARACTERS,
+    title: 'You look into the bathroom mirror. What color are your eyes?',
+    body: 'Please complete this brief reflection before returning to work.',
+    choices: EYE_COLORS.map(({ label, color }) => ({
+      id: 'eyes_' + label.toLowerCase(), label, swatch: color, goto: 'mirror_recorded',
+      effects: [{ kind: 'setPlayerEyeColor', color }],
+    })),
+  },
+  mirror_recorded: {
+    id: 'mirror_recorded', type: 'dialogueScene', trainingStep: 3,
+    sceneLabel: 'Self-assessment complete', characters: BREAK_ROOM_CHARACTERS,
+    title: 'An insightful observation.',
+    body: 'Your reflection has been recorded. There is an email waiting at your desk.',
+    choices: [{ id: 'read_facilities', label: 'Read email', goto: 'facilities_email', effects: [] }],
+  },
+  facilities_email: {
+    id: 'facilities_email', type: 'phoneScene', trainingStep: 4,
+    sceneLabel: 'Inbox · Facilities', interaction: 'nameplate',
+    title: 'What is an appropriate name to ask Facilities to put on the nameplate?',
+    body: 'Enter the name you would like engraved.',
+    choices: [{ id: 'submit_nameplate', label: 'Send reply to Facilities', goto: 'nameplate_recorded',
+      effects: [] }],
+  },
+  nameplate_recorded: {
+    id: 'nameplate_recorded', type: 'dialogueScene', trainingStep: 4,
+    characters: BREAK_ROOM_CHARACTERS, title: 'Your nameplate has entered production.',
+    body: 'This is now your name. Corrections can be requested through your employee record.',
+    choices: [{ id: 'redeem_salon_reward', label: 'Collect your employee reward', goto: 'salon_gift_card', effects: [] }],
   },
   training_intro: {
     id: 'training_intro',
@@ -170,7 +414,7 @@ export const SCENES: Record<string, SceneDef> = {
   hallway_question: {
     id: 'hallway_question',
     type: 'dialogueScene',
-    trainingStep: 2,
+    trainingStep: 6,
     title: 'Scenario: Hallway Conversation',
     body:
       'A coworker shares a rumor about payroll access. What is the most appropriate response?',
@@ -191,7 +435,7 @@ export const SCENES: Record<string, SceneDef> = {
   cyber_followup: {
     id: 'cyber_followup',
     type: 'trainingSlide',
-    trainingStep: 3,
+    trainingStep: 7,
     title: 'Cybersecurity Mini-Quiz',
     body: 'Which action best protects sensitive company data?',
     nextSceneId: 'course_complete',
@@ -211,7 +455,7 @@ export const SCENES: Record<string, SceneDef> = {
   course_complete: {
     id: 'course_complete',
     type: 'trainingSlide',
-    trainingStep: 4,
+    trainingStep: 8,
     title: 'Module Complete',
     body:
       'You have reached the end of the prototype path. In the full game, ending checks and genre locks will branch from here.',
@@ -219,7 +463,7 @@ export const SCENES: Record<string, SceneDef> = {
       {
         id: 'restart',
         label: 'Restart training',
-        goto: 'drink_question',
+        goto: 'training_welcome',
         effects: [],
       },
     ],

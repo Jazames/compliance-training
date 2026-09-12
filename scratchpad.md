@@ -1,5 +1,10 @@
 # scratchpad.md — Project intent + raw notes (non-question statements)
 
+- Character creation order: response-set sex selection → skin sensitivity slider → restroom proximity question → mirror eye color → Facilities nameplate email → salon hair dye.
+- The restroom diagram shows a coworker's back at an occupied urinal for the male character, or feet beneath an occupied stall for the female character. All three free fixtures are accepted.
+- Facilities' email precedes the nameplate question. Submitting the reply sets the player's name; the final salon hair-color choice completes creation.
+- “Correct employee record” edits name, sex, skin, eyes, and paired hair/accent colors without changing course progress. Cancel discards corrections.
+
 - This chat is for a corporate compliance training parody game.
 - It’s a choose your own adventure game around corporate compliance.
 - The game should be web-hosted, possibly as a single page on GitHub Pages.
@@ -34,7 +39,13 @@
   - Later, the dating sim or survival portions might introduce mechanics beyond clicking options.
 - Each choice carries moral/personality weight.
 - Moral/personality weight affects NPC reactions and can enable other events.
+- Character creation happens implicitly through the first few scenario responses rather than through a separate character-builder screen.
+  - Early prompts offer distinct response sets for each on-screen employee.
+  - Choosing from an employee's response set makes that employee the player character for the rest of the game.
+  - The early responses continue shaping the selected character's personality, moral tendencies, and genre-drift affinities.
+  - After choosing Daniel or Rachel, a deliberately absurd sensitivity assessment asks which skin color the player would personally find most offensive to hear joked about. A continuous pink → pale → tan → brown → black slider previews every intermediate shade on their character. Confirming retains that skin tone, with no score or personality penalty attached to any shade.
 - Mental model: hallway of doors; each room is a scene; choices determine which doors are open.
+ - The final character-creation question awards a free local salon gift card and asks for a dress-code-appropriate hair dye. Natural and bright colors are equally accepted; the feedback for bright colors cites the current year. The chosen dye changes only the player's hair and completes character creation.
 - Preference: event queue approach for pacing/selection.
 - Endings desired (game completion):
   - Completing the course

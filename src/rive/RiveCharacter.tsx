@@ -1,13 +1,26 @@
 import { useEffect, useState } from 'react';
 import { Alignment, Fit, Layout, useRive } from '@rive-app/react-canvas';
+import { DEFAULT_HAIR } from '../engine/hairColors';
 
 type CharacterArtboard = 'generic-man' | 'generic-woman';
 
 interface RiveCharacterProps {
   artboard: CharacterArtboard;
   name: string;
-  side: 'left' | 'right';
+  side: 'left' | 'center' | 'right';
+  action: 'idle' | 'talk' | 'walk';
+  framing?: 'full' | 'presenter';
   appearanceBlend: number;
+  eyeColor?: string;
+  skinColor?: string;
+  hairColor?: string;
+  hairAccentColor?: string;
+  outfitId?: number;
+  outfitPrimaryColor?: string;
+  pantsColor?: string;
+  suitColor?: string;
+  outfitSecondaryColor?: string;
+  outfitAccentColor?: string;
 }
 
 const CHARACTER_SOURCE = `${import.meta.env.BASE_URL}rive/compliance-characters.riv`;
@@ -16,7 +29,19 @@ export function RiveCharacter({
   artboard,
   name,
   side,
+  action,
+  framing = 'full',
   appearanceBlend,
+  eyeColor = '#58616A',
+  skinColor = '#CFA17E',
+  hairColor = DEFAULT_HAIR.color,
+  hairAccentColor = DEFAULT_HAIR.accentColor,
+  outfitId = 0,
+  outfitPrimaryColor,
+  pantsColor = '#344454',
+  suitColor,
+  outfitSecondaryColor = '#E9ECE9',
+  outfitAccentColor = '#94705A',
 }: RiveCharacterProps) {
   const [loadFailed, setLoadFailed] = useState(false);
   const instanceName = artboard === 'generic-woman' ? 'Instance 1' : 'Instance';
@@ -53,8 +78,86 @@ export function RiveCharacter({
     }
   }, [appearanceBlend, rive]);
 
+  useEffect(() => {
+    const property = rive?.viewModelInstance?.number('outfitId');
+    if (!property) return;
+    const maximum = artboard === 'generic-woman' ? 4 : 2;
+    const selection = Math.round(outfitId);
+    property.value = Number.isFinite(selection) && selection >= 0 && selection <= maximum
+      ? selection : 0;
+  }, [rive, artboard, outfitId]);
+
+  useEffect(() => {
+    const colors = {
+      outfitPrimaryColor: outfitPrimaryColor ?? (artboard === 'generic-woman' ? '#86658F' : '#438F98'),
+      pantsColor,
+      suitColor: suitColor ?? (artboard === 'generic-woman' ? '#495169' : '#344454'),
+      outfitSecondaryColor,
+      outfitAccentColor,
+    };
+    for (const [property, color] of Object.entries(colors)) {
+      if (!/^#[0-9a-f]{6}$/i.test(color)) continue;
+      rive?.viewModelInstance?.color(property)?.rgb(
+        parseInt(color.slice(1, 3), 16),
+        parseInt(color.slice(3, 5), 16),
+        parseInt(color.slice(5, 7), 16),
+      );
+    }
+  }, [rive, artboard, outfitPrimaryColor, pantsColor, suitColor, outfitSecondaryColor, outfitAccentColor]);
+
+  useEffect(() => {
+    if (!/^#[0-9a-f]{6}$/i.test(eyeColor)) return;
+    rive?.viewModelInstance?.color('eyeColor')?.rgb(
+      parseInt(eyeColor.slice(1, 3), 16),
+      parseInt(eyeColor.slice(3, 5), 16),
+      parseInt(eyeColor.slice(5, 7), 16),
+    );
+  }, [rive, eyeColor]);
+
+  useEffect(() => {
+    if (!/^#[0-9a-f]{6}$/i.test(skinColor)) return;
+    rive?.viewModelInstance?.color('skinColor')?.rgb(
+      parseInt(skinColor.slice(1, 3), 16),
+      parseInt(skinColor.slice(3, 5), 16),
+      parseInt(skinColor.slice(5, 7), 16),
+    );
+  }, [rive, skinColor]);
+
+  useEffect(() => {
+    if (!/^#[0-9a-f]{6}$/i.test(hairColor)) return;
+    rive?.viewModelInstance?.color('hairColor')?.rgb(
+      parseInt(hairColor.slice(1, 3), 16),
+      parseInt(hairColor.slice(3, 5), 16),
+      parseInt(hairColor.slice(5, 7), 16),
+    );
+  }, [rive, hairColor]);
+
+  useEffect(() => {
+    if (!/^#[0-9a-f]{6}$/i.test(hairAccentColor)) return;
+    rive?.viewModelInstance?.color('hairAccentColor')?.rgb(
+      parseInt(hairAccentColor.slice(1, 3), 16),
+      parseInt(hairAccentColor.slice(3, 5), 16),
+      parseInt(hairAccentColor.slice(5, 7), 16),
+    );
+  }, [rive, hairAccentColor]);
+
+  useEffect(() => {
+    if (!rive) return;
+
+    const timeline = action === 'talk' ? 'Timeline 2' : action === 'walk' ? 'Timeline 4' : null;
+    rive.stop(['Timeline 2', 'Timeline 4']);
+    if (timeline) rive.play(timeline);
+
+    return () => {
+      if (timeline) rive.stop(timeline);
+    };
+  }, [action, rive]);
+
   return (
-    <figure className={`rive-character rive-character--${side}`} aria-label={name}>
+    <figure
+      className={`rive-character rive-character--${side} rive-character--${framing} rive-character--${action}`}
+      aria-label={name}
+    >
       <div className="rive-character__canvas">
         {loadFailed ? (
           <div className="rive-character__fallback" role="img" aria-label={`${name} asset unavailable`}>

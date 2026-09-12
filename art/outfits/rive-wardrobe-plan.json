@@ -1,0 +1,3060 @@
+{
+  "free": [
+    {
+      "name": "Wardrobe_Man_Suit_SuitUpperSleeveFar",
+      "parentId": "0-629",
+      "x": 58.5,
+      "y": 0,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -47,
+              "y": 1
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -63.66666666666667,
+              "control1Y": -3,
+              "control2X": -72.66666666666667,
+              "control2Y": 4.666666666666668,
+              "endX": -74,
+              "endY": 24
+            },
+            {
+              "commandType": "lineTo",
+              "x": -70,
+              "y": 92
+            },
+            {
+              "commandType": "lineTo",
+              "x": -40,
+              "y": 92
+            },
+            {
+              "commandType": "lineTo",
+              "x": -35,
+              "y": 22
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitLowerSleeveFar",
+      "parentId": "0-630",
+      "x": 58.5,
+      "y": -141.6666565,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -70,
+              "y": 87
+            },
+            {
+              "commandType": "lineTo",
+              "x": -40,
+              "y": 87
+            },
+            {
+              "commandType": "lineTo",
+              "x": -43,
+              "y": 172
+            },
+            {
+              "commandType": "lineTo",
+              "x": -67,
+              "y": 172
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitUpperSleeveNear",
+      "parentId": "0-508",
+      "x": -58.5,
+      "y": 0,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 47,
+              "y": 1
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 63.66666666666667,
+              "control1Y": -3,
+              "control2X": 72.66666666666667,
+              "control2Y": 4.666666666666668,
+              "endX": 74,
+              "endY": 24
+            },
+            {
+              "commandType": "lineTo",
+              "x": 70,
+              "y": 92
+            },
+            {
+              "commandType": "lineTo",
+              "x": 40,
+              "y": 92
+            },
+            {
+              "commandType": "lineTo",
+              "x": 35,
+              "y": 22
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitLowerSleeveNear",
+      "parentId": "0-509",
+      "x": -58.5,
+      "y": -82,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 40,
+              "y": 87
+            },
+            {
+              "commandType": "lineTo",
+              "x": 70,
+              "y": 87
+            },
+            {
+              "commandType": "lineTo",
+              "x": 67,
+              "y": 172
+            },
+            {
+              "commandType": "lineTo",
+              "x": 43,
+              "y": 172
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitShirt",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#e9ece9"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -25,
+              "y": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": 25,
+              "y": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": 35,
+              "y": 163
+            },
+            {
+              "commandType": "lineTo",
+              "x": -35,
+              "y": 163
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitTie",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#94705a"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -6,
+              "y": 8
+            },
+            {
+              "commandType": "lineTo",
+              "x": 6,
+              "y": 8
+            },
+            {
+              "commandType": "lineTo",
+              "x": 9,
+              "y": 18
+            },
+            {
+              "commandType": "lineTo",
+              "x": 5,
+              "y": 25
+            },
+            {
+              "commandType": "lineTo",
+              "x": 10,
+              "y": 91
+            },
+            {
+              "commandType": "lineTo",
+              "x": 0,
+              "y": 103
+            },
+            {
+              "commandType": "lineTo",
+              "x": -10,
+              "y": 91
+            },
+            {
+              "commandType": "lineTo",
+              "x": -5,
+              "y": 25
+            },
+            {
+              "commandType": "lineTo",
+              "x": -9,
+              "y": 18
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitJacket",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -26,
+              "y": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": -53,
+              "y": 0
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -59.666666666666664,
+              "control1Y": 3.3333333333333335,
+              "control2X": -62.333333333333336,
+              "control2Y": 12,
+              "endX": -61,
+              "endY": 26
+            },
+            {
+              "commandType": "lineTo",
+              "x": -49,
+              "y": 112
+            },
+            {
+              "commandType": "lineTo",
+              "x": -52,
+              "y": 175
+            },
+            {
+              "commandType": "lineTo",
+              "x": -9,
+              "y": 175
+            },
+            {
+              "commandType": "lineTo",
+              "x": 0,
+              "y": 165
+            },
+            {
+              "commandType": "lineTo",
+              "x": 9,
+              "y": 175
+            },
+            {
+              "commandType": "lineTo",
+              "x": 52,
+              "y": 175
+            },
+            {
+              "commandType": "lineTo",
+              "x": 49,
+              "y": 112
+            },
+            {
+              "commandType": "lineTo",
+              "x": 61,
+              "y": 26
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 62.333333333333336,
+              "control1Y": 12,
+              "control2X": 59.666666666666664,
+              "control2Y": 3.3333333333333335,
+              "endX": 53,
+              "endY": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 26,
+              "y": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": 0,
+              "y": 83
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitLapels",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#21ffffff"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -26,
+              "y": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": -40,
+              "y": 12
+            },
+            {
+              "commandType": "lineTo",
+              "x": -29,
+              "y": 27
+            },
+            {
+              "commandType": "lineTo",
+              "x": -36,
+              "y": 34
+            },
+            {
+              "commandType": "lineTo",
+              "x": 0,
+              "y": 89
+            },
+            {
+              "commandType": "lineTo",
+              "x": -14,
+              "y": 36
+            },
+            {
+              "commandType": "close"
+            },
+            {
+              "commandType": "moveTo",
+              "x": 26,
+              "y": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": 40,
+              "y": 12
+            },
+            {
+              "commandType": "lineTo",
+              "x": 29,
+              "y": 27
+            },
+            {
+              "commandType": "lineTo",
+              "x": 36,
+              "y": 34
+            },
+            {
+              "commandType": "lineTo",
+              "x": 0,
+              "y": 89
+            },
+            {
+              "commandType": "lineTo",
+              "x": 14,
+              "y": 36
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitPocketSeams",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#14212c",
+          "thickness": 2
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -42,
+              "y": 124
+            },
+            {
+              "commandType": "lineTo",
+              "x": -19,
+              "y": 124
+            },
+            {
+              "commandType": "moveTo",
+              "x": 19,
+              "y": 124
+            },
+            {
+              "commandType": "lineTo",
+              "x": 42,
+              "y": 124
+            }
+          ],
+          "isClosed": false
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitCuffs",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#e9ece9"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -67,
+              "y": 172
+            },
+            {
+              "commandType": "lineTo",
+              "x": -43,
+              "y": 172
+            },
+            {
+              "commandType": "lineTo",
+              "x": -43,
+              "y": 178
+            },
+            {
+              "commandType": "lineTo",
+              "x": -67,
+              "y": 178
+            },
+            {
+              "commandType": "close"
+            },
+            {
+              "commandType": "moveTo",
+              "x": 43,
+              "y": 172
+            },
+            {
+              "commandType": "lineTo",
+              "x": 67,
+              "y": 172
+            },
+            {
+              "commandType": "lineTo",
+              "x": 67,
+              "y": 178
+            },
+            {
+              "commandType": "lineTo",
+              "x": 43,
+              "y": 178
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Casual_TShirtSleeveFar",
+      "parentId": "0-629",
+      "x": 58.5,
+      "y": 0,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#bd745b"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -47,
+              "y": 0
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -64.33333333333333,
+              "control1Y": -3.3333333333333335,
+              "control2X": -73.66666666666667,
+              "control2Y": 3.666666666666668,
+              "endX": -75,
+              "endY": 21
+            },
+            {
+              "commandType": "lineTo",
+              "x": -71,
+              "y": 70
+            },
+            {
+              "commandType": "lineTo",
+              "x": -37,
+              "y": 70
+            },
+            {
+              "commandType": "lineTo",
+              "x": -33,
+              "y": 20
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Casual_TShirtSleeveNear",
+      "parentId": "0-508",
+      "x": -58.5,
+      "y": 0,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#bd745b"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 47,
+              "y": 0
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 64.33333333333333,
+              "control1Y": -3.3333333333333335,
+              "control2X": 73.66666666666667,
+              "control2Y": 3.666666666666668,
+              "endX": 75,
+              "endY": 21
+            },
+            {
+              "commandType": "lineTo",
+              "x": 71,
+              "y": 70
+            },
+            {
+              "commandType": "lineTo",
+              "x": 37,
+              "y": 70
+            },
+            {
+              "commandType": "lineTo",
+              "x": 33,
+              "y": 20
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Casual_TShirtBody",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#bd745b"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -25,
+              "y": -10
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -8.333333333333332,
+              "control1Y": 9.333333333333332,
+              "control2X": 8.333333333333332,
+              "control2Y": 9.333333333333332,
+              "endX": 25,
+              "endY": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": 53,
+              "y": 0
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 58.333333333333336,
+              "control1Y": 3.3333333333333335,
+              "control2X": 60.666666666666664,
+              "control2Y": 11.666666666666666,
+              "endX": 60,
+              "endY": 25
+            },
+            {
+              "commandType": "lineTo",
+              "x": 50,
+              "y": 111
+            },
+            {
+              "commandType": "lineTo",
+              "x": 51,
+              "y": 170
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 17,
+              "control1Y": 175.33333333333334,
+              "control2X": -17,
+              "control2Y": 175.33333333333334,
+              "endX": -51,
+              "endY": 170
+            },
+            {
+              "commandType": "lineTo",
+              "x": -50,
+              "y": 111
+            },
+            {
+              "commandType": "lineTo",
+              "x": -60,
+              "y": 25
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -60.666666666666664,
+              "control1Y": 11.666666666666666,
+              "control2X": -58.333333333333336,
+              "control2Y": 3.3333333333333335,
+              "endX": -53,
+              "endY": 0
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Casual_TShirtNeckSeam",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#29000000",
+          "thickness": 3
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -25,
+              "y": -9
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -8.333333333333332,
+              "control1Y": 10.333333333333332,
+              "control2X": 8.333333333333332,
+              "control2Y": 10.333333333333332,
+              "endX": 25,
+              "endY": -9
+            }
+          ],
+          "isClosed": false
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_SuitLegs_Upper0",
+      "parentId": "0-701",
+      "x": -9.333328,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 143
+            },
+            {
+              "commandType": "lineTo",
+              "x": -20,
+              "y": 143
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_SuitLegs_Lower0",
+      "parentId": "0-702",
+      "x": -9.333328,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 17,
+              "y": 153
+            },
+            {
+              "commandType": "lineTo",
+              "x": -16,
+              "y": 153
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_SuitLegs_Upper1",
+      "parentId": "0-668",
+      "x": -11.1666565,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 143
+            },
+            {
+              "commandType": "lineTo",
+              "x": -20,
+              "y": 143
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_SuitLegs_Lower1",
+      "parentId": "0-669",
+      "x": -11.6666565,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 17,
+              "y": 153
+            },
+            {
+              "commandType": "lineTo",
+              "x": -16,
+              "y": 153
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Shorts_Upper0",
+      "parentId": "0-701",
+      "x": -9.333328,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 24,
+              "y": 128
+            },
+            {
+              "commandType": "lineTo",
+              "x": -24,
+              "y": 128
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Shorts_Upper1",
+      "parentId": "0-668",
+      "x": -11.1666565,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 24,
+              "y": 128
+            },
+            {
+              "commandType": "lineTo",
+              "x": -24,
+              "y": 128
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_BareLegs_Upper0",
+      "parentId": "0-701",
+      "x": -9.333328,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 143
+            },
+            {
+              "commandType": "lineTo",
+              "x": -20,
+              "y": 143
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#CFA17E"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_BareLegs_Lower0",
+      "parentId": "0-702",
+      "x": -9.333328,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 17,
+              "y": 153
+            },
+            {
+              "commandType": "lineTo",
+              "x": -16,
+              "y": 153
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#CFA17E"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_BareLegs_Upper1",
+      "parentId": "0-668",
+      "x": -11.1666565,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 143
+            },
+            {
+              "commandType": "lineTo",
+              "x": -20,
+              "y": 143
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#CFA17E"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_BareLegs_Lower1",
+      "parentId": "0-669",
+      "x": -11.6666565,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 17,
+              "y": 153
+            },
+            {
+              "commandType": "lineTo",
+              "x": -16,
+              "y": 153
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#CFA17E"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitUpperSleeveFar",
+      "parentId": "0-2055",
+      "x": 58.5,
+      "y": 0,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#495169"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -41,
+              "y": 0
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -55,
+              "control1Y": -3.3333333333333335,
+              "control2X": -62.666666666666664,
+              "control2Y": 4.666666666666668,
+              "endX": -64,
+              "endY": 24
+            },
+            {
+              "commandType": "lineTo",
+              "x": -60,
+              "y": 92
+            },
+            {
+              "commandType": "lineTo",
+              "x": -34,
+              "y": 92
+            },
+            {
+              "commandType": "lineTo",
+              "x": -31,
+              "y": 22
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitLowerSleeveFar",
+      "parentId": "0-2056",
+      "x": 58.5,
+      "y": -141.6666565,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#495169"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -60,
+              "y": 87
+            },
+            {
+              "commandType": "lineTo",
+              "x": -34,
+              "y": 87
+            },
+            {
+              "commandType": "lineTo",
+              "x": -37,
+              "y": 172
+            },
+            {
+              "commandType": "lineTo",
+              "x": -58,
+              "y": 172
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitUpperSleeveNear",
+      "parentId": "0-1908",
+      "x": -58.5,
+      "y": 0,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#495169"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 41,
+              "y": 0
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 55,
+              "control1Y": -3.3333333333333335,
+              "control2X": 62.666666666666664,
+              "control2Y": 4.666666666666668,
+              "endX": 64,
+              "endY": 24
+            },
+            {
+              "commandType": "lineTo",
+              "x": 60,
+              "y": 92
+            },
+            {
+              "commandType": "lineTo",
+              "x": 34,
+              "y": 92
+            },
+            {
+              "commandType": "lineTo",
+              "x": 31,
+              "y": 22
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitLowerSleeveNear",
+      "parentId": "0-1909",
+      "x": -58.5,
+      "y": -82,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#495169"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 34,
+              "y": 87
+            },
+            {
+              "commandType": "lineTo",
+              "x": 60,
+              "y": 87
+            },
+            {
+              "commandType": "lineTo",
+              "x": 58,
+              "y": 172
+            },
+            {
+              "commandType": "lineTo",
+              "x": 37,
+              "y": 172
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitBlouse",
+      "parentId": "0-1771",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#e9e4e7"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": -10
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -7.666666666666666,
+              "control1Y": 5.333333333333334,
+              "control2X": 7.666666666666666,
+              "control2Y": 5.333333333333334,
+              "endX": 23,
+              "endY": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": 31,
+              "y": 163
+            },
+            {
+              "commandType": "lineTo",
+              "x": -31,
+              "y": 163
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitJacket",
+      "parentId": "0-1771",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#495169"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -24,
+              "y": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": -45,
+              "y": 0
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -51,
+              "control1Y": 3.3333333333333335,
+              "control2X": -53.333333333333336,
+              "control2Y": 12.333333333333334,
+              "endX": -52,
+              "endY": 27
+            },
+            {
+              "commandType": "lineTo",
+              "x": -42,
+              "y": 115
+            },
+            {
+              "commandType": "lineTo",
+              "x": -44,
+              "y": 170
+            },
+            {
+              "commandType": "lineTo",
+              "x": -8,
+              "y": 170
+            },
+            {
+              "commandType": "lineTo",
+              "x": 0,
+              "y": 162
+            },
+            {
+              "commandType": "lineTo",
+              "x": 8,
+              "y": 170
+            },
+            {
+              "commandType": "lineTo",
+              "x": 44,
+              "y": 170
+            },
+            {
+              "commandType": "lineTo",
+              "x": 42,
+              "y": 115
+            },
+            {
+              "commandType": "lineTo",
+              "x": 52,
+              "y": 27
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 53.333333333333336,
+              "control1Y": 12.333333333333334,
+              "control2X": 51,
+              "control2Y": 3.3333333333333335,
+              "endX": 45,
+              "endY": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 24,
+              "y": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": 0,
+              "y": 77
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitLapels",
+      "parentId": "0-1771",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#24ffffff"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -24,
+              "y": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": -34,
+              "y": 13
+            },
+            {
+              "commandType": "lineTo",
+              "x": -25,
+              "y": 27
+            },
+            {
+              "commandType": "lineTo",
+              "x": -31,
+              "y": 34
+            },
+            {
+              "commandType": "lineTo",
+              "x": 0,
+              "y": 83
+            },
+            {
+              "commandType": "lineTo",
+              "x": -12,
+              "y": 36
+            },
+            {
+              "commandType": "close"
+            },
+            {
+              "commandType": "moveTo",
+              "x": 24,
+              "y": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": 34,
+              "y": 13
+            },
+            {
+              "commandType": "lineTo",
+              "x": 25,
+              "y": 27
+            },
+            {
+              "commandType": "lineTo",
+              "x": 31,
+              "y": 34
+            },
+            {
+              "commandType": "lineTo",
+              "x": 0,
+              "y": 83
+            },
+            {
+              "commandType": "lineTo",
+              "x": 12,
+              "y": 36
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitPocketSeams",
+      "parentId": "0-1771",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#242d3d",
+          "thickness": 2
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -36,
+              "y": 127
+            },
+            {
+              "commandType": "lineTo",
+              "x": -17,
+              "y": 127
+            },
+            {
+              "commandType": "moveTo",
+              "x": 17,
+              "y": 127
+            },
+            {
+              "commandType": "lineTo",
+              "x": 36,
+              "y": 127
+            }
+          ],
+          "isClosed": false
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Casual_TShirtSleeveFar",
+      "parentId": "0-2055",
+      "x": 58.5,
+      "y": 0,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#799b87"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -39,
+              "y": 0
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -54.333333333333336,
+              "control1Y": -3.3333333333333335,
+              "control2X": -62.666666666666664,
+              "control2Y": 4,
+              "endX": -64,
+              "endY": 22
+            },
+            {
+              "commandType": "lineTo",
+              "x": -60,
+              "y": 67
+            },
+            {
+              "commandType": "lineTo",
+              "x": -30,
+              "y": 67
+            },
+            {
+              "commandType": "lineTo",
+              "x": -28,
+              "y": 20
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Casual_TShirtSleeveNear",
+      "parentId": "0-1908",
+      "x": -58.5,
+      "y": 0,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#799b87"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 39,
+              "y": 0
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 54.333333333333336,
+              "control1Y": -3.3333333333333335,
+              "control2X": 62.666666666666664,
+              "control2Y": 4,
+              "endX": 64,
+              "endY": 22
+            },
+            {
+              "commandType": "lineTo",
+              "x": 60,
+              "y": 67
+            },
+            {
+              "commandType": "lineTo",
+              "x": 30,
+              "y": 67
+            },
+            {
+              "commandType": "lineTo",
+              "x": 28,
+              "y": 20
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Casual_TShirtBody",
+      "parentId": "0-1771",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#799b87"
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": -10
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -7.666666666666666,
+              "control1Y": 8.666666666666668,
+              "control2X": 7.666666666666666,
+              "control2Y": 8.666666666666668,
+              "endX": 23,
+              "endY": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": 44,
+              "y": 0
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 49.333333333333336,
+              "control1Y": 4,
+              "control2X": 51.666666666666664,
+              "control2Y": 12.333333333333334,
+              "endX": 51,
+              "endY": 25
+            },
+            {
+              "commandType": "lineTo",
+              "x": 43,
+              "y": 118
+            },
+            {
+              "commandType": "lineTo",
+              "x": 44,
+              "y": 170
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 14.666666666666668,
+              "control1Y": 174.66666666666666,
+              "control2X": -14.666666666666668,
+              "control2Y": 174.66666666666666,
+              "endX": -44,
+              "endY": 170
+            },
+            {
+              "commandType": "lineTo",
+              "x": -43,
+              "y": 118
+            },
+            {
+              "commandType": "lineTo",
+              "x": -51,
+              "y": 25
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -51.666666666666664,
+              "control1Y": 12.333333333333334,
+              "control2X": -49.333333333333336,
+              "control2Y": 4,
+              "endX": -44,
+              "endY": 0
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Casual_TShirtNeckSeam",
+      "parentId": "0-1771",
+      "x": 0,
+      "y": 13.8333435,
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#29000000",
+          "thickness": 3
+        }
+      ],
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": -9
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -7.666666666666666,
+              "control1Y": 9.666666666666668,
+              "control2X": 7.666666666666666,
+              "control2Y": 9.666666666666668,
+              "endX": 23,
+              "endY": -9
+            }
+          ],
+          "isClosed": false
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_SuitLegs_Upper0",
+      "parentId": "0-2156",
+      "x": -9.333328,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 143
+            },
+            {
+              "commandType": "lineTo",
+              "x": -20,
+              "y": 143
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_SuitLegs_Lower0",
+      "parentId": "0-2157",
+      "x": -9.333328,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 17,
+              "y": 153
+            },
+            {
+              "commandType": "lineTo",
+              "x": -16,
+              "y": 153
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_SuitLegs_Upper1",
+      "parentId": "0-2119",
+      "x": -11.1666565,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 143
+            },
+            {
+              "commandType": "lineTo",
+              "x": -20,
+              "y": 143
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_SuitLegs_Lower1",
+      "parentId": "0-2120",
+      "x": -11.6666565,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 17,
+              "y": 153
+            },
+            {
+              "commandType": "lineTo",
+              "x": -16,
+              "y": 153
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Shorts_Upper0",
+      "parentId": "0-2156",
+      "x": -9.333328,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 24,
+              "y": 128
+            },
+            {
+              "commandType": "lineTo",
+              "x": -24,
+              "y": 128
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Shorts_Upper1",
+      "parentId": "0-2119",
+      "x": -11.1666565,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 24,
+              "y": 128
+            },
+            {
+              "commandType": "lineTo",
+              "x": -24,
+              "y": 128
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Jeans_Upper0",
+      "parentId": "0-2156",
+      "x": -9.333328,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 143
+            },
+            {
+              "commandType": "lineTo",
+              "x": -20,
+              "y": 143
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#486D89"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Jeans_Lower0",
+      "parentId": "0-2157",
+      "x": -9.333328,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 17,
+              "y": 153
+            },
+            {
+              "commandType": "lineTo",
+              "x": -16,
+              "y": 153
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#486D89"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Jeans_Upper1",
+      "parentId": "0-2119",
+      "x": -11.1666565,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 143
+            },
+            {
+              "commandType": "lineTo",
+              "x": -20,
+              "y": 143
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#486D89"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Jeans_Lower1",
+      "parentId": "0-2120",
+      "x": -11.6666565,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 17,
+              "y": 153
+            },
+            {
+              "commandType": "lineTo",
+              "x": -16,
+              "y": 153
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#486D89"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_BareLegs_Upper0",
+      "parentId": "0-2156",
+      "x": -9.333328,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 143
+            },
+            {
+              "commandType": "lineTo",
+              "x": -20,
+              "y": 143
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#CFA17E"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_BareLegs_Lower0",
+      "parentId": "0-2157",
+      "x": -9.333328,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 17,
+              "y": 153
+            },
+            {
+              "commandType": "lineTo",
+              "x": -16,
+              "y": 153
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#CFA17E"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_BareLegs_Upper1",
+      "parentId": "0-2119",
+      "x": -11.1666565,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 23,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 143
+            },
+            {
+              "commandType": "lineTo",
+              "x": -20,
+              "y": 143
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#CFA17E"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_BareLegs_Lower1",
+      "parentId": "0-2120",
+      "x": -11.6666565,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 20,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 17,
+              "y": 153
+            },
+            {
+              "commandType": "lineTo",
+              "x": -16,
+              "y": 153
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#CFA17E"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_SuitSkirt_Body",
+      "parentId": "0-1770",
+      "x": 0,
+      "y": 35.5,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -44,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 44,
+              "y": 0
+            },
+            {
+              "commandType": "lineTo",
+              "x": 74,
+              "y": 165
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 24.666666666666664,
+              "control1Y": 168.33333333333334,
+              "control2X": -24.666666666666664,
+              "control2Y": 168.33333333333334,
+              "endX": -74,
+              "endY": 165
+            },
+            {
+              "commandType": "close"
+            }
+          ]
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    }
+  ],
+  "primitives": [
+    {
+      "name": "Wardrobe_Man_Suit_Button",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 117.8333435,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#14212c"
+        }
+      ],
+      "shapeType": "ellipse",
+      "width": 5,
+      "height": 5
+    },
+    {
+      "name": "Wardrobe_Man_Suit_Button",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 143.8333435,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#14212c"
+        }
+      ],
+      "shapeType": "ellipse",
+      "width": 5,
+      "height": 5
+    },
+    {
+      "name": "Wardrobe_Man_SuitLegs_Pelvis",
+      "parentId": "0-390",
+      "x": 0,
+      "y": 80,
+      "width": 98,
+      "height": 44,
+      "shapeType": "rectangle",
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Man_Shorts_Pelvis",
+      "parentId": "0-390",
+      "x": 0,
+      "y": 80,
+      "width": 98,
+      "height": 44,
+      "shapeType": "rectangle",
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_Button",
+      "parentId": "0-1771",
+      "x": 0,
+      "y": 118.8333435,
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#242d3d"
+        }
+      ],
+      "shapeType": "ellipse",
+      "width": 5,
+      "height": 5
+    },
+    {
+      "name": "Wardrobe_Woman_SuitLegs_Pelvis",
+      "parentId": "0-1770",
+      "x": 0,
+      "y": 80,
+      "width": 98,
+      "height": 44,
+      "shapeType": "rectangle",
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Shorts_Pelvis",
+      "parentId": "0-1770",
+      "x": 0,
+      "y": 80,
+      "width": 98,
+      "height": 44,
+      "shapeType": "rectangle",
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#344454"
+        }
+      ]
+    },
+    {
+      "name": "Wardrobe_Woman_Jeans_Pelvis",
+      "parentId": "0-1770",
+      "x": 0,
+      "y": 80,
+      "width": 98,
+      "height": 44,
+      "shapeType": "rectangle",
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#486D89"
+        }
+      ]
+    }
+  ],
+  "meta": [
+    {
+      "name": "Wardrobe_Man_Suit_SuitUpperSleeveFar",
+      "parentId": "0-629",
+      "family": "Suit",
+      "character": "Man",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitLowerSleeveFar",
+      "parentId": "0-630",
+      "family": "Suit",
+      "character": "Man",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitUpperSleeveNear",
+      "parentId": "0-508",
+      "family": "Suit",
+      "character": "Man",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitLowerSleeveNear",
+      "parentId": "0-509",
+      "family": "Suit",
+      "character": "Man",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitShirt",
+      "parentId": "0-391",
+      "family": "Suit",
+      "character": "Man",
+      "colorProperty": "outfitSecondaryColor"
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitTie",
+      "parentId": "0-391",
+      "family": "Suit",
+      "character": "Man",
+      "colorProperty": "outfitAccentColor"
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitJacket",
+      "parentId": "0-391",
+      "family": "Suit",
+      "character": "Man",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitLapels",
+      "parentId": "0-391",
+      "family": "Suit",
+      "character": "Man",
+      "colorProperty": null
+    },
+    {
+      "name": "Wardrobe_Man_Suit_Button",
+      "parentId": "0-391",
+      "family": "Suit",
+      "character": "Man",
+      "colorProperty": null
+    },
+    {
+      "name": "Wardrobe_Man_Suit_Button",
+      "parentId": "0-391",
+      "family": "Suit",
+      "character": "Man",
+      "colorProperty": null
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitPocketSeams",
+      "parentId": "0-391",
+      "family": "Suit",
+      "character": "Man",
+      "colorProperty": null
+    },
+    {
+      "name": "Wardrobe_Man_Suit_SuitCuffs",
+      "parentId": "0-391",
+      "family": "Suit",
+      "character": "Man",
+      "colorProperty": "outfitSecondaryColor"
+    },
+    {
+      "name": "Wardrobe_Man_Casual_TShirtSleeveFar",
+      "parentId": "0-629",
+      "family": "Casual",
+      "character": "Man",
+      "colorProperty": "outfitPrimaryColor"
+    },
+    {
+      "name": "Wardrobe_Man_Casual_TShirtSleeveNear",
+      "parentId": "0-508",
+      "family": "Casual",
+      "character": "Man",
+      "colorProperty": "outfitPrimaryColor"
+    },
+    {
+      "name": "Wardrobe_Man_Casual_TShirtBody",
+      "parentId": "0-391",
+      "family": "Casual",
+      "character": "Man",
+      "colorProperty": "outfitPrimaryColor"
+    },
+    {
+      "name": "Wardrobe_Man_Casual_TShirtNeckSeam",
+      "parentId": "0-391",
+      "family": "Casual",
+      "character": "Man",
+      "colorProperty": null
+    },
+    {
+      "name": "Wardrobe_Man_SuitLegs_Upper0",
+      "parentId": "0-701",
+      "family": "SuitLegs",
+      "character": "Man",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Man_SuitLegs_Lower0",
+      "parentId": "0-702",
+      "family": "SuitLegs",
+      "character": "Man",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Man_SuitLegs_Upper1",
+      "parentId": "0-668",
+      "family": "SuitLegs",
+      "character": "Man",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Man_SuitLegs_Lower1",
+      "parentId": "0-669",
+      "family": "SuitLegs",
+      "character": "Man",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Man_SuitLegs_Pelvis",
+      "parentId": "0-390",
+      "family": "SuitLegs",
+      "character": "Man",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Man_Shorts_Upper0",
+      "parentId": "0-701",
+      "family": "Shorts",
+      "character": "Man",
+      "colorProperty": "pantsColor"
+    },
+    {
+      "name": "Wardrobe_Man_Shorts_Upper1",
+      "parentId": "0-668",
+      "family": "Shorts",
+      "character": "Man",
+      "colorProperty": "pantsColor"
+    },
+    {
+      "name": "Wardrobe_Man_Shorts_Pelvis",
+      "parentId": "0-390",
+      "family": "Shorts",
+      "character": "Man",
+      "colorProperty": "pantsColor"
+    },
+    {
+      "name": "Wardrobe_Man_BareLegs_Upper0",
+      "parentId": "0-701",
+      "family": "BareLegs",
+      "character": "Man",
+      "colorProperty": "skinColor"
+    },
+    {
+      "name": "Wardrobe_Man_BareLegs_Lower0",
+      "parentId": "0-702",
+      "family": "BareLegs",
+      "character": "Man",
+      "colorProperty": "skinColor"
+    },
+    {
+      "name": "Wardrobe_Man_BareLegs_Upper1",
+      "parentId": "0-668",
+      "family": "BareLegs",
+      "character": "Man",
+      "colorProperty": "skinColor"
+    },
+    {
+      "name": "Wardrobe_Man_BareLegs_Lower1",
+      "parentId": "0-669",
+      "family": "BareLegs",
+      "character": "Man",
+      "colorProperty": "skinColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitUpperSleeveFar",
+      "parentId": "0-2055",
+      "family": "Suit",
+      "character": "Woman",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitLowerSleeveFar",
+      "parentId": "0-2056",
+      "family": "Suit",
+      "character": "Woman",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitUpperSleeveNear",
+      "parentId": "0-1908",
+      "family": "Suit",
+      "character": "Woman",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitLowerSleeveNear",
+      "parentId": "0-1909",
+      "family": "Suit",
+      "character": "Woman",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitBlouse",
+      "parentId": "0-1771",
+      "family": "Suit",
+      "character": "Woman",
+      "colorProperty": "outfitSecondaryColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitJacket",
+      "parentId": "0-1771",
+      "family": "Suit",
+      "character": "Woman",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitLapels",
+      "parentId": "0-1771",
+      "family": "Suit",
+      "character": "Woman",
+      "colorProperty": null
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_Button",
+      "parentId": "0-1771",
+      "family": "Suit",
+      "character": "Woman",
+      "colorProperty": null
+    },
+    {
+      "name": "Wardrobe_Woman_Suit_SuitPocketSeams",
+      "parentId": "0-1771",
+      "family": "Suit",
+      "character": "Woman",
+      "colorProperty": null
+    },
+    {
+      "name": "Wardrobe_Woman_Casual_TShirtSleeveFar",
+      "parentId": "0-2055",
+      "family": "Casual",
+      "character": "Woman",
+      "colorProperty": "outfitPrimaryColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Casual_TShirtSleeveNear",
+      "parentId": "0-1908",
+      "family": "Casual",
+      "character": "Woman",
+      "colorProperty": "outfitPrimaryColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Casual_TShirtBody",
+      "parentId": "0-1771",
+      "family": "Casual",
+      "character": "Woman",
+      "colorProperty": "outfitPrimaryColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Casual_TShirtNeckSeam",
+      "parentId": "0-1771",
+      "family": "Casual",
+      "character": "Woman",
+      "colorProperty": null
+    },
+    {
+      "name": "Wardrobe_Woman_SuitLegs_Upper0",
+      "parentId": "0-2156",
+      "family": "SuitLegs",
+      "character": "Woman",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Woman_SuitLegs_Lower0",
+      "parentId": "0-2157",
+      "family": "SuitLegs",
+      "character": "Woman",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Woman_SuitLegs_Upper1",
+      "parentId": "0-2119",
+      "family": "SuitLegs",
+      "character": "Woman",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Woman_SuitLegs_Lower1",
+      "parentId": "0-2120",
+      "family": "SuitLegs",
+      "character": "Woman",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Woman_SuitLegs_Pelvis",
+      "parentId": "0-1770",
+      "family": "SuitLegs",
+      "character": "Woman",
+      "colorProperty": "suitColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Shorts_Upper0",
+      "parentId": "0-2156",
+      "family": "Shorts",
+      "character": "Woman",
+      "colorProperty": "pantsColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Shorts_Upper1",
+      "parentId": "0-2119",
+      "family": "Shorts",
+      "character": "Woman",
+      "colorProperty": "pantsColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Shorts_Pelvis",
+      "parentId": "0-1770",
+      "family": "Shorts",
+      "character": "Woman",
+      "colorProperty": "pantsColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Jeans_Upper0",
+      "parentId": "0-2156",
+      "family": "Jeans",
+      "character": "Woman",
+      "colorProperty": "pantsColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Jeans_Lower0",
+      "parentId": "0-2157",
+      "family": "Jeans",
+      "character": "Woman",
+      "colorProperty": "pantsColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Jeans_Upper1",
+      "parentId": "0-2119",
+      "family": "Jeans",
+      "character": "Woman",
+      "colorProperty": "pantsColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Jeans_Lower1",
+      "parentId": "0-2120",
+      "family": "Jeans",
+      "character": "Woman",
+      "colorProperty": "pantsColor"
+    },
+    {
+      "name": "Wardrobe_Woman_Jeans_Pelvis",
+      "parentId": "0-1770",
+      "family": "Jeans",
+      "character": "Woman",
+      "colorProperty": "pantsColor"
+    },
+    {
+      "name": "Wardrobe_Woman_BareLegs_Upper0",
+      "parentId": "0-2156",
+      "family": "BareLegs",
+      "character": "Woman",
+      "colorProperty": "skinColor"
+    },
+    {
+      "name": "Wardrobe_Woman_BareLegs_Lower0",
+      "parentId": "0-2157",
+      "family": "BareLegs",
+      "character": "Woman",
+      "colorProperty": "skinColor"
+    },
+    {
+      "name": "Wardrobe_Woman_BareLegs_Upper1",
+      "parentId": "0-2119",
+      "family": "BareLegs",
+      "character": "Woman",
+      "colorProperty": "skinColor"
+    },
+    {
+      "name": "Wardrobe_Woman_BareLegs_Lower1",
+      "parentId": "0-2120",
+      "family": "BareLegs",
+      "character": "Woman",
+      "colorProperty": "skinColor"
+    },
+    {
+      "name": "Wardrobe_Woman_SuitSkirt_Body",
+      "parentId": "0-1770",
+      "family": "SuitSkirt",
+      "character": "Woman",
+      "colorProperty": "suitColor"
+    }
+  ]
+}

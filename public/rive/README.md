@@ -1,6 +1,16 @@
 # Rive character assets
 
-## Runtime integration status (2026-09-07)
+## Hair accent contract
+
+Hair palettes in `src/engine/hairColors.ts` pair each base dye with a curated
+`accentColor`. Salon choices store both together, and the character wrapper
+sends the player's accent to the optional `CharacterData.hairAccentColor`
+Color property independently of the base `hairColor`.
+
+The export exposes both properties. Anime hair texture is bound to
+`hairAccentColor`, with default `#94705A`; its visibility follows appearance.
+
+## Runtime integration status (2026-09-12)
 
 The React scene integration is implemented for both character artboards. The complete runtime export is available at **`compliance-characters.riv`** and contains both characters.
 
@@ -26,19 +36,65 @@ Names are case-sensitive, including spaces.
 | State machine | `State Machine 1` | `State Machine 1` |
 | View model | `CharacterData` | `CharacterData` |
 | Named instance template | `Instance` | `Instance 1` |
-| Shirt default | `#438F98` | `#86658F` |
+| Upper-garment default | Teal button-up, `#438F98` | Plum pocketless blouse, `#86658F` |
+| Lower garment | Trousers | A-line skirt |
 
 Create a separate Rive canvas and view-model instance for each on-screen character. Choose the named template explicitly to retain the woman's defaults.
 
 | View-model property | Type | Meaning / default |
 | --- | --- | --- |
 | `numberProperty` | Number | Corporate → anime blend, 0..1; default 0 |
-| `skinColor` | Color | Skin fills, including anime upper arms; `#CFA17E` |
+| `eyeColor` | Color | Both irises; `#58616A` (pupils and glints remain separate) |
+| `skinColor` | Color | Skin fills; `#CFA17E` |
 | `hairColor` | Color | Hair fills, including woman's bob; `#3D302C` |
-| `outfitPrimaryColor` | Color | Generic button-up shirt; defaults above |
-| `pantsColor` | Color | Trousers; `#344454` |
+| `hairAccentColor` | Color | Hair highlights and anime texture; `#94705A` |
+| `outfitPrimaryColor` | Color | Business shirt/blouse and casual T-shirt; defaults above |
+| `pantsColor` | Color | Business bottoms, casual shorts and jeans; `#344454` |
+| `outfitId` | Number | Discrete outfit selection; default 0; table below |
+| `suitColor` | Color | Matching jacket and suit trousers/skirt; man `#344454`, woman `#495169` |
+| `outfitSecondaryColor` | Color | Inner suit shirt/blouse; man `#E9ECE9`, woman `#E9E4E7` |
+| `outfitAccentColor` | Color | Man's tie; `#94705A` |
 
-`numberProperty` is the actual saved name. Map an app-side `romanceDrift` or `attractiveness` value to it; those aliases are not properties in this file. There are no `isTalking`, `speed`, outfit-ID, or prop-slot inputs yet. Recoloring the shirt does not switch clothing geometry. Ignore the unused empty `ViewModel1`.
+`numberProperty` is the actual saved name. Map an app-side `romanceDrift` or `attractiveness` value to it; those aliases are not properties in this file. There are no `isTalking`, `speed`, or prop-slot inputs yet. Ignore the unused empty `ViewModel1`.
+
+## Wardrobe controls
+
+| outfitId | Man | Woman |
+| --- | --- | --- |
+| 0 | Button-up and trousers | Pocketless blouse and skirt |
+| 1 | Suit with tie and trousers | Suit with blouse and trousers |
+| 2 | T-shirt and shorts | T-shirt and jeans |
+| 3 | Unsupported | Suit with blouse and skirt |
+| 4 | Unsupported | T-shirt and shorts |
+
+```ts
+// After bindViewModelInstance:
+r.viewModelInstance.number('outfitId').value = 1;
+r.viewModelInstance.color('suitColor').rgb(52, 68, 84);
+r.viewModelInstance.color('outfitSecondaryColor').rgb(233, 236, 233);
+r.viewModelInstance.color('outfitAccentColor').rgb(148, 112, 90);
+```
+
+Use integer IDs. Formula converters round the value and select whole garments;
+unsupported values hide outfit pieces in raw Rive. The React wrapper validates
+IDs and falls back to business casual. Garment visibility binds directly to
+`outfitId`, independently of the appearance state machine. Existing animated
+clothes have outer visibility groups so their appearance keys remain intact.
+
+Upper sleeves, forearm sleeves, trousers and exposed legs follow the existing
+limb groups. The suit skirt has a sway track in Timeline 4. New shirt/jacket
+vertices morph in Timelines 6 and 7, with the preview mirrored in Timeline 5.
+Colors stay bound while appearance changes. Suits use `suitColor` for both
+halves; `outfitPrimaryColor` applies to business/casual tops.
+
+`RiveCharacter` accepts `outfitId`, `outfitPrimaryColor`, `pantsColor`, `suitColor`,
+`outfitSecondaryColor`, and `outfitAccentColor`, alongside the four existing
+character colors and `appearanceBlend`. Color props use `#RRGGBB` strings.
+The default scene remains outfit 0 until a caller supplies another selection.
+
+Editable backup: `art/rive-revisions/wardrobe-colors-final/generic_man_-_compliance_training.rev`.
+Local visual verifier: `art/outfits/preview.html`, served through Vite; this page
+is an authoring aid and is not part of the production story interface.
 
 ## Load and control appearance
 
@@ -77,7 +133,7 @@ function setAppearance(value: number) {
 }
 
 function setColor(
-  name: 'skinColor' | 'hairColor' | 'outfitPrimaryColor' | 'pantsColor',
+  name: 'eyeColor' | 'skinColor' | 'hairColor' | 'hairAccentColor' | 'outfitPrimaryColor' | 'pantsColor',
   hex: string,
 ) {
   if (!/^#[0-9a-f]{6}$/i.test(hex)) throw new Error('Expected #RRGGBB');
@@ -114,11 +170,11 @@ Both artboards use the following names:
 | `Timeline 2` | Mouth movement / talking | Loop |
 | `Timeline 3` | Arm wave | One shot |
 | `Timeline 4` | In-place walk | Loop |
-| `Timeline 5` | Full corporate-to-anime authoring morph | Authoring only |
+| `Timeline 5` | Corporate-to-anime morph preview | One-second preview |
 | `Timeline 6` | Corporate endpoint | Appearance blend dependency |
 | `Timeline 7` | Anime endpoint | Appearance blend dependency |
 
-`State Machine 1` currently runs idle on Layer 1 and `Anime Appearance` on Layer 2. The latter blends Timeline 6 at 0 and Timeline 7 at 1 using `numberProperty`. Editing Timeline 5 does not automatically update its endpoint copies; synchronize all three.
+`State Machine 1` currently runs idle on Layer 1 and `Anime Appearance` on Layer 2. The latter blends Timeline 6 at 0 and Timeline 7 at 1 using `numberProperty`. Those two timelines are stable, authoritative runtime endpoints. Their keyed properties hold constant over time, so numberProperty controls appearance without a second timed morph. Timeline 5 has been synchronized to interpolate between the current endpoints over one second. Future edits must keep all three timelines in sync.
 
 ### Preview individual actions with the installed runtime
 
@@ -142,16 +198,34 @@ For simultaneous walk/talk/genre control, finish the state machine on **each** a
 3. Add a gesture trigger/state using Timeline 3, returning to neutral after completion. Resolve its arm ownership against the walk layer so two layers do not unintentionally overwrite the same rotation.
 4. Keep the existing appearance layer and color bindings active. Add a wrapper mapping the story meters to the saved property names.
 
-These are proposed controls, **not available inputs in the current editor file**. The existing rig uses articulated nested vector groups rather than a skinned bone mesh. The far-arm draw rule keeps it behind the legs.
+These are proposed controls, **not available inputs in the current editor file**. The existing rig uses articulated nested vector groups rather than a skinned bone mesh. The man's far-arm draw rule keeps it behind the legs.
 
 ## Validation after export
 
 - Load both artboards independently; inspect `r.contents`, `r.animationNames`, and `r.stateMachineNames` for the names above.
-- Confirm `CharacterData` exposes all five properties and both named templates.
+- Confirm `CharacterData` exposes all seven properties and both named templates.
 - Test blend values 0, 0.5, and 1; change each color on one character and verify the other stays unchanged.
 - Preview walk, talk, and wave individually. Once action layers are wired, test their combinations at both appearance endpoints and halfway.
 - Verify the exported asset loads from the production base path and is included in `dist/rive/`.
 
-Editor visual checks are recorded in [man notes](../../art/rive-man-notes.md) and [woman notes](../../art/rive-woman-notes.md). The exported binary's embedded names have been checked against the asset contract above.
+Editor visual checks are recorded in [man notes](../../art/rive-man-notes.md) and [woman notes](../../art/rive-woman-notes.md). The latest exported binary's embedded names have been checked against the asset contract above. The editor was also checked at appearance values 0, 0.5, and 1 after the woman's blouse, skirt, and feminine anime endpoint were revised.
 
 API references: [Rive data binding](https://rive.app/docs/runtimes/web/data-binding), [Rive parameters and playback](https://rive.app/docs/runtimes/web/rive-parameters). The installed package declarations are authoritative for this project's version; newer documentation can include methods absent from 2.35.0.
+
+
+## September 8 export verification
+
+Exported both artboards through Rive MCP after the proportion, hair/chest detail, upper-arm contour, pelvis, and skirt revisions. The final editable revision is art/rive-revisions/2026-09-08/generic_man_-_compliance_training.rev; art/generic_man_-_compliance_training.rev is the pre-MCP-edit safety backup. That export was superseded by the color-property revision described below.
+
+Visual validation used Rive artboard captures of the revised endpoint geometry and sampled walking poses. This pass did not re-test combined runtime action playback. npm was unavailable on PATH; the equivalent ESLint, TypeScript build, and Vite production build passed using bundled Node (Vite --configLoader runner).
+
+
+## Four character color controls
+
+Both independent character instances expose eyeColor, skinColor, hairColor, and hairAccentColor as Color properties. Existing outfitPrimaryColor, pantsColor, and numberProperty remain available. Four iris fills bind to eyeColor; pupils, whites, and glints retain their own colors. Five hair accent paints bind to hairAccentColor, including the anime texture overlays. The appearance animations reveal those overlays without keying their colors, so selected colors persist through genre drift.
+
+Use setColor('eyeColor', '#397BE0') or setColor('hairAccentColor', '#91DFFF') with the helper above. RiveCharacter accepts eyeColor, skinColor, hairColor, and hairAccentColor props as #RRGGBB strings. The default accent matches DEFAULT_HAIR.accentColor. Each Rive canvas binds its own named CharacterData instance; do not share a mutable view-model instance between characters.
+
+Latest editable backup: art/rive-revisions/final-color-export/generic_man_-_compliance_training.rev. Latest runtime export is copied to public/rive/compliance-characters.riv.
+
+
