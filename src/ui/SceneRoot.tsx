@@ -1,6 +1,8 @@
 import type { CSSProperties, ReactNode } from 'react';
 import type { MeterState, SceneDef } from '../engine/sceneTypes';
 import { RiveCharacter } from '../rive/RiveCharacter';
+import { HallwayStage } from './HallwayStage';
+import { MustardStage } from './MustardStage';
 
 interface SceneRootProps {
   scene: SceneDef;
@@ -51,10 +53,20 @@ export function SceneRoot({
       }
     >
       <div className="scene-stage">
-        <div className="scene-title-strip">{scene.sceneLabel ?? 'Workplace conduct'}</div>
+        {!scene.hallwayAction && !scene.mustardAction ? <div className="scene-title-strip">{scene.sceneLabel ?? 'Workplace conduct'}</div> : null}
+        {scene.mustardAction ? <MustardStage key={scene.id} action={scene.mustardAction}
+          entryActive={entryActive} playerCharacterId={playerCharacterId} playerName={playerName}
+          playerSkinColor={playerSkinColor} playerEyeColor={playerEyeColor}
+          playerHairColor={playerHairColor} playerHairAccentColor={playerHairAccentColor}
+          appearance={meters.romanceDrift} /> : null}
+        {scene.hallwayAction ? <HallwayStage key={scene.id} action={scene.hallwayAction}
+          entryActive={entryActive} playerCharacterId={playerCharacterId} playerName={playerName}
+          playerSkinColor={playerSkinColor} playerEyeColor={playerEyeColor}
+          playerHairColor={playerHairColor} playerHairAccentColor={playerHairAccentColor}
+          appearance={meters.romanceDrift} /> : null}
         {scene.characters?.length ? (
           <div className="character-layer" aria-label="Scenario characters">
-            {scene.characters.filter((character) => !scene.id.startsWith('mirror_') || character.id === playerCharacterId).map((character) => (
+            {scene.characters.filter((character) => !scene.playerOnly || character.id === playerCharacterId).map((character) => (
               <RiveCharacter
                 key={character.id}
                 artboard={character.artboard}

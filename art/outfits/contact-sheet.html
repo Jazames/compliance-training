@@ -1,16 +1,19 @@
 <!doctype html><meta charset="utf-8"><title>Wardrobe comparison</title>
 <style>body{margin:0;background:#eee;font:12px system-ui}main{display:grid;grid-template-columns:repeat(8,150px)}figure{margin:0}canvas{width:150px;height:240px}figcaption{text-align:center}header{padding:8px}</style>
-<header>Wardrobe comparison — corporate / half / anime <span id="status">Loading</span> <label>Motion <select id="motion"><option value="">Idle</option><option value="Timeline 4">Walk</option><option value="Timeline 2">Talk</option><option value="Timeline 3">Wave</option></select></label> <button id="palette">Test colors</button></header><main></main>
+<header>Wardrobe comparison — corporate / half / anime <span id="status">Loading</span> <label>Motion <select id="motion"><option value="">Idle</option><option value="Walking">Walk</option><option value="Talking">Talk</option><option value="Arm Wave">Wave</option></select></label> <button id="palette">Test colors</button></header><main></main>
 <script src="../../node_modules/@rive-app/canvas/rive.js"></script>
 <script>
 const {Rive,RuntimeLoader,Layout,Fit}=rive;
 RuntimeLoader.setWasmUrl('../../node_modules/@rive-app/canvas/rive.wasm');
 let loaded=0;const characters=[];
-document.querySelector('#motion').addEventListener('change',e=>characters.forEach(r=>{r.stop(['Timeline 2','Timeline 3','Timeline 4']);if(e.target.value)r.play(e.target.value);}));
+const postureLabel=document.createElement('label');postureLabel.textContent=' Posture ';const posture=document.createElement('select');posture.innerHTML='<option value="0">Standing</option><option value="0.5">Half seated</option><option value="1">Seated</option>';postureLabel.append(posture);document.querySelector('header').append(postureLabel);
+let postureFrame=0;
+posture.addEventListener('change',()=>{cancelAnimationFrame(postureFrame);const from=characters.map(r=>r.viewModelInstance.number('sitAmount').value),to=Number(posture.value),start=performance.now();characters.forEach(r=>r.stop(['Walking','Arm Wave']));function move(now){const t=Math.min(1,(now-start)/1000),e=t*t*(3-2*t);characters.forEach((r,i)=>r.viewModelInstance.number('sitAmount').value=from[i]+(to-from[i])*e);if(t<1)postureFrame=requestAnimationFrame(move);}postureFrame=requestAnimationFrame(move);});
+document.querySelector('#motion').addEventListener('change',e=>characters.forEach(r=>{r.stop(['Talking','Arm Wave','Walking']);if(e.target.value)r.play(e.target.value);}));
 document.querySelector('#palette').addEventListener('click',()=>{characters.forEach(r=>{for(const [key,color] of Object.entries({eyeColor:[45,140,90],skinColor:[166,112,79],hairColor:[75,30,25],hairAccentColor:[225,155,85],outfitPrimaryColor:[185,90,70],pantsColor:[60,85,105],suitColor:[50,90,80],outfitSecondaryColor:[235,220,180],outfitAccentColor:[175,85,50]})){const p=r.viewModelInstance.color(key);if(!p)throw Error('Missing '+key);p.rgb(...color);}});document.querySelector('#status').textContent='24/24 palettes applied';});
 for(const blend of [0,0.5,1])for(const sex of ['man','woman'])for(let outfit=0;outfit<(sex==='man'?3:5);outfit++){
 const figure=document.createElement('figure'),canvas=document.createElement('canvas'),label=document.createElement('figcaption');canvas.width=150;canvas.height=240;label.textContent=`${sex} / ${outfit} / ${blend}`;figure.append(canvas,label);document.querySelector('main').append(figure);
-const r=new Rive({src:'../rive-revisions/wardrobe-colors-final/generic_man_-_compliance_training.riv',canvas,artboard:'generic-'+sex,stateMachines:'State Machine 1',autoplay:true,autoBind:false,layout:new Layout({fit:Fit.Contain}),onLoad(){r.bindViewModelInstance(r.viewModelByName('CharacterData').instanceByName(sex==='man'?'Instance':'Instance 1'));r.viewModelInstance.number('numberProperty').value=blend;r.viewModelInstance.number('outfitId').value=outfit;document.querySelector('#status').textContent=`${++loaded}/24 loaded`;}});
+const r=new Rive({src:'../rive-revisions/transparent-backgrounds/generic_man_-_compliance_training.riv',canvas,artboard:'generic-'+sex,stateMachines:'State Machine 1',autoplay:true,autoBind:false,layout:new Layout({fit:Fit.Contain}),onLoad(){r.bindViewModelInstance(r.viewModelByName('CharacterData').instanceByName(sex==='man'?'Instance':'Instance 1'));r.viewModelInstance.number('numberProperty').value=blend;r.viewModelInstance.number('outfitId').value=outfit;document.querySelector('#status').textContent=`${++loaded}/24 loaded`;}});
 characters.push(r);
 }
 </script>

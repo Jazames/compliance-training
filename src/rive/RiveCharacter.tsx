@@ -8,9 +8,10 @@ interface RiveCharacterProps {
   artboard: CharacterArtboard;
   name: string;
   side: 'left' | 'center' | 'right';
-  action: 'idle' | 'talk' | 'walk';
+  action: 'idle' | 'talk' | 'walk' | 'interact';
   framing?: 'full' | 'presenter';
   appearanceBlend: number;
+  seated?: boolean;
   eyeColor?: string;
   skinColor?: string;
   hairColor?: string;
@@ -32,6 +33,7 @@ export function RiveCharacter({
   action,
   framing = 'full',
   appearanceBlend,
+  seated = false,
   eyeColor = '#58616A',
   skinColor = '#CFA17E',
   hairColor = DEFAULT_HAIR.color,
@@ -44,6 +46,7 @@ export function RiveCharacter({
   outfitAccentColor = '#94705A',
 }: RiveCharacterProps) {
   const [loadFailed, setLoadFailed] = useState(false);
+  const [postureTransitioning, setPostureTransitioning] = useState(false);
   const instanceName = artboard === 'generic-woman' ? 'Instance 1' : 'Instance';
   const { rive, RiveComponent } = useRive({
     src: CHARACTER_SOURCE,
@@ -77,6 +80,30 @@ export function RiveCharacter({
       appearance.value = Math.max(0, Math.min(1, appearanceBlend));
     }
   }, [appearanceBlend, rive]);
+
+  useEffect(() => {
+    const amount = rive?.viewModelInstance?.number('sitAmount');
+    if (!amount) return;
+    const from = amount.value;
+    const to = seated ? 1 : 0;
+    if (Math.abs(from - to) < 0.001) {
+      setPostureTransitioning(false);
+      return;
+    }
+    rive?.stop('Walking');
+    setPostureTransitioning(true);
+    const start = performance.now();
+    let frame = 0;
+    const advance = (now: number) => {
+      const t = Math.min(1, (now - start) / 1000);
+      const eased = t * t * (3 - 2 * t);
+      amount.value = from + (to - from) * eased;
+      if (t < 1) frame = requestAnimationFrame(advance);
+      else setPostureTransitioning(false);
+    };
+    frame = requestAnimationFrame(advance);
+    return () => cancelAnimationFrame(frame);
+  }, [rive, seated]);
 
   useEffect(() => {
     const property = rive?.viewModelInstance?.number('outfitId');
@@ -144,18 +171,19 @@ export function RiveCharacter({
   useEffect(() => {
     if (!rive) return;
 
-    const timeline = action === 'talk' ? 'Timeline 2' : action === 'walk' ? 'Timeline 4' : null;
-    rive.stop(['Timeline 2', 'Timeline 4']);
+    const interaction = rive.animationNames.includes('Interacting') ? 'Interacting' : 'Arm Wave';
+    const timeline = action === 'interact' ? interaction : action === 'talk' ? 'Talking' : action === 'walk' && !seated && !postureTransitioning ? 'Walking' : null;
+    rive.stop(['Talking', 'Walking', interaction]);
     if (timeline) rive.play(timeline);
 
     return () => {
       if (timeline) rive.stop(timeline);
     };
-  }, [action, rive]);
+  }, [action, rive, seated, postureTransitioning]);
 
   return (
     <figure
-      className={`rive-character rive-character--${side} rive-character--${framing} rive-character--${action}`}
+      className={`rive-character rive-character--${side} rive-character--${framing} rive-character--${action === 'walk' && (seated || postureTransitioning) ? 'idle' : action}`}
       aria-label={name}
     >
       <div className="rive-character__canvas">

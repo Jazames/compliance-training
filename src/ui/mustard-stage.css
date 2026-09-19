@@ -1,0 +1,53 @@
+.scene-root[data-background='mustard-kitchen'] { min-height: 0; }
+.scene-root[data-background='mustard-kitchen'] .scene-stage { position: relative; grid-template-rows: auto auto; gap: 12px; }
+.mustard-stage { position: relative; height: clamp(300px, 48vw, 500px); overflow: hidden; background: linear-gradient(#e4e4d9 0 65%, #a5ada5 65% 67%, #c1beb0 67%); }
+.mustard-stage .rive-character { width: 100%; height: 100%; display: block; animation: none; }
+.mustard-stage .rive-character__canvas { min-height: 0; }
+.mustard-stage figcaption { display: none; }
+.kitchen-cabinets { position: absolute; left: 3%; top: 5%; width: 41%; height: 25%; background: repeating-linear-gradient(90deg, #b6bcae 0 23%, #78877e 24% 25%); border: 5px solid #839187; }
+.kitchen-counter { position: absolute; left: 0; top: 47%; width: 49%; height: 22%; background: repeating-linear-gradient(90deg, #aab4ab 0 31%, #8a988e 32% 33%); border-top: 12px solid #6a7973; }
+.kitchen-sink { position: absolute; top: 43%; left: 10%; width: 11%; height: 5%; border-radius: 50%; background: #6b7b7b; border: 3px solid #cdd5ce; }
+.kitchen-sink::before { content: ''; position: absolute; bottom: 60%; left: 22%; width: 25%; height: 190%; border: 4px solid #b0bcbc; border-bottom: 0; border-radius: 50% 50% 0 0; }
+.kitchen-door { position: absolute; right: 2%; top: 5%; width: 15%; height: 63%; border: 7px solid #f2f1e9; background: #566d69; }
+.kitchen-door::after { content: ''; position: absolute; left: 12%; top: 56%; width: 14%; height: 5px; background: #c5cdca; }
+.kitchen-chair { position: absolute; top: 40%; width: 8%; height: 25%; border: 5px solid #6c7067; background: #878a77; border-radius: 8px 8px 0 0; }
+.kitchen-chair--man { left: 57%; }.kitchen-chair--woman { left: 72%; }
+.kitchen-observer { position: absolute; bottom: 26%; width: 15%; height: 63%; z-index: 1; }
+.kitchen-observer--man { left: 53%; }.kitchen-observer--woman { left: 68%; }
+.kitchen-background-table { position: absolute; left: 53%; top: 52%; width: 29%; height: 7%; background: #bfa985; border-top: 5px solid #e5d6b5; z-index: 2; }
+.kitchen-background-table::after { content: ''; position: absolute; left: 9%; top: 100%; width: 78%; height: 80px; border-left: 8px solid #7f8075; border-right: 8px solid #7f8075; }
+.mustard-player { position: absolute; left: 15%; bottom: 3%; height: 86%; aspect-ratio: 5 / 8; z-index: 4; }
+.mustard-stain, .mustard-stream { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.mustard-stain { z-index: 5; }
+.mustard-bottle { position: absolute; width: 14%; height: 17%; left: 71%; top: 52%; transform: rotate(-23deg); transform-origin: center bottom; z-index: 6; }
+.mustard-stream { z-index: 7; }
+.mustard-stream path { stroke-dasharray: 28 100; stroke-dashoffset: 28; opacity: 0; animation: mustard-squirt 1.3s .7s linear both; }
+.mustard-stage--spill .mustard-stain { animation: mustard-stain-appear .15s 1.8s both; }
+.mustard-stage--spill .mustard-bottle { animation: mustard-squeeze 2.3s both; }
+.kitchen-food-table { position: absolute; left: 37%; bottom: 8%; width: 25%; height: 23%; border-top: 18px solid #dbc49e; border-left: 10px solid #81837a; border-right: 10px solid #81837a; z-index: 3; }
+.mustard-hotdog { position: absolute; bottom: 100%; left: 12%; width: 69%; margin-bottom: 3px; }
+.mustard-removable-shirt { position: absolute; left: 24%; top: 29%; width: 53%; height: 32%; object-fit: fill; z-index: 8; transform-origin: center center; animation: mustard-shirt-remove 4.6s both; }
+.mustard-stage.is-changed .mustard-stain { visibility: hidden; }
+.mustard-stage--leave .mustard-player { animation: mustard-exit 4.2s linear both; }
+.mustard-conversation-partner { position: absolute; left: 64%; bottom: 3%; height: 86%; aspect-ratio: 5 / 8; z-index: 4; }
+.mustard-stage.is-montage .kitchen-counter, .mustard-stage.is-montage .kitchen-sink, .mustard-stage.is-montage .kitchen-cabinets { visibility: hidden; }
+.mustard-stage[data-conversation='0'] { background: linear-gradient(#cddbd7 0 67%, #9ea9a3 67%); }
+.mustard-stage[data-conversation='1'] { background: linear-gradient(90deg, transparent 40%, #afc2c4 40% 43%, transparent 43%), linear-gradient(#d9e1df 0 67%, #a7b1af 67%); }
+.mustard-stage[data-conversation='2'] { background: linear-gradient(90deg, #b5c7c8 0 20%, transparent 20% 80%, #b5c7c8 80%), linear-gradient(#e2ddcb 0 67%, #b4ab95 67%); }
+.mustard-stage[data-conversation='3'] { background: linear-gradient(#d2cbd7 0 67%, #9c9aab 67%); }
+.mustard-montage-cut { position: absolute; inset: 0; z-index: 10; pointer-events: none; background: #151c1c; animation: mustard-cut .3s both; }
+@keyframes mustard-squirt { 0% { opacity: 0; stroke-dashoffset: 28; } 5% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; stroke-dashoffset: -100; } }
+@keyframes mustard-stain-appear { from { opacity: 0; } to { opacity: 1; } }
+@keyframes mustard-squeeze { 0%, 100% { transform: rotate(-23deg); } 30%, 60% { transform: rotate(-38deg) scaleX(.8); } }
+@keyframes mustard-shirt-remove { 0% { opacity: 0; transform: none; } 13%, 30% { opacity: 1; transform: none; } 58% { opacity: 1; transform: translate(42%, 27%) scale(.85); } 90%, 100% { opacity: 1; transform: translate(55%, 420%) rotate(18deg) scale(.8); } }
+@keyframes mustard-exit { 0%, 8% { left: 15%; transform: scale(1); opacity: 1; } 78% { left: 77%; bottom: 26%; transform: scale(.72); opacity: 1; } 96%, 100% { left: 85%; bottom: 26%; transform: scale(.72); opacity: 0; } }
+@keyframes mustard-cut { from { opacity: 1; } to { opacity: 0; } }
+@media (max-width: 600px) {
+  .mustard-stage { height: clamp(220px, 55vw, 320px); }
+  .mustard-player, .mustard-conversation-partner { height: 78%; }
+  .mustard-conversation-partner { left: 62%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mustard-stage *, .mustard-stage path { animation-duration: 1ms !important; animation-delay: 0s !important; }
+  .mustard-stage--remove:not(.is-changed) .mustard-removable-shirt { animation: none !important; }
+}

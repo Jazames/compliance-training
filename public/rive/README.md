@@ -1,5 +1,9 @@
 # Rive character assets
 
+Both character artboards have transparent backgrounds. Their former gray
+artboard fills have been removed from the source and runtime export, allowing
+the scene background and chair assets to show through around the characters.
+
 ## Hair accent contract
 
 Hair palettes in `src/engine/hairColors.ts` pair each base dye with a curated
@@ -82,8 +86,8 @@ IDs and falls back to business casual. Garment visibility binds directly to
 clothes have outer visibility groups so their appearance keys remain intact.
 
 Upper sleeves, forearm sleeves, trousers and exposed legs follow the existing
-limb groups. The suit skirt has a sway track in Timeline 4. New shirt/jacket
-vertices morph in Timelines 6 and 7, with the preview mirrored in Timeline 5.
+limb groups. The suit skirt has a sway track in Walking. New shirt/jacket
+vertices morph in Corporate Appearance and Anime Appearance, with the preview mirrored in Anime Transformation.
 Colors stay bound while appearance changes. Suits use `suitColor` for both
 halves; `outfitPrimaryColor` applies to business/casual tops.
 
@@ -92,7 +96,7 @@ halves; `outfitPrimaryColor` applies to business/casual tops.
 character colors and `appearanceBlend`. Color props use `#RRGGBB` strings.
 The default scene remains outfit 0 until a caller supplies another selection.
 
-Editable backup: `art/rive-revisions/wardrobe-colors-final/generic_man_-_compliance_training.rev`.
+Editable backup: `art/rive-revisions/transparent-backgrounds/generic_man_-_compliance_training.rev`.
 Local visual verifier: `art/outfits/preview.html`, served through Vite; this page
 is an authoring aid and is not part of the production story interface.
 
@@ -166,25 +170,56 @@ Both artboards use the following names:
 
 | Name | Purpose | Playback |
 | --- | --- | --- |
-| `Timeline 1` | Idle / blink | Loop |
-| `Timeline 2` | Mouth movement / talking | Loop |
-| `Timeline 3` | Arm wave | One shot |
-| `Timeline 4` | In-place walk | Loop |
-| `Timeline 5` | Corporate-to-anime morph preview | One-second preview |
-| `Timeline 6` | Corporate endpoint | Appearance blend dependency |
-| `Timeline 7` | Anime endpoint | Appearance blend dependency |
+| `Idle and Blink` | Idle / blink | Loop |
+| `Talking` | Mouth movement / talking | Loop |
+| `Arm Wave` | Arm wave | One shot |
+| `Walking` | In-place walk | Loop |
+| `Anime Transformation` | Corporate-to-anime morph preview | One-second preview |
+| `Corporate Appearance` | Corporate endpoint | Appearance blend dependency |
+| `Anime Appearance` | Anime endpoint | Appearance blend dependency |
+| `Sitting Down` | Front-facing standing-to-seated transition | One shot, one second |
+| `Standing Up` | Reverse seated-to-standing transition | One shot, one second |
 
-`State Machine 1` currently runs idle on Layer 1 and `Anime Appearance` on Layer 2. The latter blends Timeline 6 at 0 and Timeline 7 at 1 using `numberProperty`. Those two timelines are stable, authoritative runtime endpoints. Their keyed properties hold constant over time, so numberProperty controls appearance without a second timed morph. Timeline 5 has been synchronized to interpolate between the current endpoints over one second. Future edits must keep all three timelines in sync.
+### Sitting and standing
+
+`CharacterData.sitAmount` is a Number: 0 means standing, 1 means seated.
+Intermediate values blend the pose. It is independent of outfit, colors and
+anime appearance. The default is 0 on both instance templates.
+
+```tsx
+<RiveCharacter {...characterProps} seated={true} action="talk" />
+// Change seated to false to stand up.
+```
+
+The wrapper eases the property over one second and holds the endpoint. A
+reversed request continues from the current amount. Walking and its CSS motion
+are suspended while seated or transitioning; talking remains available.
+For a raw Rive instance, animate
+`r.viewModelInstance.number('sitAmount').value` from its current value to 0 or 1
+with requestAnimationFrame, then leave that value in place. Do not run Walking
+at the same time. The two named timelines are editable one-shot previews;
+use the property for persistent runtime seating rather than relying on a
+finished timeline to hold against the state machine.
+
+The pose is front-facing: the thighs foreshorten, the torso lowers by 89
+artboard units, the shins retain their length, and skirts fold upward with the
+lap. The feet stay within approximately one artboard unit of standing height.
+Place a front-facing chair in the scene with its seat around y=545 in the
+500x800 artboard's coordinate system; scale/offset that reference with the
+character canvas. The chair is a separate scene asset and is not in this file.
+This is not a side-profile sitting rig.
+
+`State Machine 1` currently runs idle on Layer 1 and `Anime Appearance` on Layer 2. The latter blends Corporate Appearance at 0 and Anime Appearance at 1 using `numberProperty`. Those two timelines are stable, authoritative runtime endpoints. Their keyed properties hold constant over time, so numberProperty controls appearance without a second timed morph. Anime Transformation has been synchronized to interpolate between the current endpoints over one second. Future edits must keep all three timelines in sync.
 
 ### Preview individual actions with the installed runtime
 
-For an isolated timeline preview, construct a separate preview Rive instance with `animations: 'Timeline 4'` and **omit `stateMachines`**. Bind colors in `onLoad` as above. To switch its action after loading:
+For an isolated timeline preview, construct a separate preview Rive instance with `animations: 'Walking'` and **omit `stateMachines`**. Bind colors in `onLoad` as above. To switch its action after loading:
 
 ```ts
 // preview is a Rive instance configured for linear animation playback.
 preview.stop();
-preview.play('Timeline 2'); // talk
-// Other choices: Timeline 1 idle, Timeline 3 wave, Timeline 4 walk.
+preview.play('Talking'); // talk
+// Other choices: Idle and Blink idle, Arm Wave wave, Walking walk.
 ```
 
 This previews the action, but does not run the continuous appearance blend. Stopping a timeline is not a general pose reset. Do not assume that playing action timelines beside the current idle state machine will produce correct layering; that combination has not been runtime-tested.
@@ -194,8 +229,8 @@ This previews the action, but does not run the continuous appearance blend. Stop
 For simultaneous walk/talk/genre control, finish the state machine on **each** artboard:
 
 1. Add locomotion selection driven by a `speed` number: idle at 0 and walking above 0, with appropriate transitions. Move the canvas across the scene with CSS; the walk is in place.
-2. Add an independent mouth layer driven by `isTalking`, with a neutral mouth state on false and Timeline 2 on true. Keep appearance animation off the mouth's talking scale axis.
-3. Add a gesture trigger/state using Timeline 3, returning to neutral after completion. Resolve its arm ownership against the walk layer so two layers do not unintentionally overwrite the same rotation.
+2. Add an independent mouth layer driven by `isTalking`, with a neutral mouth state on false and Talking on true. Keep appearance animation off the mouth's talking scale axis.
+3. Add a gesture trigger/state using Arm Wave, returning to neutral after completion. Resolve its arm ownership against the walk layer so two layers do not unintentionally overwrite the same rotation.
 4. Keep the existing appearance layer and color bindings active. Add a wrapper mapping the story meters to the saved property names.
 
 These are proposed controls, **not available inputs in the current editor file**. The existing rig uses articulated nested vector groups rather than a skinned bone mesh. The man's far-arm draw rule keeps it behind the legs.

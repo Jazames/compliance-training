@@ -1,6 +1,9 @@
 # scratchpad.md — Project intent + raw notes (non-question statements)
 
 - Character creation order: response-set sex selection → skin sensitivity slider → restroom proximity question → mirror eye color → Facilities nameplate email → salon hair dye.
+- Each scenario lives in one `src/scenes/*.ts` file with its own question, dialogue, feedback beats, and outgoing scene requests. Character files use `character_order_trait.ts`; restroom and mirror share `character_3_eyes.ts`.
+- Choices put upcoming scenes into a pending container. The engine mixes eligible, equal-priority candidates with seeded weighted selection rather than inventing arbitrary plot routing. Required course continuity stays intact while optional encounters wait their turn.
+- Character creation is a protected chain: every scenario finishes by queuing only its one required successor. Feedback stays inside that scenario; no detours interrupt setup. Hair stays last. See `src/scenes/README.md` for authoring details.
 - The restroom diagram shows a coworker's back at an occupied urinal for the male character, or feet beneath an occupied stall for the female character. All three free fixtures are accepted.
 - Facilities' email precedes the nameplate question. Submitting the reply sets the player's name; the final salon hair-color choice completes creation.
 - “Correct employee record” edits name, sex, skin, eyes, and paired hair/accent colors without changing course progress. Cancel discards corrections.

@@ -57,10 +57,14 @@ export function applyEffects(state: GameState, effects: EffectDef[]): GameState 
       continue;
     }
 
-    if (effect.kind === 'enqueueEvent') {
+    if (effect.kind === 'enqueueScene') {
+      const request = effect.scene;
+      if (next.queue.some((item) => item.sceneId === request.sceneId ||
+        (request.oneShotKey && item.oneShotKey === request.oneShotKey)) ||
+        (request.oneShotKey && next.playedOneShots.includes(request.oneShotKey))) continue;
       next = {
         ...next,
-        queue: [...next.queue, effect.event],
+        queue: [...next.queue, request],
       };
     }
   }

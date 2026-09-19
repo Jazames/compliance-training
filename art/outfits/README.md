@@ -11,7 +11,7 @@ Implemented in the Rive source document and exported on 2026-09-12.
 | 4 | Unsupported | T-shirt / shorts |
 
 Runtime: `public/rive/compliance-characters.riv`. Editable source backup:
-`art/rive-revisions/wardrobe-colors-final/generic_man_-_compliance_training.rev`.
+`art/rive-revisions/transparent-backgrounds/generic_man_-_compliance_training.rev`.
 The complete property contract and examples are in `public/rive/README.md`.
 
 Native Rive paths and primitives follow the existing limb groups. Formula

@@ -1,8 +1,14 @@
-import type { GameEvent, MeterState } from './sceneTypes';
+import type { PendingScene, MeterState } from './sceneTypes';
 import { DEFAULT_HAIR } from './hairColors';
 
 export interface GameState {
   currentSceneId: string;
+  currentBeatId: string;
+  completedMilestones: string[];
+  playedOneShots: string[];
+  randomSeed: number;
+  consecutiveOptional: number;
+  routingError?: string;
   playerCharacterId: 'daniel' | 'rachel' | null;
   playerSkinColor: string;
   playerName: string;
@@ -11,7 +17,7 @@ export interface GameState {
   playerHairAccentColor: string;
   flags: Record<string, boolean>;
   meters: MeterState;
-  queue: GameEvent[];
+  queue: PendingScene[];
   locks: {
     romanceLocked: boolean;
     heistLocked: boolean;
@@ -19,9 +25,14 @@ export interface GameState {
   };
 }
 
-export function createInitialGameState(): GameState {
+export function createInitialGameState(seed = Math.floor(Math.random() * 0x100000000)): GameState {
   return {
-    currentSceneId: 'training_welcome',
+    currentSceneId: 'welcome',
+    currentBeatId: 'training_welcome',
+    completedMilestones: [],
+    playedOneShots: [],
+    randomSeed: seed >>> 0,
+    consecutiveOptional: 0,
     playerCharacterId: null,
     playerSkinColor: '#CFA17E',
     playerName: '',

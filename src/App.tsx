@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { SCENES } from './engine/sceneDb';
+import { TOTAL_MILESTONES } from './scenes';
 import { createInitialGameState } from './engine/gameState';
-import { applyChoice } from './engine/scheduler';
+import { applyChoice, getCurrentBeat } from './engine/scheduler';
+import { evaluateConditions } from './engine/conditions';
 import { ChoiceList } from './ui/ChoiceList';
 import { DialogueBox } from './ui/DialogueBox';
 import { SceneRoot } from './ui/SceneRoot';
@@ -17,7 +18,7 @@ function App() {
   const [nameDraft, setNameDraft] = useState('');
   const [dialogueIndex, setDialogueIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const scene = SCENES[game.currentSceneId];
+  const scene = getCurrentBeat(game);
 
   useEffect(() => {
     if (!scene) return;
@@ -32,6 +33,14 @@ function App() {
     return () => window.clearTimeout(timer);
   }, [scene]);
 
+  useEffect(() => {
+    if (!scene?.autoAdvance || editing) return;
+    const { afterMs, choiceId } = scene.autoAdvance;
+    const timer = window.setTimeout(() => setGame((previous) =>
+      getCurrentBeat(previous) === scene ? applyChoice(previous, choiceId) : previous), afterMs);
+    return () => window.clearTimeout(timer);
+  }, [scene, editing]);
+
   if (!scene) {
     return <div>Missing scene: {game.currentSceneId}</div>;
   }
@@ -45,7 +54,8 @@ function App() {
     : undefined);
 
   const choose = (choiceId: string) => {
-    if (choiceId === 'restart') { setGame(createInitialGameState()); setNameDraft(''); return; }
+    if (isTransitioning) return;
+    if (scene.choices?.find((choice) => choice.id === choiceId)?.restart) setNameDraft('');
     if (!scene.fadeOnExit) {
       setGame((previous) => applyChoice(previous, choiceId));
       return;
@@ -61,14 +71,17 @@ function App() {
   return (
     <div className={`app-shell${isTransitioning ? ' is-transitioning' : ''}`}>
       <TrainingChrome
-        step={scene.trainingStep ?? 0}
-        totalSteps={8}
+        step={game.completedMilestones.length}
+        totalSteps={TOTAL_MILESTONES}
         playerName={playerName}
         onExitCourse={() => {
           setIsTransitioning(false);
+          setEditing(false);
+          setNameDraft('');
           setGame(createInitialGameState());
         }}
       />
+      {game.routingError ? <p role="alert">{game.routingError} Use Exit course to restart.</p> : null}
       {game.playerCharacterId ? <button className="record-link" onClick={() => setEditing(true)}>Correct employee record</button> : null}
       {editing ? <EmployeeRecord game={game} onCancel={() => setEditing(false)} onSave={(draft) => {
         setGame(draft); setEditing(false);
@@ -86,12 +99,11 @@ function App() {
         entryActive={entryActive}
       >
         {scene.interaction === 'restroom' ? <Restroom male={game.playerCharacterId === 'daniel'} /> : null}
-        {scene.interaction === 'nameplate' ? <article className="facilities-email">
-          <p><strong>From:</strong> Facilities</p>
-          <p><strong>Subject:</strong> Your desk nameplate</p>
-          <p>Welcome to your workstation. We are ordering your nameplate plaque.
-            Please reply with the name you would like us to engrave.</p>
-          <p>Regards,<br />Facilities</p>
+        {scene.email ? <article className="facilities-email">
+          <p><strong>From:</strong> {scene.email.from}</p>
+          <p><strong>Subject:</strong> {scene.email.subject}</p>
+          <p>{scene.email.body}</p>
+          <p style={{ whiteSpace: 'pre-line' }}>{scene.email.signoff}</p>
         </article> : null}
         {entryActive ? (
           <DialogueBox title={scene.sceneLabel} body={scene.entryText} />
@@ -109,19 +121,20 @@ function App() {
             {dialogueIndex === dialogue.length - 1 ? 'Review responses' : 'Continue'}
           </button>
         ) : null}
-        {dialogueComplete && scene.skinTonePicker ? (
+        {!entryActive && dialogueComplete && scene.skinTonePicker ? (
           <SkinToneSlider initialColor={game.playerSkinColor} onChange={(color) => setGame((previous) =>
             applyEffects(previous, [{ kind: 'setPlayerSkinColor', color }]))} />
         ) : null}
-        {dialogueComplete && scene.interaction === 'nameplate' ? <form onSubmit={(event) => {
+        {!entryActive && dialogueComplete && scene.nameplate ? <form onSubmit={(event) => {
           event.preventDefault();
-          if (!nameDraft.trim()) return;
-          setGame((previous) => applyChoice({ ...previous, playerName: nameDraft.trim() }, 'submit_nameplate'));
+          if (!nameDraft.trim() || !scene.nameplate) return;
+          const choiceId = scene.nameplate.choiceId;
+          setGame((previous) => applyChoice({ ...previous, playerName: nameDraft.trim() }, choiceId));
         }}>
-          <label htmlFor="plaque-name">Name for the plaque</label>
-          <input id="plaque-name" required maxLength={40} value={nameDraft} onChange={(e) => setNameDraft(e.target.value)} />
-          <button type="submit" disabled={!nameDraft.trim()}>Send reply to Facilities</button>
-        </form> : dialogueComplete ? <ChoiceList choices={scene.choices ?? []} onChoose={choose} /> : null}
+          <label htmlFor="plaque-name">{scene.nameplate.label}</label>
+          <input id="plaque-name" required maxLength={scene.nameplate.maxLength} value={nameDraft} onChange={(e) => setNameDraft(e.target.value)} />
+          <button type="submit" disabled={!nameDraft.trim()}>{scene.choices?.find((choice) => choice.id === scene.nameplate?.choiceId)?.label}</button>
+        </form> : !entryActive && dialogueComplete && !scene.autoAdvance ? <ChoiceList choices={(scene.choices ?? []).filter((choice) => evaluateConditions(game, choice.conditions))} onChoose={choose} /> : null}
       </SceneRoot>
       </>}
       <div className="scene-transition" aria-hidden="true" />
