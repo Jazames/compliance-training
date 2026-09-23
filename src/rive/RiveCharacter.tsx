@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
-import { Alignment, Fit, Layout, useRive } from '@rive-app/react-canvas';
+import { useEffect, useRef, useState } from 'react';
+import { Alignment, EventType, Fit, Layout, useRive, type Event } from '@rive-app/react-canvas';
 import { DEFAULT_HAIR } from '../engine/hairColors';
+import { createIdleClock, finishIdle, IDLE_ANIMATION, sampleIdle } from './idlePlayback';
 
 type CharacterArtboard = 'generic-man' | 'generic-woman';
 
@@ -47,12 +48,15 @@ export function RiveCharacter({
 }: RiveCharacterProps) {
   const [loadFailed, setLoadFailed] = useState(false);
   const [postureTransitioning, setPostureTransitioning] = useState(false);
+  const appearanceRef = useRef(appearanceBlend);
   const instanceName = artboard === 'generic-woman' ? 'Instance 1' : 'Instance';
   const { rive, RiveComponent } = useRive({
     src: CHARACTER_SOURCE,
     artboard,
-    stateMachines: 'State Machine 1',
-    autoplay: true,
+    // Do not instantiate the state machine: its idle layer blinks continuously.
+    // The synchronized one-second appearance timeline replaces its blend layer.
+    animations: [IDLE_ANIMATION, 'Anime Transformation'],
+    autoplay: false,
     autoBind: false,
     layout: new Layout({ fit: Fit.Contain, alignment: Alignment.BottomCenter }),
     onLoadError: () => setLoadFailed(true),
@@ -73,6 +77,7 @@ export function RiveCharacter({
   }, [instanceName, rive]);
 
   useEffect(() => {
+    appearanceRef.current = Math.max(0, Math.min(1, appearanceBlend));
     if (!rive?.viewModelInstance) return;
 
     const appearance = rive.viewModelInstance.number('numberProperty');
@@ -80,6 +85,49 @@ export function RiveCharacter({
       appearance.value = Math.max(0, Math.min(1, appearanceBlend));
     }
   }, [appearanceBlend, rive]);
+
+  useEffect(() => {
+    if (!rive) return;
+    const clock = createIdleClock(performance.now());
+    let frame = 0;
+    let disposed = false;
+    const hold = () => {
+      rive.pause(IDLE_ANIMATION);
+      rive.scrub(IDLE_ANIMATION, 0);
+    };
+    const onLoop = (event: Event) => {
+      if (event.data && typeof event.data === 'object' && 'animation' in event.data &&
+        event.data.animation === IDLE_ANIMATION && clock.startedAt !== null) {
+        finishIdle(clock, performance.now());
+        hold();
+      }
+    };
+    // Scrubbing a *playing* timeline emits its real loop boundary. No assumed
+    // duration or hardcoded blink frames; the exported clip determines one cycle.
+    const advance = (now: number) => {
+      if (disposed) return;
+      const sample = sampleIdle(clock, now);
+      if (sample.start) rive.play(IDLE_ANIMATION);
+      rive.scrub('Anime Transformation', appearanceRef.current);
+      rive.scrub(IDLE_ANIMATION, sample.time);
+      frame = requestAnimationFrame(advance);
+    };
+    const onVisibility = () => {
+      // No catch-up loops after backgrounding, and never leave eyes half closed.
+      finishIdle(clock, performance.now());
+      hold();
+    };
+    rive.on(EventType.Loop, onLoop);
+    document.addEventListener('visibilitychange', onVisibility);
+    hold();
+    frame = requestAnimationFrame(advance);
+    return () => {
+      disposed = true;
+      cancelAnimationFrame(frame);
+      rive.off(EventType.Loop, onLoop);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
+  }, [rive]);
 
   useEffect(() => {
     const amount = rive?.viewModelInstance?.number('sitAmount');
