@@ -166,13 +166,11 @@ In React, `useRive` takes the same `src`, `artboard`, `stateMachines`, `autoBind
 
 ## Animations and current control limits
 
-### Global idle policy (2026-09-23)
+### Idle timing regression and rollback (2026-09-23)
 
-Every production character uses the shared `RiveCharacter` wrapper. It holds `Idle and Blink` at frame zero, waits an independently randomized 15–50 seconds, then scrubs one exported cycle at 3× speed. The real Rive loop event ends that cycle and schedules the next wait; the implementation does not assume a particular clip length. Walking, talking, and interacting do not reset the idle clock. Unmount cancels the frame callback/listener, and visibility changes restore the neutral pose and schedule a fresh delay rather than catching up missed blinks.
+The attempted app-side idle scheduler was reverted after it broke other animations. It bypassed `State Machine 1` and scrubbed idle/appearance timelines every frame, interfering with the existing animation layering. Production again uses the original state machine, view-model bindings, and action playback. The removed idle clock and its tests did not verify rendered animation compatibility.
 
-The source export's `State Machine 1` still contains an always-looping idle layer. The production wrapper intentionally **does not instantiate that machine**, otherwise its layer would continue blinking underneath the app's schedule. It instead binds `CharacterData` directly to the artboard and scrubs the synchronized, one-second `Anime Transformation` timeline for appearance, while running action timelines separately at their normal speed. The continuous render updates also keep color, outfit, and sitting bindings responsive. Preserve that appearance timeline's corporate/anime endpoint synchronization when editing rigs. Raw editor playback and isolated authoring previews still use their own playback settings.
-
-Timing policy and deterministic tests live in `src/rive/idlePlayback.ts` and `tests/idle.test.mjs`. No scene-specific idle timers or user-facing text were added.
+The requested 15–50-second randomized idle interval and 3× idle speed are still pending. Implement them through an isolated idle-layer control in both Rive artboards, without replacing the appearance layer or continuously scrubbing poses over action playback. Validate walking, talking, interaction, sitting, appearance blending, and both characters visually before considering that change complete.
 
 Both artboards use the following names:
 
