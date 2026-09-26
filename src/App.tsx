@@ -9,12 +9,18 @@ import { SceneRoot } from './ui/SceneRoot';
 import { TrainingChrome } from './ui/TrainingChrome';
 import { SkinToneSlider } from './ui/SkinToneSlider';
 import { applyEffects } from './engine/effects';
-import { EmployeeRecord } from './ui/EmployeeRecord';
+import { CourseMenu } from './ui/CourseMenu';
 import { Restroom } from './ui/Restroom';
+import { getPlayerAppearance } from './engine/playerAppearance';
 
 function App() {
   const [game, setGame] = useState(createInitialGameState());
   const [editing, setEditing] = useState(false);
+  const [arachnophobia, setArachnophobia] = useState(false);
+  const [visit, setVisit] = useState({ sceneId: game.currentSceneId, index: 0 });
+  if (visit.sceneId !== game.currentSceneId) {
+    setVisit({ sceneId: game.currentSceneId, index: game.currentSceneId === 'welcome' ? 0 : visit.index + 1 });
+  }
   const [nameDraft, setNameDraft] = useState('');
   const [dialogueIndex, setDialogueIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -79,22 +85,25 @@ function App() {
           setEditing(false);
           setNameDraft('');
           setGame(createInitialGameState());
+          setVisit({ sceneId: 'welcome', index: 0 });
         }}
-      />
+      >
+        <CourseMenu game={game} open={editing} onOpenChange={setEditing}
+          arachnophobia={arachnophobia} onToggle={() => setArachnophobia((value) => !value)}
+          onSave={(draft) => setGame((previous) => ({ ...previous,
+            playerName: draft.playerName, playerCharacterId: draft.playerCharacterId,
+            playerSkinColor: draft.playerSkinColor, playerEyeColor: draft.playerEyeColor,
+            playerHairColor: draft.playerHairColor, playerHairAccentColor: draft.playerHairAccentColor,
+          }))} />
+      </TrainingChrome>
       {game.routingError ? <p role="alert">{game.routingError} Use Exit course to restart.</p> : null}
-      {game.playerCharacterId ? <button className="record-link" onClick={() => setEditing(true)}>Correct employee record</button> : null}
-      {editing ? <EmployeeRecord game={game} onCancel={() => setEditing(false)} onSave={(draft) => {
-        setGame(draft); setEditing(false);
-      }} /> : <>
       <SceneRoot
+        spiderVisit={visit.index}
+        arachnophobia={arachnophobia}
         scene={scene}
+        playerAppearance={getPlayerAppearance(game)}
         meters={game.meters}
         playerCharacterId={game.playerCharacterId}
-        playerSkinColor={game.playerSkinColor}
-        playerHairColor={game.playerHairColor}
-        playerHairAccentColor={game.playerHairAccentColor}
-        playerEyeColor={game.playerEyeColor}
-        playerName={game.playerName}
         activeSpeaker={currentLine?.speaker}
         entryActive={entryActive}
       >
@@ -136,7 +145,6 @@ function App() {
           <button type="submit" disabled={!nameDraft.trim()}>{scene.choices?.find((choice) => choice.id === scene.nameplate?.choiceId)?.label}</button>
         </form> : !entryActive && dialogueComplete && !scene.autoAdvance ? <ChoiceList choices={(scene.choices ?? []).filter((choice) => evaluateConditions(game, choice.conditions))} onChoose={choose} /> : null}
       </SceneRoot>
-      </>}
       <div className="scene-transition" aria-hidden="true" />
     </div>
   );

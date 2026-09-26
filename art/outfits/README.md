@@ -1,5 +1,9 @@
 # Rive wardrobe
 
+Internal integration update (2026-09-23): use the independent topId/bottomId
+contract in [wardrobe-api.md](wardrobe-api.md). The original outfit table below
+records the earlier presets, retained for migration reference.
+
 Implemented in the Rive source document and exported on 2026-09-12.
 
 | outfitId | Man | Woman |

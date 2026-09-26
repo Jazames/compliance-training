@@ -3,16 +3,16 @@ import type { MeterState, SceneDef } from '../engine/sceneTypes';
 import { RiveCharacter } from '../rive/RiveCharacter';
 import { HallwayStage } from './HallwayStage';
 import { MustardStage } from './MustardStage';
+import { SceneSpider } from './SceneSpider';
+import type { PlayerAppearance } from '../engine/playerAppearance';
 
 interface SceneRootProps {
+  spiderVisit: number;
+  arachnophobia: boolean;
   scene: SceneDef;
+  playerAppearance: PlayerAppearance;
   meters: MeterState;
   playerCharacterId?: 'daniel' | 'rachel' | null;
-  playerSkinColor?: string;
-  playerHairColor?: string;
-  playerEyeColor?: string;
-  playerName?: string;
-  playerHairAccentColor?: string;
   activeSpeaker?: string;
   entryActive?: boolean;
   children: ReactNode;
@@ -24,14 +24,12 @@ const BACKGROUNDS: Record<string, string> = {
 };
 
 export function SceneRoot({
+  spiderVisit,
+  arachnophobia,
   scene,
+  playerAppearance,
   meters,
   playerCharacterId,
-  playerSkinColor,
-  playerHairColor,
-  playerEyeColor,
-  playerName,
-  playerHairAccentColor,
   activeSpeaker,
   entryActive = false,
   children,
@@ -52,25 +50,24 @@ export function SceneRoot({
         } as CSSProperties
       }
     >
+      <SceneSpider key={spiderVisit} enabled={arachnophobia} eligible={spiderVisit % 2 === 0} />
       <div className="scene-stage">
         {!scene.hallwayAction && !scene.mustardAction ? <div className="scene-title-strip">{scene.sceneLabel ?? 'Workplace conduct'}</div> : null}
         {scene.mustardAction ? <MustardStage key={scene.id} action={scene.mustardAction}
-          entryActive={entryActive} playerCharacterId={playerCharacterId} playerName={playerName}
-          playerSkinColor={playerSkinColor} playerEyeColor={playerEyeColor}
-          playerHairColor={playerHairColor} playerHairAccentColor={playerHairAccentColor}
-          appearance={meters.romanceDrift} /> : null}
+          player={playerAppearance}
+          entryActive={entryActive} /> : null}
         {scene.hallwayAction ? <HallwayStage key={scene.id} action={scene.hallwayAction}
-          entryActive={entryActive} playerCharacterId={playerCharacterId} playerName={playerName}
-          playerSkinColor={playerSkinColor} playerEyeColor={playerEyeColor}
-          playerHairColor={playerHairColor} playerHairAccentColor={playerHairAccentColor}
-          appearance={meters.romanceDrift} /> : null}
+          player={playerAppearance}
+          entryActive={entryActive} /> : null}
         {scene.characters?.length ? (
           <div className="character-layer" aria-label="Scenario characters">
             {scene.characters.filter((character) => !scene.playerOnly || character.id === playerCharacterId).map((character) => (
               <RiveCharacter
                 key={character.id}
+                {...character.clothing}
+                {...(character.id === playerCharacterId ? playerAppearance : {})}
                 artboard={character.artboard}
-                name={character.id === playerCharacterId && playerName ? playerName : character.name}
+                name={character.id === playerCharacterId && playerAppearance.name ? playerAppearance.name : character.name}
                 side={character.side}
                 action={
                   entryActive
@@ -81,10 +78,6 @@ export function SceneRoot({
                 }
                 framing={character.framing}
                 appearanceBlend={meters.romanceDrift}
-                skinColor={character.id === playerCharacterId ? playerSkinColor : undefined}
-                hairColor={character.id === playerCharacterId ? playerHairColor : undefined}
-                eyeColor={character.id === playerCharacterId ? playerEyeColor : undefined}
-                hairAccentColor={character.id === playerCharacterId ? playerHairAccentColor : undefined}
               />
             ))}
           </div>

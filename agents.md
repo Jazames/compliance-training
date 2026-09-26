@@ -167,6 +167,10 @@ Endings to support (per scratchpad spirit):
 
 ## Rive integration
 
+### Appearance continuity
+
+GameState owns player identity/customization and independent `playerClothing` top/bottom selections and palettes. All player renderers and matching props consume `getPlayerAppearance` rather than inventing per-scene defaults. Clothing changes are story effects; preview the same transformation during a cutaway and commit it on completion. Removing a shirt must not change pants. See [the appearance contract](docs/character-appearance.md) for snapshot, prop-color, and validation rules. Keep state-machine playback intact.
+
 ### Rendering approach
 VN-style: one Rive canvas per character, positioned with CSS on a shared scene root.
 

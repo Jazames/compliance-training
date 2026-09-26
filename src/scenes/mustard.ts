@@ -14,7 +14,10 @@ const actionBeats = Object.fromEntries(actions.map((action, index): [string, Sce
   body: responses[index],
   autoAdvance: { afterMs: durations[action], choiceId: 'finish_action' },
   choices: [{ id: 'finish_action', label: responses[index], complete: true,
-    effects: [{ kind: 'enqueueScene', scene: { sceneId: 'cybersecurity', mode: 'course' } }] }],
+    effects: [
+      ...(action === 'remove' ? [{ kind: 'revealPlayerUndershirt' } as const] : []),
+      { kind: 'enqueueScene', scene: { sceneId: 'cybersecurity', mode: 'course' } },
+    ] }],
 }]));
 
 const scene: ScenarioDef = {

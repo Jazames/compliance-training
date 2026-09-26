@@ -3,17 +3,13 @@ import { RiveCharacter } from '../rive/RiveCharacter';
 import { SceneProp } from './SceneProp';
 import type { SceneDef } from '../engine/sceneTypes';
 import './mustard-stage.css';
+import { revealUndershirt, type PlayerAppearance } from '../engine/playerAppearance';
+import { ShirtProp } from './ShirtProp';
 
 interface Props {
+  player: PlayerAppearance;
   action: NonNullable<SceneDef['mustardAction']>;
   entryActive: boolean;
-  playerCharacterId?: 'daniel' | 'rachel' | null;
-  playerName?: string;
-  playerSkinColor?: string;
-  playerEyeColor?: string;
-  playerHairColor?: string;
-  playerHairAccentColor?: string;
-  appearance: number;
 }
 
 const coworkers = [
@@ -24,6 +20,8 @@ const coworkers = [
 ] as const;
 
 export function MustardStage(props: Props) {
+  // Keep the outgoing shirt fixed while the live rig reveals the layer beneath it.
+  const [outgoing] = useState(() => ({ ...props.player }));
   const [changed, setChanged] = useState(false);
   const [conversation, setConversation] = useState(-1);
   useEffect(() => {
@@ -60,11 +58,7 @@ export function MustardStage(props: Props) {
         appearanceBlend={0} skinColor={partner.skin} hairColor={partner.hair} outfitPrimaryColor={partner.shirt} />
     </div>}
     <div className="mustard-player">
-      <RiveCharacter artboard={props.playerCharacterId === 'rachel' ? 'generic-woman' : 'generic-man'}
-        name={props.playerName ?? ''} side="left" action={action} appearanceBlend={props.appearance}
-        skinColor={props.playerSkinColor} eyeColor={props.playerEyeColor} hairColor={props.playerHairColor}
-        hairAccentColor={props.playerHairAccentColor} outfitId={changed ? 2 : 0}
-        outfitPrimaryColor={changed ? '#D27B59' : undefined} />
+      <RiveCharacter {...(changed ? revealUndershirt(props.player) : props.player)} side="left" action={action} />
       <svg className="mustard-stain" viewBox="0 0 500 800" focusable="false">
         <path d="M270 353q-15-8-18 5t14 11q15-3 8 11t10 4q9-7-3-18t-11-13" fill="#F2C51B" stroke="#CCA10F" strokeWidth="2" />
       </svg>
@@ -74,7 +68,7 @@ export function MustardStage(props: Props) {
           <path d="M389 420 Q415 285 270 358" pathLength="100" fill="none" stroke="#F2C51B" strokeWidth="9" strokeLinecap="round" />
         </svg>
       </> : null}
-      {props.action === 'remove' ? <SceneProp name="shirt" className="mustard-removable-shirt" /> : null}
+      {props.action === 'remove' ? <ShirtProp appearance={outgoing} className="mustard-removable-shirt" /> : null}
     </div>
     {!partner ? <div className="kitchen-food-table"><SceneProp name="hotdog" className="mustard-hotdog" /></div> : null}
     {partner ? <div key={conversation} className="mustard-montage-cut" /> : null}

@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 190"><path d="M55 10L13 35 2 102 31 108 48 67 42 184h96l-6-117 17 41 29-6-11-67-42-25-35 15z" fill="#438f98" stroke="#28616b" stroke-width="3"/><path d="M55 10l35 15-20 30zM125 10L90 25l20 30z" fill="#78b0b6"/><path d="M90 26v155" stroke="#d7e4e1" stroke-width="2"/><path d="M105 84q15-13 18 5t-9 13q-11 2-9-18" fill="#efbd15"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 190">
+  <defs>
+    <path id="shirt-body" d="M55 10L13 35 2 102 31 108 48 67 42 184h96l-6-117 17 41 29-6-11-67-42-25-35 15z" stroke-width="3"/>
+    <path id="tshirt-body" d="M55 10L13 35 2 69 32 82 48 59 42 184h96l-6-125 16 23 30-13-11-34-42-25q-35 33-70 0z" stroke-width="3"/>
+    <path id="shirt-collar" d="M55 10l35 15-20 30zM125 10L90 25l20 30z"/>
+    <path id="shirt-seam" d="M90 26v155" fill="none" stroke-width="2"/>
+    <path id="shirt-stain" d="M105 84q15-13 18 5t-9 13q-11 2-9-18"/>
+  </defs>
+  <use href="#shirt-body" fill="#438f98" stroke="#28616b"/>
+  <use href="#shirt-collar" fill="#78b0b6"/>
+  <use href="#shirt-seam" stroke="#d7e4e1"/>
+  <use href="#shirt-stain" fill="#efbd15"/>
+</svg>

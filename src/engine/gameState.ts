@@ -1,5 +1,6 @@
 import type { PendingScene, MeterState } from './sceneTypes';
 import { DEFAULT_HAIR } from './hairColors';
+import type { PlayerClothing } from './playerAppearance';
 
 export interface GameState {
   currentSceneId: string;
@@ -10,6 +11,7 @@ export interface GameState {
   consecutiveOptional: number;
   routingError?: string;
   playerCharacterId: 'daniel' | 'rachel' | null;
+  playerClothing: PlayerClothing | null;
   playerSkinColor: string;
   playerName: string;
   playerEyeColor: string;
@@ -34,6 +36,7 @@ export function createInitialGameState(seed = Math.floor(Math.random() * 0x10000
     randomSeed: seed >>> 0,
     consecutiveOptional: 0,
     playerCharacterId: null,
+    playerClothing: null,
     playerSkinColor: '#CFA17E',
     playerName: '',
     playerEyeColor: '#58616A',

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Alignment, Fit, Layout, useRive } from '@rive-app/react-canvas';
 import { DEFAULT_HAIR } from '../engine/hairColors';
+import { resolveWardrobe } from './wardrobe';
 
 type CharacterArtboard = 'generic-man' | 'generic-woman';
 
@@ -16,6 +17,9 @@ interface RiveCharacterProps {
   skinColor?: string;
   hairColor?: string;
   hairAccentColor?: string;
+  topId?: number;
+  bottomId?: number;
+  /** @deprecated Prefer independent topId and bottomId. */
   outfitId?: number;
   outfitPrimaryColor?: string;
   pantsColor?: string;
@@ -39,6 +43,8 @@ export function RiveCharacter({
   hairColor = DEFAULT_HAIR.color,
   hairAccentColor = DEFAULT_HAIR.accentColor,
   outfitId = 0,
+  topId,
+  bottomId,
   outfitPrimaryColor,
   pantsColor = '#344454',
   suitColor,
@@ -106,13 +112,12 @@ export function RiveCharacter({
   }, [rive, seated]);
 
   useEffect(() => {
-    const property = rive?.viewModelInstance?.number('outfitId');
-    if (!property) return;
-    const maximum = artboard === 'generic-woman' ? 4 : 2;
-    const selection = Math.round(outfitId);
-    property.value = Number.isFinite(selection) && selection >= 0 && selection <= maximum
-      ? selection : 0;
-  }, [rive, artboard, outfitId]);
+    const selection = resolveWardrobe(artboard, topId, bottomId, outfitId);
+    const top = rive?.viewModelInstance?.number('topId');
+    const bottom = rive?.viewModelInstance?.number('bottomId');
+    if (top) top.value = selection.topId;
+    if (bottom) bottom.value = selection.bottomId;
+  }, [rive, artboard, topId, bottomId, outfitId]);
 
   useEffect(() => {
     const colors = {

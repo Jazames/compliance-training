@@ -2,17 +2,12 @@ import { useEffect, useState } from 'react';
 import { RiveCharacter } from '../rive/RiveCharacter';
 import type { SceneDef } from '../engine/sceneTypes';
 import { SceneProp } from './SceneProp';
+import type { PlayerAppearance } from '../engine/playerAppearance';
 
 interface Props {
+  player: PlayerAppearance;
   action: NonNullable<SceneDef['hallwayAction']>;
   entryActive: boolean;
-  playerCharacterId?: 'daniel' | 'rachel' | null;
-  playerName?: string;
-  playerSkinColor?: string;
-  playerEyeColor?: string;
-  playerHairColor?: string;
-  playerHairAccentColor?: string;
-  appearance: number;
 }
 
 // Staged transforms are intentionally separate from the Rive asset contract:
@@ -30,10 +25,7 @@ export function HallwayStage(props: Props) {
     <div className="hallway-door hallway-door--two" />
     <div className="hallway-rail" />
     <div className="hallway-player">
-      <RiveCharacter artboard={props.playerCharacterId === 'rachel' ? 'generic-woman' : 'generic-man'}
-        name={props.playerName ?? ''} side="left" action={walking ? 'walk' : reporting ? 'talk' : 'idle'}
-        appearanceBlend={props.appearance} skinColor={props.playerSkinColor} eyeColor={props.playerEyeColor}
-        hairColor={props.playerHairColor} hairAccentColor={props.playerHairAccentColor} />
+      <RiveCharacter {...props.player} side="left" action={walking ? 'walk' : reporting ? 'talk' : 'idle'} />
     </div>
     <div className="hallway-tools">
       <SceneProp name="broom" className="hallway-broom" />

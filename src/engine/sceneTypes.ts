@@ -1,3 +1,5 @@
+import type { PlayerClothing } from './playerAppearance';
+
 export type SceneType = 'trainingSlide' | 'dialogueScene' | 'phoneScene' | 'minigameScene';
 
 export interface ConditionExpr {
@@ -12,6 +14,8 @@ export type EffectDef =
   | { kind: 'setPlayerEyeColor'; color: string }
   | { kind: 'setPlayerSkinColor'; color: string }
   | { kind: 'setPlayerHairColor'; color: string; accentColor: string }
+  | { kind: 'setPlayerClothing'; clothing: Partial<PlayerClothing> }
+  | { kind: 'revealPlayerUndershirt' }
   | { kind: 'addMeter'; key: keyof MeterState; amount: number }
   | { kind: 'enqueueScene'; scene: PendingScene };
 
@@ -51,6 +55,7 @@ export interface CharacterPlacement {
   framing?: 'full' | 'presenter';
   pose?: string;
   x?: number;
+  clothing?: Partial<PlayerClothing>;
 }
 
 export interface SceneDef {

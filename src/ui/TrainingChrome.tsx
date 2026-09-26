@@ -1,11 +1,14 @@
+import type { ReactNode } from 'react';
+
 interface TrainingChromeProps {
+  children?: ReactNode;
   step: number;
   totalSteps: number;
   playerName?: string;
   onExitCourse: () => void;
 }
 
-export function TrainingChrome({ step, totalSteps, playerName, onExitCourse }: TrainingChromeProps) {
+export function TrainingChrome({ step, totalSteps, playerName, onExitCourse, children }: TrainingChromeProps) {
   const progress = totalSteps > 0 ? Math.min(1, Math.max(0, step / totalSteps)) : 0;
 
   return (
@@ -25,6 +28,7 @@ export function TrainingChrome({ step, totalSteps, playerName, onExitCourse }: T
       <button type="button" className="chrome-button" onClick={onExitCourse}>
         Exit course
       </button>
+      {children}
     </header>
   );
 }

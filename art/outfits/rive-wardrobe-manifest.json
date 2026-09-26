@@ -1,12 +1,14 @@
 {
   "fileId": 2557700,
-  "export": "art/rive-revisions/transparent-backgrounds/generic_man_-_compliance_training.rev",
+  "export": "art/rive-revisions/mix-match-clothing/generic_man_-_compliance_training.rev",
   "viewModelId": "0-197",
   "properties": {
     "outfitId": "6-1",
     "suitColor": "6-4",
     "outfitSecondaryColor": "6-7",
-    "outfitAccentColor": "6-10"
+    "outfitAccentColor": "6-10",
+    "topId": "7-1",
+    "bottomId": "7-4"
   },
   "newShapes": [
     {
