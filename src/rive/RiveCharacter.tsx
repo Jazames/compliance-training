@@ -31,7 +31,7 @@ interface RiveCharacterProps {
   outfitAccentColor?: string;
 }
 
-const CHARACTER_SOURCE = `${import.meta.env.BASE_URL}rive/compliance-characters.riv`;
+const CHARACTER_SOURCE = `${import.meta.env.BASE_URL}rive/compliance-characters.riv?v=20260927-viewer-facing`;
 
 export function RiveCharacter({
   artboard,
