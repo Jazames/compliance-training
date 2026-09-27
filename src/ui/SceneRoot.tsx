@@ -39,51 +39,54 @@ export function SceneRoot({
   const backgroundImage = scene.backgroundKey ? BACKGROUNDS[scene.backgroundKey] : undefined;
 
   return (
-    <main
-      className="scene-root"
-      data-background={scene.backgroundKey}
-      style={
-        {
-          ['--romance-overlay' as string]: romanceOverlay,
-          ['--heist-overlay' as string]: heistOverlay,
-          backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
-        } as CSSProperties
-      }
-    >
-      <SceneSpider key={spiderVisit} enabled={arachnophobia} eligible={spiderVisit % 2 === 0} />
-      <div className="scene-stage">
-        {!scene.hallwayAction && !scene.mustardAction ? <div className="scene-title-strip">{scene.sceneLabel ?? 'Workplace conduct'}</div> : null}
-        {scene.mustardAction ? <MustardStage key={scene.id} action={scene.mustardAction}
-          player={playerAppearance}
-          entryActive={entryActive} /> : null}
-        {scene.hallwayAction ? <HallwayStage key={scene.id} action={scene.hallwayAction}
-          player={playerAppearance}
-          entryActive={entryActive} /> : null}
-        {scene.characters?.length ? (
-          <div className="character-layer" aria-label="Scenario characters">
-            {scene.characters.filter((character) => !scene.playerOnly || character.id === playerCharacterId).map((character) => (
-              <RiveCharacter
-                key={character.id}
-                {...character.clothing}
-                {...(character.id === playerCharacterId ? playerAppearance : {})}
-                artboard={character.artboard}
-                name={character.id === playerCharacterId && playerAppearance.name ? playerAppearance.name : character.name}
-                side={character.side}
-                action={
-                  entryActive
-                    ? (character.entryAction ?? character.action ?? 'idle')
-                    : activeSpeaker === character.name
-                      ? 'talk'
-                      : (character.action ?? 'idle')
-                }
-                framing={character.framing}
-                appearanceBlend={meters.romanceDrift}
-              />
-            ))}
-          </div>
-        ) : null}
-        <div className="dialogue-panel">{children}</div>
+    <main className="scene-layout">
+      <div
+        className="scene-root"
+        data-background={scene.backgroundKey}
+        style={
+          {
+            ['--romance-overlay' as string]: romanceOverlay,
+            ['--heist-overlay' as string]: heistOverlay,
+            backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
+          } as CSSProperties
+        }
+      >
+        <SceneSpider key={spiderVisit} enabled={arachnophobia} eligible={spiderVisit % 2 === 0}
+          delayMs={spiderVisit === 0 ? 13_000 : 37_000} />
+        <div className="scene-stage">
+          {!scene.hallwayAction && !scene.mustardAction ? <div className="scene-title-strip">{scene.sceneLabel ?? 'Workplace conduct'}</div> : null}
+          {scene.mustardAction ? <MustardStage key={scene.id} action={scene.mustardAction}
+            player={playerAppearance}
+            entryActive={entryActive} /> : null}
+          {scene.hallwayAction ? <HallwayStage key={scene.id} action={scene.hallwayAction}
+            player={playerAppearance}
+            entryActive={entryActive} /> : null}
+          {scene.characters?.length ? (
+            <div className="character-layer" aria-label="Scenario characters">
+              {scene.characters.filter((character) => !scene.playerOnly || character.id === playerCharacterId).map((character) => (
+                <RiveCharacter
+                  key={character.id}
+                  {...character.clothing}
+                  {...(character.id === playerCharacterId ? playerAppearance : {})}
+                  artboard={character.artboard}
+                  name={character.id === playerCharacterId && playerAppearance.name ? playerAppearance.name : character.name}
+                  side={character.side}
+                  action={
+                    entryActive
+                      ? (character.entryAction ?? character.action ?? 'idle')
+                      : activeSpeaker === character.name
+                        ? 'talk'
+                        : (character.action ?? 'idle')
+                  }
+                  framing={character.framing}
+                  appearanceBlend={meters.romanceDrift}
+                />
+              ))}
+            </div>
+          ) : null}
+        </div>
       </div>
+      <div className="dialogue-panel">{children}</div>
     </main>
   );
 }

@@ -262,14 +262,16 @@ Use static images/vectors + overlay layers, crossfaded by drift meters:
 ### Repo + Pages
 - GitHub user: `Jazames`
 - Repo: `compliance-training`
-- URL: `https://jazames.github.io/compliance-training/`
+- URL: `https://compliance.granket.com/`
+- Set the repository's Pages custom domain to `compliance.granket.com` and enable HTTPS once its certificate is ready.
+- In Porkbun DNS, set host `compliance` to a CNAME targeting `jazames.github.io`.
 - Configure GitHub Pages to publish from GitHub Actions (recommended).
 
 ### Vite static build for Pages
-Use Vite's `base` config for the repo path:
-- Set `base: '/compliance-training/'` in `vite.config.ts`
+Use Vite's `base` config for the custom domain root:
+- Set `base: '/'` in `vite.config.ts`
 - Put static assets in `public/`
-- Reference public assets with root-relative paths (Vite rewrites for `base`)
+- Reference runtime public assets with `import.meta.env.BASE_URL` so they follow Vite's configured base.
 
 Example `vite.config.ts`:
 
@@ -279,7 +281,7 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/compliance-training/',
+  base: '/',
 });
 ```
 
@@ -315,7 +317,7 @@ Validation commands:
 - Keep deterministic mainline; use queue/interrupts for chaos.
 - Avoid "AI soup" plot routing: social engine influences reactions/unlocks, not core spine routing (at least initially).
 - Reuse Rive rigs via consistent inputs and bone naming.
-- Prefer Vite-friendly browser APIs and static assets that work under a non-root base path (`/compliance-training/`).
+- Prefer Vite-friendly browser APIs and reference runtime static assets through `import.meta.env.BASE_URL` (currently `/` for the custom domain).
 - Before declaring work complete, run `npm run verify` (or explain why it could not be run).
 
 ---

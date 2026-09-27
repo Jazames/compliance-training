@@ -1,5 +1,5 @@
-.scene-root[data-background='mustard-kitchen'] { min-height: 0; }
-.scene-root[data-background='mustard-kitchen'] .scene-stage { position: relative; grid-template-rows: auto auto; gap: 12px; }
+.scene-root[data-background='mustard-kitchen'] { height: auto; }
+.scene-root[data-background='mustard-kitchen'] .scene-stage { position: relative; display: block; padding: 0; }
 .mustard-stage { position: relative; height: clamp(300px, 48vw, 500px); overflow: hidden; background: linear-gradient(#e4e4d9 0 65%, #a5ada5 65% 67%, #c1beb0 67%); }
 .mustard-stage .rive-character { width: 100%; height: 100%; display: block; animation: none; }
 .mustard-stage .rive-character__canvas { min-height: 0; }
@@ -21,10 +21,13 @@
 .mustard-stain { z-index: 5; }
 .mustard-bottle { position: absolute; width: 14%; height: 17%; left: 71%; top: 52%; transform: rotate(-23deg); transform-origin: center bottom; z-index: 6; }
 .mustard-stream { z-index: 7; }
-.mustard-stream path { stroke-dasharray: 28 100; stroke-dashoffset: 28; opacity: 0; animation: mustard-squirt 1.3s .7s linear both; }
+.mustard-stream path { stroke-dasharray: 28 100; stroke-dashoffset: 28; opacity: 0; animation: mustard-squirt .7s 1.5s linear both; }
 .mustard-stage--spill .mustard-stain { animation: mustard-stain-appear .15s 1.8s both; }
-.mustard-stage--spill .mustard-bottle { animation: mustard-squeeze 2.3s both; }
-.kitchen-food-table { position: absolute; left: 37%; bottom: 8%; width: 25%; height: 23%; border-top: 18px solid #dbc49e; border-left: 10px solid #81837a; border-right: 10px solid #81837a; z-index: 3; }
+.mustard-stage--spill .mustard-bottle { animation: mustard-squeeze 3s linear both; }
+.mustard-stage--spill:not(.is-grabbing) .mustard-bottle,
+.mustard-stage--spill:not(.is-grabbing) .mustard-stream path,
+.mustard-stage--spill:not(.is-grabbing) .mustard-stain { animation-play-state: paused; }
+.kitchen-food-table { position: absolute; left: 37%; bottom: 16%; width: 25%; height: 23%; border-top: 18px solid #dbc49e; border-left: 10px solid #81837a; border-right: 10px solid #81837a; z-index: 3; }
 .mustard-hotdog { position: absolute; bottom: 100%; left: 12%; width: 69%; margin-bottom: 3px; }
 .mustard-removable-shirt { position: absolute; left: 24%; top: 29%; width: 53%; height: 32%; object-fit: fill; z-index: 8; transform-origin: center center; animation: mustard-shirt-remove 4.6s both; }
 .mustard-stage.is-changed .mustard-stain { visibility: hidden; }
@@ -38,7 +41,11 @@
 .mustard-montage-cut { position: absolute; inset: 0; z-index: 10; pointer-events: none; background: #151c1c; animation: mustard-cut .3s both; }
 @keyframes mustard-squirt { 0% { opacity: 0; stroke-dashoffset: 28; } 5% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; stroke-dashoffset: -100; } }
 @keyframes mustard-stain-appear { from { opacity: 0; } to { opacity: 1; } }
-@keyframes mustard-squeeze { 0%, 100% { transform: rotate(-23deg); } 30%, 60% { transform: rotate(-38deg) scaleX(.8); } }
+@keyframes mustard-squeeze {
+  0%, 30%, 100% { left: 84%; top: 43%; transform: rotate(0); }
+  50%, 73% { left: 83%; top: 35%; transform: rotate(-38deg) scaleX(.8); }
+  90% { left: 84%; top: 43%; transform: rotate(0); }
+}
 @keyframes mustard-shirt-remove { 0% { opacity: 0; transform: none; } 13%, 30% { opacity: 1; transform: none; } 58% { opacity: 1; transform: translate(42%, 27%) scale(.85); } 90%, 100% { opacity: 1; transform: translate(55%, 420%) rotate(18deg) scale(.8); } }
 @keyframes mustard-exit { 0%, 8% { left: 15%; transform: scale(1); opacity: 1; } 78% { left: 77%; bottom: 26%; transform: scale(.72); opacity: 1; } 96%, 100% { left: 85%; bottom: 26%; transform: scale(.72); opacity: 0; } }
 @keyframes mustard-cut { from { opacity: 1; } to { opacity: 0; } }

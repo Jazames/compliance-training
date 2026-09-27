@@ -9,10 +9,13 @@ interface RiveCharacterProps {
   artboard: CharacterArtboard;
   name: string;
   side: 'left' | 'center' | 'right';
-  action: 'idle' | 'talk' | 'walk' | 'interact';
+  action: 'idle' | 'talk' | 'walk' | 'interact' | 'grab';
+  onGrabStart?: () => void;
   framing?: 'full' | 'presenter';
   appearanceBlend: number;
   seated?: boolean;
+  sittingStyle?: 'front' | 'sideways';
+  facing?: 'left' | 'right';
   eyeColor?: string;
   skinColor?: string;
   hairColor?: string;
@@ -35,9 +38,12 @@ export function RiveCharacter({
   name,
   side,
   action,
+  onGrabStart,
   framing = 'full',
   appearanceBlend,
   seated = false,
+  sittingStyle = 'sideways',
+  facing = 'right',
   eyeColor = '#58616A',
   skinColor = '#CFA17E',
   hairColor = DEFAULT_HAIR.color,
@@ -79,6 +85,25 @@ export function RiveCharacter({
   }, [instanceName, rive]);
 
   useEffect(() => {
+    if (!rive || !rive.animationNames.includes('Blink')) return;
+    let timer: ReturnType<typeof setTimeout>;
+    const schedule = () => {
+      timer = setTimeout(() => {
+        if (!document.hidden) {
+          rive.stop('Blink');
+          rive.play('Blink');
+        }
+        schedule();
+      }, 8000 + Math.random() * 4000);
+    };
+    schedule();
+    return () => {
+      clearTimeout(timer);
+      rive.stop('Blink');
+    };
+  }, [rive]);
+
+  useEffect(() => {
     if (!rive?.viewModelInstance) return;
 
     const appearance = rive.viewModelInstance.number('numberProperty');
@@ -89,10 +114,13 @@ export function RiveCharacter({
 
   useEffect(() => {
     const amount = rive?.viewModelInstance?.number('sitAmount');
+    const sideways = rive?.viewModelInstance?.number('sideSitAmount');
     if (!amount) return;
     const from = amount.value;
-    const to = seated ? 1 : 0;
-    if (Math.abs(from - to) < 0.001) {
+    const sideFrom = sideways?.value ?? 0;
+    const to = seated && sittingStyle === 'front' ? 1 : 0;
+    const sideTo = seated && sittingStyle === 'sideways' ? 1 : 0;
+    if (Math.abs(from - to) < 0.001 && Math.abs(sideFrom - sideTo) < 0.001) {
       setPostureTransitioning(false);
       return;
     }
@@ -104,12 +132,13 @@ export function RiveCharacter({
       const t = Math.min(1, (now - start) / 1000);
       const eased = t * t * (3 - 2 * t);
       amount.value = from + (to - from) * eased;
+      if (sideways) sideways.value = sideFrom + (sideTo - sideFrom) * eased;
       if (t < 1) frame = requestAnimationFrame(advance);
       else setPostureTransitioning(false);
     };
     frame = requestAnimationFrame(advance);
     return () => cancelAnimationFrame(frame);
-  }, [rive, seated]);
+  }, [rive, seated, sittingStyle]);
 
   useEffect(() => {
     const selection = resolveWardrobe(artboard, topId, bottomId, outfitId);
@@ -177,21 +206,22 @@ export function RiveCharacter({
     if (!rive) return;
 
     const interaction = rive.animationNames.includes('Interacting') ? 'Interacting' : 'Arm Wave';
-    const timeline = action === 'interact' ? interaction : action === 'talk' ? 'Talking' : action === 'walk' && !seated && !postureTransitioning ? 'Walking' : null;
-    rive.stop(['Talking', 'Walking', interaction]);
+    const timeline = action === 'grab' ? 'Reach and Grab' : action === 'interact' ? interaction : action === 'talk' ? 'Talking' : action === 'walk' && !seated && !postureTransitioning ? 'Walking' : null;
+    rive.stop(['Talking', 'Walking', interaction, 'Reach and Grab']);
     if (timeline) rive.play(timeline);
+    if (action === 'grab') onGrabStart?.();
 
     return () => {
       if (timeline) rive.stop(timeline);
     };
-  }, [action, rive, seated, postureTransitioning]);
+  }, [action, rive, seated, postureTransitioning, onGrabStart]);
 
   return (
     <figure
       className={`rive-character rive-character--${side} rive-character--${framing} rive-character--${action === 'walk' && (seated || postureTransitioning) ? 'idle' : action}`}
       aria-label={name}
     >
-      <div className="rive-character__canvas">
+      <div className="rive-character__canvas" style={facing === 'left' ? { transform: 'scaleX(-1)' } : undefined}>
         {loadFailed ? (
           <div className="rive-character__fallback" role="img" aria-label={`${name} asset unavailable`}>
             <span>{name.slice(0, 1)}</span>

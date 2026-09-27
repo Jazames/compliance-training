@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { RiveCharacter } from '../rive/RiveCharacter';
 import type { SceneDef } from '../engine/sceneTypes';
 import { SceneProp } from './SceneProp';
@@ -10,9 +10,10 @@ interface Props {
   entryActive: boolean;
 }
 
-// Staged transforms are intentionally separate from the Rive asset contract:
-// neither Jump nor Pickup exists in the current exported rigs.
+// CSS moves the character and tools through the scene; Rive articulates the arm.
 export function HallwayStage(props: Props) {
+  const [grabStarted, setGrabStarted] = useState(false);
+  const startGrab = useCallback(() => setGrabStarted(true), []);
   const [reporting, setReporting] = useState(false);
   useEffect(() => {
     if (props.action !== 'report') return;
@@ -20,12 +21,12 @@ export function HallwayStage(props: Props) {
     return () => window.clearTimeout(timer);
   }, [props.action]);
   const walking = props.action === 'approach' ? props.entryActive : props.action === 'report' && !reporting;
-  return <div className={`hallway-stage hallway-stage--${props.action}`} aria-hidden="true">
+  return <div className={`hallway-stage hallway-stage--${props.action}${grabStarted ? ' is-grabbing' : ''}`} aria-hidden="true">
     <div className="hallway-door hallway-door--one" />
     <div className="hallway-door hallway-door--two" />
     <div className="hallway-rail" />
     <div className="hallway-player">
-      <RiveCharacter {...props.player} side="left" action={walking ? 'walk' : reporting ? 'talk' : 'idle'} />
+      <RiveCharacter {...props.player} side="left" action={props.action === 'pickup' ? 'grab' : walking ? 'walk' : reporting ? 'talk' : 'idle'} onGrabStart={startGrab} />
     </div>
     <div className="hallway-tools">
       <SceneProp name="broom" className="hallway-broom" />
