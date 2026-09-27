@@ -5,6 +5,7 @@ import type { SceneDef } from '../engine/sceneTypes';
 import './mustard-stage.css';
 import { revealUndershirt, type PlayerAppearance } from '../engine/playerAppearance';
 import { ShirtProp } from './ShirtProp';
+import { useStageRuntime } from './stageContext';
 
 interface Props {
   player: PlayerAppearance;
@@ -20,6 +21,7 @@ const coworkers = [
 ] as const;
 
 export function MustardStage(props: Props) {
+  const { playing } = useStageRuntime();
   const [grabStarted, setGrabStarted] = useState(false);
   const startGrab = useCallback(() => setGrabStarted(true), []);
   // Keep the outgoing shirt fixed while the live rig reveals the layer beneath it.
@@ -27,6 +29,10 @@ export function MustardStage(props: Props) {
   const [changed, setChanged] = useState(false);
   const [conversation, setConversation] = useState(-1);
   useEffect(() => {
+    if (!playing) return;
+    if (props.action !== 'spill') setGrabStarted(false);
+    setChanged(false);
+    setConversation(-1);
     const timers: number[] = [];
     if (props.action === 'remove') timers.push(window.setTimeout(() => setChanged(true), 1100));
     if (props.action === 'montage') {
@@ -35,7 +41,7 @@ export function MustardStage(props: Props) {
       }
     }
     return () => timers.forEach(window.clearTimeout);
-  }, [props.action]);
+  }, [props.action, playing]);
   const partner = conversation >= 0 ? coworkers[conversation] : undefined;
   const action = props.action === 'leave' ? 'walk' : props.action === 'montage' ? 'talk'
     : props.action === 'spill' && props.entryActive ? 'grab' : props.action === 'remove' ? 'interact' : 'idle';
@@ -44,7 +50,7 @@ export function MustardStage(props: Props) {
     data-conversation={conversation} aria-hidden="true">
     <div className="kitchen-cabinets" /><div className="kitchen-counter" /><div className="kitchen-sink" />
     <div className="kitchen-door" />
-    {!partner ? <>
+    <div style={{ visibility: partner ? 'hidden' : undefined }}>
       <div className="kitchen-chair kitchen-chair--man" /><div className="kitchen-chair kitchen-chair--woman" />
       <div className="kitchen-observer kitchen-observer--man">
         <RiveCharacter artboard="generic-man" name="" side="right" action="idle" seated sittingStyle="three-quarter" facing="left"
@@ -55,10 +61,11 @@ export function MustardStage(props: Props) {
           appearanceBlend={0} outfitPrimaryColor="#687968" hairColor="#583629" />
       </div>
       <div className="kitchen-background-table" />
-    </> : <div key={conversation} className="mustard-conversation-partner">
-      <RiveCharacter artboard={partner.artboard} name="" side="right" action="talk"
-        appearanceBlend={0} skinColor={partner.skin} hairColor={partner.hair} outfitPrimaryColor={partner.shirt} />
-    </div>}
+    </div>
+    {coworkers.map((coworker, index) => <div key={index} className="mustard-conversation-partner" style={{ opacity: conversation === index ? 1 : 0 }}>
+      <RiveCharacter artboard={coworker.artboard} name="" side="right" action={conversation === index ? 'talk' : 'idle'}
+        appearanceBlend={0} skinColor={coworker.skin} hairColor={coworker.hair} outfitPrimaryColor={coworker.shirt} />
+    </div>)}
     <div className="mustard-player">
       <RiveCharacter {...(changed ? revealUndershirt(props.player) : props.player)} side="left" action={action} onGrabStart={startGrab} />
       <svg className="mustard-stain" viewBox="0 0 500 800" focusable="false">

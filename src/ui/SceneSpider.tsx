@@ -1,13 +1,18 @@
-import { useEffect, useState, type CSSProperties } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useStageRuntime } from './stageContext';
 
 // Decorative vector: eight jointed legs, plain oval abdomen and violin marking.
 export function SceneSpider({ enabled, eligible, delayMs = 37_000 }: { enabled: boolean; eligible: boolean; delayMs?: number }) {
   const [elapsed, setElapsed] = useState(false);
+  const { playing } = useStageRuntime();
+  const remaining = useRef(delayMs);
   const [path] = useState(() => ({ reverse: Math.random() < 0.5, floor: 4 + Math.random() * 14 }));
   useEffect(() => {
-    const timer = window.setTimeout(() => setElapsed(true), delayMs);
-    return () => window.clearTimeout(timer);
-  }, [delayMs]);
+    if (!playing || elapsed) return;
+    const start = performance.now();
+    const timer = window.setTimeout(() => setElapsed(true), remaining.current);
+    return () => { remaining.current -= performance.now() - start; window.clearTimeout(timer); };
+  }, [playing, elapsed]);
   return <div aria-hidden="true" className={`spider-track${path.reverse ? ' spider-track--reverse' : ''}`}
     style={{ '--spider-floor': `${path.floor}px`, visibility: enabled && eligible ? 'visible' : 'hidden' } as CSSProperties}>
     {elapsed ? <svg className="scene-spider" viewBox="0 0 120 100">

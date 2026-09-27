@@ -28,12 +28,12 @@ export function RestroomOccupant({ fixture, player }: { fixture?: 0 | 1 | 2 | 3;
           {index === 0 ? <path d={`M${x+64} 535h30v32h-44zM${x+119} 535h30l14 32h-44z`} fill="#303f49" /> : null}
         </>}
         {fixture === index ? <>
-          <foreignObject x={x + (index === 0 ? 65 : 0)} y="190" width="200" height="390">
-            <div className="restroom-occupant__character"><RiveCharacter {...player} side="center" action={index === 0 ? 'interact' : 'idle'} /></div>
-          </foreignObject>
           {!male && index !== 0 ? <path d={`M${x+201} 170l-30 20v325h30z`} fill="#a7bec1" stroke="#647f85" strokeWidth="5" /> : null}
         </> : null}
       </g>;
     })}
+    <foreignObject x={70 + (fixture ?? 1) * 250 + (fixture === 0 ? 65 : 0)} y="190" width="200" height="390" opacity={fixture === undefined ? 0 : 1}>
+      <div className="restroom-occupant__character"><RiveCharacter {...player} side="center" action={fixture === 0 ? 'interact' : 'idle'} /></div>
+    </foreignObject>
   </svg>;
 }

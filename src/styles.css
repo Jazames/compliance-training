@@ -500,21 +500,6 @@ body {
   outline-offset: 2px;
 }
 
-.scene-transition {
-  position: fixed;
-  z-index: 100;
-  inset: 0;
-  background: #000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 480ms ease;
-}
-
-.app-shell.is-transitioning .scene-transition {
-  opacity: 1;
-  pointer-events: auto;
-}
-
 .choice-button:focus-visible,
 .chrome-button:focus-visible {
   outline: 3px solid rgba(35, 139, 148, 0.45);
@@ -581,7 +566,6 @@ body {
     animation: none;
   }
 
-  .scene-transition,
   .scene-root {
     transition-duration: 1ms;
   }
@@ -681,3 +665,16 @@ body {
 .feedback-sheet:has(.animations-skipped) { animation: none; }
 
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+/* The header stays usable while only the scene and its text are covered. */
+.scene-viewport { position: relative; isolation: isolate; min-height: 65vh; }
+.scene-curtain { position: absolute; z-index: 20; inset: 0; background: #000; opacity: 0; pointer-events: none; }
+.scene-viewport[data-phase='prepare'] .scene-curtain { opacity: 1; pointer-events: auto; }
+.scene-viewport[data-phase='out'] .scene-curtain { animation: curtain-close 300ms ease both; pointer-events: auto; }
+.scene-viewport[data-phase='in'] .scene-curtain { animation: curtain-open 300ms ease both; pointer-events: auto; }
+.scene-root[data-playing='false'] *, .scene-root[data-playing='false'] *::before, .scene-root[data-playing='false'] *::after { animation-play-state: paused !important; }
+@keyframes curtain-close { from { opacity: 0; } to { opacity: 1; } }
+@keyframes curtain-open { from { opacity: 1; } to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .scene-curtain { animation: none !important; } }
+.feedback-sheet.is-leaving { animation: feedback-leave 300ms ease both; pointer-events: none; }
+@keyframes feedback-leave { to { opacity: 0; } }

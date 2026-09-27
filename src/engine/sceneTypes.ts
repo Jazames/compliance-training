@@ -68,6 +68,8 @@ export interface CharacterPlacement {
 }
 
 export interface SceneDef {
+  stageKey?: string;
+  entrance?: 'fade';
   feedback?: 'correct' | 'incorrect';
   meetingRoom?: boolean;
   showRecordedName?: boolean;
@@ -84,7 +86,6 @@ export interface SceneDef {
   dialogue?: DialogueLine[];
   entryDelayMs?: number;
   entryText?: string;
-  fadeOnExit?: boolean;
   hallwayAction?: 'approach' | 'jump' | 'pickup' | 'report';
   mustardAction?: 'spill' | 'leave' | 'montage' | 'remove';
   autoAdvance?: { afterMs: number; choiceId: string };

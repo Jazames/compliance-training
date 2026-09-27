@@ -1,9 +1,12 @@
 import { shirtPalette, type PlayerAppearance } from '../engine/playerAppearance';
+import { useStageRuntime } from './stageContext';
 
 /** Geometry stays in the shared asset; colors come from the outgoing rig snapshot. */
 export function ShirtProp({ appearance, className }: { appearance: PlayerAppearance; className?: string }) {
   const colors = shirtPalette(appearance);
   const source = `${import.meta.env.BASE_URL}props/shirt.svg`;
+  const { failed } = useStageRuntime();
+  if (failed.has(source)) return null;
   return <svg className={className} viewBox="0 0 180 190" aria-hidden="true" focusable="false">
     <use href={`${source}#${appearance.topId === 2 ? 'tshirt-body' : 'shirt-body'}`} fill={colors.primary} stroke={colors.primary} />
     {appearance.topId !== 2 ? <>

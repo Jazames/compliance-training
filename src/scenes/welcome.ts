@@ -28,7 +28,7 @@ const scene: ScenarioDef = {
                     eyeColor: '#528DC3',
                 },
             ],
-            fadeOnExit: true,
+
             choices: [
                 {
                     id: 'begin_scenarios',
@@ -39,4 +39,6 @@ const scene: ScenarioDef = {
         }
     },
 };
+// Visual identity persists across local beats and compatible scenario handoffs.
+for (const beat of Object.values(scene.beats)) beat.stageKey = 'studio-chair';
 export default scene;

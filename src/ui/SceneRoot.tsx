@@ -10,6 +10,8 @@ import { InboxStage } from './InboxStage';
 import { MeetingStage } from './MeetingStage';
 import type { PlayerAppearance } from '../engine/playerAppearance';
 import { FeedbackSheet } from './FeedbackSheet';
+import { useStageRuntime } from './stageContext';
+import { BACKGROUNDS } from './stageAssets';
 
 interface SceneRootProps {
   spiderVisit: number;
@@ -23,13 +25,8 @@ interface SceneRootProps {
   children: ReactNode;
   feedback?: SceneDef['feedback'];
   feedbackTitle?: string;
+  leaving?: boolean;
 }
-
-const BACKGROUNDS: Record<string, string> = {
-  'studio-chair': `${import.meta.env.BASE_URL}bg/studio-chair.png`,
-  'break-room': `${import.meta.env.BASE_URL}bg/break-room.png`,
-  restroom: `${import.meta.env.BASE_URL}bg/restroom.svg`,
-};
 
 export function SceneRoot({
   spiderVisit,
@@ -43,7 +40,9 @@ export function SceneRoot({
   children,
   feedback,
   feedbackTitle,
+  leaving,
 }: SceneRootProps) {
+  const { playing, failed } = useStageRuntime();
   const romanceOverlay = Math.min(1, meters.romanceDrift);
   const heistOverlay = Math.min(1, meters.heistDrift);
   const backgroundImage = scene.backgroundKey ? BACKGROUNDS[scene.backgroundKey] : undefined;
@@ -53,13 +52,14 @@ export function SceneRoot({
       <div
         className="scene-root"
         data-background={scene.backgroundKey}
+        data-playing={playing}
         data-mirror={scene.mirrorCloseup || undefined}
         data-inbox={!!scene.email || undefined}
         style={
           {
             ['--romance-overlay' as string]: romanceOverlay,
             ['--heist-overlay' as string]: heistOverlay,
-            backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
+            backgroundImage: backgroundImage && !failed.has(backgroundImage) ? `url(${backgroundImage})` : undefined,
           } as CSSProperties
         }
       >
@@ -71,17 +71,17 @@ export function SceneRoot({
           {scene.mirrorCloseup ? <MirrorStage player={{ ...playerAppearance, name: playerAppearance.name || scene.characters?.find((character) => character.id === playerCharacterId)?.name || '' }} /> : null}
           {scene.backgroundKey === 'restroom' ? <RestroomOccupant fixture={scene.restroomFixture} player={playerAppearance} /> : null}
           {!scene.hallwayAction && !scene.mustardAction && scene.sceneLabel !== '' ? <div className="scene-title-strip">{scene.sceneLabel ?? 'Workplace conduct'}</div> : null}
-          {scene.mustardAction ? <MustardStage key={scene.id} action={scene.mustardAction}
+          {scene.mustardAction ? <MustardStage action={scene.mustardAction}
             player={playerAppearance}
             entryActive={entryActive} /> : null}
-          {scene.hallwayAction ? <HallwayStage key={scene.id} action={scene.hallwayAction}
+          {scene.hallwayAction ? <HallwayStage action={scene.hallwayAction}
             player={playerAppearance}
             entryActive={entryActive} /> : null}
           {!scene.mirrorCloseup && scene.characters?.length ? (
             <div className="character-layer" aria-label="Scenario characters">
               {scene.characters.filter((character) => !scene.playerOnly || character.id === playerCharacterId).map((character) => (
                 <RiveCharacter
-                  key={character.id}
+                  key={`${character.id}:${character.artboard}`}
                   {...character.clothing}
                   {...(character.id === playerCharacterId ? playerAppearance : {
                     hairColor: character.hairColor,
@@ -109,7 +109,7 @@ export function SceneRoot({
           ) : null}
         </div>
       </div>
-      {feedback ? <FeedbackSheet status={feedback} title={feedbackTitle}>{children}</FeedbackSheet> : <div className="dialogue-panel">{children}</div>}
+      {feedback ? <FeedbackSheet status={feedback} title={feedbackTitle} leaving={leaving}>{children}</FeedbackSheet> : <div className="dialogue-panel">{children}</div>}
     </main>
   );
 }

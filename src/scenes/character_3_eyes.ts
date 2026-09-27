@@ -60,4 +60,7 @@ scene.beats.restroom_space_far = {
     id: 'restroom_space_far',
     restroomFixture: 3,
 };
+// Visual identity persists across local beats and compatible scenario handoffs.
+for (const beat of Object.values(scene.beats)) beat.stageKey = 'restroom';
+scene.beats.mirror_question.stageKey = 'mirror';
 export default scene;

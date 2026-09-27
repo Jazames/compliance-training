@@ -112,7 +112,7 @@ The final hair choice sets `characterCreationComplete`. Its feedback still finis
 
 Use `milestone: true` for required course scenarios. Progress counts each completed milestone once, never optional scenes or feedback screens. Adding optional scenes therefore cannot move the progress bar backward. `terminal: true` means remaining pending requests are discarded on entry. Restart resets character, flags, meters, queue, milestones, and random state.
 
-Run `npm run verify` after editing (lint, engine tests, TypeScript, production build). Tests use Node 22.15+ or 24+ with a small source loader and no extra test dependency. The registry also validates destinations, choice outcomes, positive weights, and the protected creation contract at startup. Tests cover all 1,296 creation answer combinations, detour returns, selection, conditions, one-shots, and restart.
+Run `npm run verify` after editing (lint, engine tests, TypeScript, production build). Tests use Node 22.15+ or 24+ with a small source loader and no extra test dependency. The registry also validates destinations, choice outcomes, positive weights, and the protected creation contract at startup. Tests cover all 6,912 creation answer combinations, detour returns, selection, conditions, one-shots, and restart.
 
 Future cooldowns, non-scene events, and genre-specific selection weights are not implemented yet; do not assume those fields work.
 
@@ -135,3 +135,13 @@ Normal unmodified key presses skip to the final presentation state without choos
 Set `feedback: 'correct'` or `feedback: 'incorrect'` on an assessment outcome. The renderer keeps the preceding artwork and characters mounted and slides feedback up over them. Incorrect feedback is red; correct headings are green. Keep existing feedback wording and continuation choices in the scenario. A feedback beat does not consume queued scenes until its completion choice is selected.
 
 The restroom stage derives its variant from player appearance: four urinals for Daniel, four stalls for Rachel, with the leftmost occupied. `restroomFixture: 0` shows the player approaching that coworker; 1–3 select the free fixtures in order. The occupied card's courtesy interaction adds 0.05 romance drift and returns to the existing mirror route. Its label and feedback are user-supplied wording.
+
+## Persistent stage entrances
+
+Set `stageKey` on every beat. Shared keys mean continuous handoffs even across scenario boundaries (for example, break-room questions and feedback). Different keys start a new entrance; `entrance: 'fade'` overrides continuity for a deliberate cut. The mirror has its own key. Do not key a Rive canvas or action stage by beat ID. Preserve instance identity and change action/appearance inputs instead.
+
+A new entrance fades out for 300 ms, waits behind black for image decoding and ready Rive instances, then fades in for 300 ms. Text animations start only after the fade. Initial startup begins black. The course header remains usable throughout. Animation-only timers, entry actions, and spider delays begin with visible playback, not component mount. Same-stage feedback and decisions do not replay the entrance.
+
+Declare stage image dependencies in the asset manifest, including external SVG fragments and props used by later action beats. Mount future actors invisibly during stage preparation; this avoids replacing the visible stage when a local action needs another character. Successful image preparation and shared character bytes are cached. Failures/timeouts settle after at most 15 seconds to fixed per-visit fallbacks; do not swap a late asset into a running presentation.
+
+Keyboard skips during loading/fading are deferred until readiness, then reveal the end state without selecting an answer. Reduced-motion users wait for assets but bypass animations. Exit/restart invalidates pending transitions. Text pauses while the appearance menu is open and resumes afterward; action cutaways restart their action timers. Keep user-facing copy unchanged when changing staging.

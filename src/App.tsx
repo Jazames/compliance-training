@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { TOTAL_MILESTONES } from './scenes';
 import { createInitialGameState } from './engine/gameState';
 import { applyChoice, getCurrentBeat } from './engine/scheduler';
@@ -14,6 +14,9 @@ import { Restroom } from './ui/Restroom';
 import { getPlayerAppearance } from './engine/playerAppearance';
 import type { SceneDef } from './engine/sceneTypes';
 import { useScenePresentation } from './ui/useScenePresentation';
+import { useSceneTransition } from './ui/useSceneTransition';
+import { StageRuntime } from './ui/StageRuntime';
+import type { GameState } from './engine/gameState';
 
 function App() {
   const [game, setGame] = useState(createInitialGameState());
@@ -27,19 +30,30 @@ function App() {
   const [eyePreview, setEyePreview] = useState<string>();
   const [feedbackBackground, setFeedbackBackground] = useState<SceneDef>();
 
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const transition = useSceneTransition();
+  const { playing, enter } = transition;
   const scene = getCurrentBeat(game);
 
-  const presentation = useScenePresentation(scene, editing);
+  const presentation = useScenePresentation(scene, editing || !transition.playing, transition.skip);
+  const advance = useCallback((choiceId: string, source: GameState = game) => {
+    if (!scene || !playing || editing) return;
+    const next = applyChoice(source, choiceId);
+    const nextScene = getCurrentBeat(next);
+    if (!nextScene || next === source) return;
+    enter(scene, nextScene, () => {
+      setEyePreview(undefined);
+      if (scene.choices?.find((choice) => choice.id === choiceId)?.restart) setNameDraft('');
+      setFeedbackBackground(nextScene.feedback ? feedbackBackground ?? scene : undefined);
+      setGame(next);
+    });
+  }, [game, scene, editing, feedbackBackground, playing, enter]);
 
   useEffect(() => {
-    if (!scene?.autoAdvance || editing) return;
+    if (!scene?.autoAdvance || editing || !transition.playing) return;
     const { afterMs, choiceId } = scene.autoAdvance;
-    const timer = window.setTimeout(() => setGame((previous) =>
-      getCurrentBeat(previous) === scene ? applyChoice(previous, choiceId) : previous), presentation.skipped ? 0 : afterMs);
+    const timer = window.setTimeout(() => advance(choiceId), presentation.skipped ? 0 : afterMs);
     return () => window.clearTimeout(timer);
-  }, [scene, editing, presentation.skipped]);
-
+  }, [scene, editing, transition.playing, presentation.skipped, advance]);
   if (!scene) {
     return <div>Missing scene: {game.currentSceneId}</div>;
   }
@@ -53,32 +67,16 @@ function App() {
     ? game.playerCharacterId.slice(0, 1).toUpperCase() + game.playerCharacterId.slice(1)
     : undefined);
 
-  const choose = (choiceId: string) => {
-    setEyePreview(undefined);
-    if (isTransitioning) return;
-    if (scene.choices?.find((choice) => choice.id === choiceId)?.restart) setNameDraft('');
-    if (!scene.fadeOnExit) {
-      const next = applyChoice(game, choiceId);
-      setFeedbackBackground(getCurrentBeat(next)?.feedback ? feedbackBackground ?? scene : undefined);
-      setGame(next);
-      return;
-    }
-
-    setIsTransitioning(true);
-    window.setTimeout(() => {
-      setGame((previous) => applyChoice(previous, choiceId));
-      window.setTimeout(() => setIsTransitioning(false), 120);
-    }, 480);
-  };
+  const choose = (choiceId: string) => advance(choiceId);
 
   return (
-    <div className={`app-shell${isTransitioning ? ' is-transitioning' : ''}`}>
+    <div className="app-shell">
       <TrainingChrome
         step={game.completedMilestones.length}
         totalSteps={TOTAL_MILESTONES}
         playerName={playerName}
         onExitCourse={() => {
-          setIsTransitioning(false);
+          transition.reset();
           setEditing(false);
           setNameDraft('');
           setFeedbackBackground(undefined);
@@ -95,11 +93,14 @@ function App() {
           }))} />
       </TrainingChrome>
       {game.routingError ? <p role="alert">{game.routingError} Use Exit course to restart.</p> : null}
+      <div className="scene-viewport" data-phase={transition.phase} aria-busy={!transition.playing} inert={transition.phase !== 'present'}>
+      <StageRuntime key={transition.visit} stageKey={scene.stageKey ?? scene.id} playing={transition.playing && !editing} onReady={transition.reportReady}>
       <SceneRoot
         spiderVisit={visit.index}
         arachnophobia={arachnophobia}
         scene={scene.feedback && feedbackBackground ? { ...feedbackBackground, restroomFixture: scene.restroomFixture } : scene}
-        feedback={scene.feedback}
+        feedback={transition.playing || transition.phase === 'out' ? scene.feedback : undefined}
+        leaving={transition.phase === 'out'}
         feedbackTitle={scene.title ?? scene.body}
         playerAppearance={{ ...getPlayerAppearance(game), ...(scene.mirrorCloseup && eyePreview ? { eyeColor: eyePreview } : {}) }}
         meters={game.meters}
@@ -108,7 +109,7 @@ function App() {
         entryActive={entryActive}
       >
 
-        <div key={scene.id} className={`scene-presentation${presentation.skipped ? ' animations-skipped' : ''}`}>
+        {(transition.playing || transition.phase === 'out') && <div key={scene.id} className={`scene-presentation${presentation.skipped ? ' animations-skipped' : ''}`}>
           <div className="prompt-card">
             {scene.entryText ? <DialogueBox body={scene.entryText} /> : null}
             <DialogueBox title={scene.title} body={scene.body} />
@@ -131,7 +132,7 @@ function App() {
           event.preventDefault();
           if (!nameDraft.trim() || !scene.nameplate) return;
           const choiceId = scene.nameplate.choiceId;
-          setGame((previous) => applyChoice({ ...previous, playerName: nameDraft.trim() }, choiceId));
+          advance(choiceId, { ...game, playerName: nameDraft.trim() });
         }}>
           <label htmlFor="plaque-name">{scene.nameplate.label}</label>
           <input id="plaque-name" required maxLength={scene.nameplate.maxLength} value={nameDraft} onChange={(e) => setNameDraft(e.target.value)} />
@@ -139,9 +140,11 @@ function App() {
         </form></> : !entryActive && dialogueComplete && !scene.autoAdvance ? scene.interaction === 'restroom' ? <Restroom male={game.playerCharacterId === 'daniel'} choices={(scene.choices ?? []).filter((choice) => evaluateConditions(game, choice.conditions))} onChoose={choose} /> : <ChoiceList choices={(scene.choices ?? []).filter((choice) => evaluateConditions(game, choice.conditions))} onChoose={choose}
           onPreview={scene.mirrorCloseup ? (id) => setEyePreview(scene.choices?.find((choice) => choice.id === id)?.swatch) : undefined} /> : null}
           </div>
-        </div>
+        </div>}
       </SceneRoot>
-      <div className="scene-transition" aria-hidden="true" />
+      </StageRuntime>
+      <div className="scene-curtain" aria-hidden="true" />
+      </div>
     </div>
   );
 }

@@ -334,8 +334,18 @@ All scenes use the presentation sequence in `src/ui/useScenePresentation.ts`:
 2. Each spoken `dialogue` line streams automatically at approximately 16 ms per Unicode character, with a 200 ms pause between lines. Completed lines stay visible. Do not add Continue or Review responses controls between lines.
 3. Once the narration entrance and dialogue finish, response controls fade in (240 ms). Hidden controls cannot receive focus or input.
 
-A normal unmodified key skips presentation to its end state without selecting an answer. Tab, modifier keys, browser shortcuts, repeated keydown events, and typing in editable fields do not skip. Reduced-motion preferences reveal content immediately. Appearance editing suspends presentation; closing the editor restarts that beat's presentation. Entry staging delays still precede speech; animation-only beats use their existing `autoAdvance` outcome when skipped, so effects and routing are preserved.
+A normal unmodified key skips presentation to its end state without selecting an answer. Tab, modifier keys, browser shortcuts, repeated keydown events, and typing in editable fields do not skip. Reduced-motion preferences reveal content immediately. Appearance editing pauses text presentation; closing the editor resumes it. Action cutaways restart their action timers on resume. Entry staging delays still precede speech; animation-only beats use their existing `autoAdvance` outcome when skipped, so effects and routing are preserved.
 
 Mark existing assessment outcomes with `feedback: 'correct'` or `feedback: 'incorrect'`. They display in a bottom sheet over the preceding scene, with green or red heading treatment; incorrect feedback text is red. Preserve the background and character instances. Feedback choices retain normal engine routing. Bathroom outcomes may add `restroomFixture` (0 for approaching the occupied coworker, 1–3 for free fixtures), and hair outcomes apply the selected appearance behind the sheet.
 
 Keep wording in scene data. Presentation code must not generate dialogue, feedback, or new choice labels. See [the scene authoring guide](src/scenes/README.md) for the authoring contract.
+
+### Stage continuity and loaded entrances
+
+`stageKey` identifies the mounted visual stage, independently of beat and scenario IDs. Give compatible beats the same key; use a different key for a new setting/camera setup. `entrance: 'fade'` explicitly forces a new entrance. `fadeOnExit` is retired. Renderer keys must not remount stages or characters simply because dialogue becomes a decision or feedback beat.
+
+New entrances use a 300 ms fade out, asset preparation behind black, and a 300 ms fade in. The initial course entrance starts black. Only the scene/text area is covered; the header and Exit course stay available. Background/prop images must decode, external SVG resources must load, and Rive instances must bind appearance and render before readiness. Shared source bytes and successful image preparation are cached. Stage actors needed by local action beats are mounted in advance, including currently invisible actors.
+
+Text presentation, entry actions, auto-advance, CSS animation, and spider timers wait for the scene to become visible. Same-stage handoffs retain existing canvases, backgrounds, randomized coworkers, and appearance, then run the next text sequence without a fade. A skip request made during loading/fading is remembered but never bypasses readiness. Reduced motion also waits for readiness.
+
+A failed asset or 15-second load timeout settles to a stable fallback for that visit: existing character fallback, neutral background, or omitted decorative prop. Late results must never pop into the displayed scene. A later visit may retry. Exit/restart cancels pending transition callbacks. Choices/effects and scheduler operations remain single-application engine operations.

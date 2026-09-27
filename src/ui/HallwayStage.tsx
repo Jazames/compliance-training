@@ -3,6 +3,7 @@ import { RiveCharacter } from '../rive/RiveCharacter';
 import type { SceneDef } from '../engine/sceneTypes';
 import { SceneProp } from './SceneProp';
 import type { PlayerAppearance } from '../engine/playerAppearance';
+import { useStageRuntime } from './stageContext';
 
 interface Props {
   player: PlayerAppearance;
@@ -12,14 +13,18 @@ interface Props {
 
 // CSS moves the character and tools through the scene; Rive articulates the arm.
 export function HallwayStage(props: Props) {
+  const { playing } = useStageRuntime();
   const [grabStarted, setGrabStarted] = useState(false);
   const startGrab = useCallback(() => setGrabStarted(true), []);
   const [reporting, setReporting] = useState(false);
   useEffect(() => {
+    if (!playing) return;
+    if (props.action !== 'pickup') setGrabStarted(false);
+    setReporting(false);
     if (props.action !== 'report') return;
     const timer = window.setTimeout(() => setReporting(true), 1700);
     return () => window.clearTimeout(timer);
-  }, [props.action]);
+  }, [props.action, playing]);
   const walking = props.action === 'approach' ? props.entryActive : props.action === 'report' && !reporting;
   return <div className={`hallway-stage hallway-stage--${props.action}${grabStarted ? ' is-grabbing' : ''}`} aria-hidden="true">
     <div className="hallway-door hallway-door--one" />
@@ -32,9 +37,9 @@ export function HallwayStage(props: Props) {
       <SceneProp name="broom" className="hallway-broom" />
       <SceneProp name="mop" className="hallway-mop" />
     </div>
-    {props.action === 'report' ? <div className="hallway-manager">
+    <div className="hallway-manager" style={{ opacity: props.action === 'report' ? 1 : 0 }}>
       <RiveCharacter artboard="generic-man" name="" side="right" action={reporting ? 'talk' : 'idle'}
         appearanceBlend={0} outfitPrimaryColor="#7E7967" hairColor="#827D75" />
-    </div> : null}
+    </div>
   </div>;
 }

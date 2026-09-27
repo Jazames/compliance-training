@@ -25,4 +25,6 @@ const scene: ScenarioDef = {
         }
     },
 };
+// Visual identity persists across local beats and compatible scenario handoffs.
+for (const beat of Object.values(scene.beats)) beat.stageKey = 'cybersecurity';
 export default scene;

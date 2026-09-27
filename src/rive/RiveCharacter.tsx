@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { Alignment, Fit, Layout, useRive } from '@rive-app/react-canvas';
 import { DEFAULT_HAIR } from '../engine/hairColors';
 import { resolveWardrobe } from './wardrobe';
+import { useStageRuntime } from '../ui/stageContext';
+import { prepareCharacter } from '../ui/stageAssets';
 
 type CharacterArtboard = 'generic-man' | 'generic-woman';
 
@@ -31,8 +33,6 @@ interface RiveCharacterProps {
   outfitAccentColor?: string;
 }
 
-const CHARACTER_SOURCE = `${import.meta.env.BASE_URL}rive/compliance-characters.riv?v=20260927-viewer-facing`;
-
 export function RiveCharacter({
   artboard,
   name,
@@ -58,17 +58,32 @@ export function RiveCharacter({
   outfitAccentColor = '#94705A',
 }: RiveCharacterProps) {
   const [loadFailed, setLoadFailed] = useState(false);
+  const [buffer, setBuffer] = useState<ArrayBuffer>();
+  const [renderReady, setRenderReady] = useState(false);
+  const { playing, register } = useStageRuntime();
+  const identity = useId();
+  const release = useRef<(() => void) | undefined>(undefined);
+  const resolved = useRef(false);
+  useEffect(() => {
+    release.current = register(identity);
+    let cancelled = false;
+    const timeout = window.setTimeout(() => { if (!resolved.current) { cancelled = true; setLoadFailed(true); } }, 15_000);
+    void prepareCharacter().then((data) => { if (!cancelled) setBuffer(data); }, () => {
+      if (!cancelled) setLoadFailed(true);
+    });
+    return () => { cancelled = true; clearTimeout(timeout); release.current?.(); };
+  }, [register, identity]);
   const [postureTransitioning, setPostureTransitioning] = useState(false);
   const instanceName = artboard === 'generic-woman' ? 'Instance 1' : 'Instance';
-  const { rive, RiveComponent } = useRive({
-    src: CHARACTER_SOURCE,
+  const { rive, RiveComponent } = useRive(buffer && !loadFailed ? {
+    buffer,
     artboard,
     stateMachines: 'State Machine 1',
     autoplay: true,
     autoBind: false,
     layout: new Layout({ fit: Fit.Contain, alignment: Alignment.BottomCenter }),
     onLoadError: () => setLoadFailed(true),
-  });
+  } : null);
 
   useEffect(() => {
     if (!rive) return;
@@ -85,7 +100,7 @@ export function RiveCharacter({
   }, [instanceName, rive]);
 
   useEffect(() => {
-    if (!rive || !rive.animationNames.includes('Blink')) return;
+    if (!playing || !rive || !rive.animationNames.includes('Blink')) return;
     let timer: ReturnType<typeof setTimeout>;
     const schedule = () => {
       timer = setTimeout(() => {
@@ -101,7 +116,7 @@ export function RiveCharacter({
       clearTimeout(timer);
       rive.stop('Blink');
     };
-  }, [rive]);
+  }, [rive, playing]);
 
   useEffect(() => {
     if (!rive?.viewModelInstance) return;
@@ -120,6 +135,12 @@ export function RiveCharacter({
     const sideFrom = sideways?.value ?? 0;
     const to = seated && sittingStyle === 'front' ? 1 : 0;
     const sideTo = !seated ? 0 : sittingStyle === 'sideways' ? 1 : sittingStyle === 'three-quarter' ? -1 : 0;
+    if (!playing) {
+      amount.value = to;
+      if (sideways) sideways.value = sideTo;
+      setPostureTransitioning(false);
+      return;
+    }
     if (Math.abs(from - to) < 0.001 && Math.abs(sideFrom - sideTo) < 0.001) {
       setPostureTransitioning(false);
       return;
@@ -138,7 +159,7 @@ export function RiveCharacter({
     };
     frame = requestAnimationFrame(advance);
     return () => cancelAnimationFrame(frame);
-  }, [rive, seated, sittingStyle]);
+  }, [rive, seated, sittingStyle, playing]);
 
   useEffect(() => {
     const selection = resolveWardrobe(artboard, topId, bottomId, outfitId);
@@ -206,20 +227,30 @@ export function RiveCharacter({
     if (!rive) return;
 
     const interaction = rive.animationNames.includes('Interacting') ? 'Interacting' : 'Arm Wave';
-    const timeline = action === 'grab' ? 'Reach and Grab' : action === 'interact' ? interaction : action === 'talk' ? 'Talking' : action === 'walk' && !seated && !postureTransitioning ? 'Walking' : null;
+    const timeline = !playing ? null : action === 'grab' ? 'Reach and Grab' : action === 'interact' ? interaction : action === 'talk' ? 'Talking' : action === 'walk' && !seated && !postureTransitioning ? 'Walking' : null;
     rive.stop(['Talking', 'Walking', interaction, 'Reach and Grab']);
     if (timeline) rive.play(timeline);
-    if (action === 'grab') onGrabStart?.();
+    if (playing && action === 'grab') onGrabStart?.();
 
     return () => {
       if (timeline) rive.stop(timeline);
     };
-  }, [action, rive, seated, postureTransitioning, onGrabStart]);
+  }, [action, rive, seated, postureTransitioning, onGrabStart, playing]);
+
+  useEffect(() => {
+    if (!rive && !loadFailed) return;
+    let frame = requestAnimationFrame(() => {
+      frame = requestAnimationFrame(() => { resolved.current = true; setRenderReady(true); release.current?.(); });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [rive, loadFailed]);
 
   return (
     <figure
       className={`rive-character rive-character--${side} rive-character--${framing} rive-character--${action === 'walk' && (seated || postureTransitioning) ? 'idle' : action}`}
       aria-label={name}
+      data-rive-instance={identity}
+      style={{ visibility: renderReady || loadFailed ? undefined : 'hidden' }}
     >
       <div className="rive-character__canvas" style={facing === 'left' ? { transform: 'scaleX(-1)' } : undefined}>
         {loadFailed ? (
