@@ -14,7 +14,7 @@ interface RiveCharacterProps {
   framing?: 'full' | 'presenter';
   appearanceBlend: number;
   seated?: boolean;
-  sittingStyle?: 'front' | 'sideways';
+  sittingStyle?: 'front' | 'sideways' | 'three-quarter';
   facing?: 'left' | 'right';
   eyeColor?: string;
   skinColor?: string;
@@ -42,7 +42,7 @@ export function RiveCharacter({
   framing = 'full',
   appearanceBlend,
   seated = false,
-  sittingStyle = 'sideways',
+  sittingStyle = 'three-quarter',
   facing = 'right',
   eyeColor = '#58616A',
   skinColor = '#CFA17E',
@@ -119,7 +119,7 @@ export function RiveCharacter({
     const from = amount.value;
     const sideFrom = sideways?.value ?? 0;
     const to = seated && sittingStyle === 'front' ? 1 : 0;
-    const sideTo = seated && sittingStyle === 'sideways' ? 1 : 0;
+    const sideTo = !seated ? 0 : sittingStyle === 'sideways' ? 1 : sittingStyle === 'three-quarter' ? -1 : 0;
     if (Math.abs(from - to) < 0.001 && Math.abs(sideFrom - sideTo) < 0.001) {
       setPostureTransitioning(false);
       return;

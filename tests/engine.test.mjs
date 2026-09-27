@@ -50,7 +50,7 @@ test('mustard branches preserve the player and add only a small romance effect f
   }
 });
 
-test('all 1,296 creation answer combinations preserve order and finish the course', () => {
+test('all 5,184 creation answer combinations preserve order and finish the course', () => {
   let endings = 0;
   function visit(state, visited, depth = 0) {
     assert.ok(depth < 25);
@@ -70,7 +70,7 @@ test('all 1,296 creation answer combinations preserve order and finish the cours
     }
   }
   visit(createInitialGameState(42), ['welcome']);
-  assert.equal(endings, 6 * 3 * 6 * 12);
+  assert.equal(endings, 6 * 3 * 6 * 4 * 12);
 });
 
 test('feedback beats do not consume pending scenes; creation takes its required successor', () => {
@@ -162,4 +162,17 @@ test('author validation rejects missing destinations and branching creation succ
   const sex = branches.find(scene => scene.id === 'character_1_sex');
   sex.beats.drink_feedback_correct.choices[0].effects[0].scene.sceneId = 'hallway';
   assert.throws(() => validateScenes(branches), /share one successor/);
+});
+
+
+test('Facilities literal replies and fallback preserve names through required continuation', () => {
+  const start = { ...createInitialGameState(42), currentSceneId: 'character_4_name', currentBeatId: 'facilities_email' };
+  for (const [choice, name] of [['literal_name', 'Just put my name in it'], ['slim_shady', 'Slim Shady'], ['ignore_email', 'johnny tightlipps']]) {
+    const named = applyChoice(start, choice);
+    assert.equal(named.playerName, name);
+    const next = applyChoice(named, getCurrentBeat(named).choices[0].id);
+    assert.equal(next.currentSceneId, 'character_5_hair');
+    assert.equal(next.playerName, name);
+  }
+  assert.equal(applyChoice({ ...start, playerName: 'Existing name' }, 'ignore_email').playerName, 'Existing name');
 });

@@ -19,7 +19,7 @@ function colorAt(position: number): string {
   return '#' + channels.join('');
 }
 
-export function SkinToneSlider({ onChange, initialColor = '#CFA17E' }: { onChange: (color: string) => void; initialColor?: string }) {
+export function SkinToneSlider({ onChange, initialColor = '#CFA17E', label = 'The shade that would offend me personally' }: { onChange: (color: string) => void; initialColor?: string; label?: string }) {
   const [position, setPosition] = useState(() => {
     let best = 50;
     let distance = Infinity;
@@ -38,7 +38,7 @@ export function SkinToneSlider({ onChange, initialColor = '#CFA17E' }: { onChang
 
   return (
     <div className="skin-tone-picker">
-      <label htmlFor="skin-tone">The shade that would offend me personally</label>
+      <label htmlFor="skin-tone">{label}</label>
       <input
         id="skin-tone"
         type="range"

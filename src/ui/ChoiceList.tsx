@@ -3,9 +3,10 @@ import type { ChoiceDef } from '../engine/sceneTypes';
 interface ChoiceListProps {
   choices: ChoiceDef[];
   onChoose: (choiceId: string) => void;
+  onPreview?: (choiceId?: string) => void;
 }
 
-export function ChoiceList({ choices, onChoose }: ChoiceListProps) {
+export function ChoiceList({ choices, onChoose, onPreview }: ChoiceListProps) {
   const speakerNames = [...new Set(choices.flatMap((choice) => (choice.speaker ? [choice.speaker] : [])))];
 
   if (speakerNames.length > 0) {
@@ -41,6 +42,10 @@ export function ChoiceList({ choices, onChoose }: ChoiceListProps) {
           key={choice.id}
           type="button"
           className="choice-button"
+          onMouseEnter={() => onPreview?.(choice.id)}
+          onMouseLeave={() => onPreview?.()}
+          onFocus={() => onPreview?.(choice.id)}
+          onBlur={() => onPreview?.()}
           onClick={() => onChoose(choice.id)}
         >
           {choice.swatch ? (

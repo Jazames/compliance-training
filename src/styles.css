@@ -13,10 +13,18 @@
 .employee-record button, form button, .record-link { padding: 0.65rem 1rem; font: inherit; cursor: pointer; }
 .record-link { display: block; margin: 0 auto 0.75rem; }
 .facilities-email { background: white; border: 1px solid #aebfc8; padding: 1rem 1.5rem; margin-bottom: 1.25rem; }
-.restroom-diagram { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1rem; }
-.restroom-diagram > div { width: 22%; max-width: 150px; text-align: center; }
-.restroom-diagram svg { width: 100%; max-height: 210px; }
+.restroom-diagram { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.restroom-card { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 14px; text-align: center; border: 1px solid #c2cdd2; border-radius: 8px; }
+.restroom-card.choice-button { text-align: center; }
+.restroom-card--occupied { background: #e1e8eb; color: #52666e; }
+.restroom-diagram svg { width: 100%; height: 170px; flex-shrink: 0; }
 .restroom-diagram span { font-size: 0.875rem; }
+.restroom-occupant { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.scene-root[data-background='restroom'] { height: auto; aspect-ratio: 1120 / 690; }
+.restroom-occupant__character { width: 100%; height: 100%; }
+.restroom-occupant .rive-character { display: block; width: 100%; height: 100%; }
+.restroom-occupant .rive-character figcaption { display: none; }
+@media (max-width: 600px) { .restroom-diagram { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 * {
   box-sizing: border-box;
@@ -604,3 +612,37 @@ body {
 @keyframes spider-cross { 0% { left: -80px; } 40% { transform: translateY(-5px) rotate(-3deg); } 65% { transform: translateY(3px) rotate(2deg); } 100% { left: calc(100% + 80px); transform: translateY(0); } }
 @keyframes spider-scuttle { from { transform: rotate(-6deg) scaleX(.96); } to { transform: rotate(6deg) scaleX(1.04); } }
 @media (prefers-reduced-motion: reduce) { .spider-legs { animation: none; } }
+
+.scene-root[data-mirror] { height: clamp(420px, 65vw, 690px); }
+.mirror-stage { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 79px, #c0d2d0 80px 82px), repeating-linear-gradient(90deg, #dfebe7 0 119px, #c0d2d0 120px 122px); }
+.mirror-frame { position: absolute; inset: 62px 8% 22%; padding: 10px; border-radius: 18px; background: linear-gradient(125deg, #617e84, #e2eded 35%, #769197 70%, #c8d9da); box-shadow: 0 8px 20px #314c5040; }
+.mirror-reflection { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 10px; background: linear-gradient(120deg, #b3cccf, #e1eded 55%, #a4bfc4); container-type: size; }
+.mirror-portrait { position: absolute; width: 262.5cqh; height: 420cqh; left: calc(50% - 131.25cqh); top: -22cqh; }
+.mirror-portrait .rive-character { width: 100%; height: 100%; display: block; }
+.mirror-portrait .rive-character__canvas { min-height: 0; }
+.mirror-portrait figcaption { display: none; }
+.mirror-sink { position: absolute; bottom: 0; left: 0; width: 100%; height: 22%; overflow: visible; }
+@media (max-width: 600px) { .mirror-frame { left: 3%; right: 3%; padding: 7px; } }
+
+.scene-root[data-inbox] { height: auto; min-height: 410px; background: #edf2f4; }
+.scene-root[data-inbox] .scene-stage { position: relative; display: block; padding-top: 64px; }
+.scene-root[data-inbox] .scene-title-strip { position: absolute; top: 16px; left: 18px; }
+.inbox-stage { display: grid; grid-template-columns: minmax(150px, 25%) 1fr; min-height: 330px; background: white; border: 1px solid #bccdd2; border-radius: 8px; overflow: hidden; }
+.inbox-list { background: #e2eaee; border-right: 1px solid #bccdd2; }
+.inbox-message { padding: 20px 14px; background: #cbdde3; border-left: 4px solid #287e88; }
+.inbox-message p { margin-bottom: 0; }
+.inbox-skeleton { height: 70px; margin: 15px; border-bottom: 1px solid #c0ced4; background: linear-gradient(#c8d4d9 0 6px, transparent 6px 19px, #d1dce0 19px 25px, transparent 25px); }
+.inbox-stage .facilities-email { border: 0; margin: 0; padding: 24px; line-height: 1.65; }
+.recorded-name { padding: 12px; background: #edf2f3; font-weight: 700; }
+.dialogue-panel form { margin-top: 16px; }
+.meeting-stage { position: absolute; inset: 0; overflow: hidden; background: linear-gradient(#d7dedb 0 66%, #9baaa5 66% 68%, #aeb3a9 68%); }
+.meeting-window { position: absolute; top: 7%; left: 5%; width: 29%; height: 40%; border: 10px solid #f2f2e9; background: linear-gradient(90deg, transparent 47%, #edf1ea 47% 51%, transparent 51%), linear-gradient(#c0d6de, #e5ede4); }
+.meeting-board { position: absolute; top: 7%; right: 7%; width: 40%; height: 31%; background: #eef0e7; border: 8px solid #71867f; }
+.meeting-guest { position: absolute; bottom: 28%; width: 22%; height: 59%; }
+.meeting-table { position: absolute; top: 54%; left: 8%; width: 84%; height: 18%; border-radius: 40%; background: #a69174; border-bottom: 12px solid #756b5d; }
+.meeting-presenter, .meeting-player { position: absolute; bottom: 3%; height: 73%; width: 34%; }
+.meeting-presenter { left: 17%; }.meeting-player { right: 12%; }
+.meeting-stage .rive-character { width: 100%; height: 100%; display: block; }
+.meeting-stage figcaption { display: none; }
+.meeting-gift { overflow: visible; position: absolute; width: 22%; left: 73%; top: 47%; transform: rotate(-10deg); }
+@media (max-width: 600px) { .inbox-stage { grid-template-columns: 1fr; } .inbox-list { border: 0; } .inbox-skeleton { display: none; } .inbox-message { padding: 10px 14px; } .inbox-message p { margin: 4px 0 0; } .inbox-stage .facilities-email { padding: 16px; } }

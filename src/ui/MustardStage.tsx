@@ -47,11 +47,11 @@ export function MustardStage(props: Props) {
     {!partner ? <>
       <div className="kitchen-chair kitchen-chair--man" /><div className="kitchen-chair kitchen-chair--woman" />
       <div className="kitchen-observer kitchen-observer--man">
-        <RiveCharacter artboard="generic-man" name="" side="right" action="idle" seated sittingStyle="sideways" facing="left"
+        <RiveCharacter artboard="generic-man" name="" side="right" action="idle" seated sittingStyle="three-quarter" facing="left"
           appearanceBlend={0} outfitPrimaryColor="#85745F" hairColor="#80776F" />
       </div>
       <div className="kitchen-observer kitchen-observer--woman">
-        <RiveCharacter artboard="generic-woman" name="" side="right" action="idle" seated sittingStyle="sideways" facing="left"
+        <RiveCharacter artboard="generic-woman" name="" side="right" action="idle" seated sittingStyle="three-quarter" facing="left"
           appearanceBlend={0} outfitPrimaryColor="#687968" hairColor="#583629" />
       </div>
       <div className="kitchen-background-table" />

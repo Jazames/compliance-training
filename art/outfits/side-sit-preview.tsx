@@ -14,7 +14,7 @@ export function Preview() {
   return <div style={{ display: 'flex', background: '#eee' }}>
   {(['generic-man', 'generic-woman'] as const).map(artboard => <div key={artboard} style={{ width: 400, height: 640 }}>
     <RiveCharacter artboard={artboard} name="" side="center" action={query.get('walk') ? 'walk' : 'talk'}
-      seated={seated} sittingStyle={query.get('front') ? 'front' : 'sideways'}
+      seated={seated} sittingStyle={query.get('front') ? 'front' : query.get('profile') ? 'sideways' : 'three-quarter'}
       facing={query.get('left') ? 'left' : 'right'} appearanceBlend={Number(query.get('blend') ?? 0)}
       topId={Number(query.get('top') ?? 0)} bottomId={Number(query.get('bottom') ?? 0)} />
   </div>)}

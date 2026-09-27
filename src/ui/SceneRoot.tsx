@@ -4,6 +4,10 @@ import { RiveCharacter } from '../rive/RiveCharacter';
 import { HallwayStage } from './HallwayStage';
 import { MustardStage } from './MustardStage';
 import { SceneSpider } from './SceneSpider';
+import { RestroomOccupant } from './RestroomOccupant';
+import { MirrorStage } from './MirrorStage';
+import { InboxStage } from './InboxStage';
+import { MeetingStage } from './MeetingStage';
 import type { PlayerAppearance } from '../engine/playerAppearance';
 
 interface SceneRootProps {
@@ -21,6 +25,7 @@ interface SceneRootProps {
 const BACKGROUNDS: Record<string, string> = {
   'studio-chair': `${import.meta.env.BASE_URL}bg/studio-chair.png`,
   'break-room': `${import.meta.env.BASE_URL}bg/break-room.png`,
+  restroom: `${import.meta.env.BASE_URL}bg/restroom.svg`,
 };
 
 export function SceneRoot({
@@ -43,6 +48,8 @@ export function SceneRoot({
       <div
         className="scene-root"
         data-background={scene.backgroundKey}
+        data-mirror={scene.mirrorCloseup || undefined}
+        data-inbox={!!scene.email || undefined}
         style={
           {
             ['--romance-overlay' as string]: romanceOverlay,
@@ -54,23 +61,34 @@ export function SceneRoot({
         <SceneSpider key={spiderVisit} enabled={arachnophobia} eligible={spiderVisit % 2 === 0}
           delayMs={spiderVisit === 0 ? 13_000 : 37_000} />
         <div className="scene-stage">
-          {!scene.hallwayAction && !scene.mustardAction ? <div className="scene-title-strip">{scene.sceneLabel ?? 'Workplace conduct'}</div> : null}
+          {scene.email ? <InboxStage email={scene.email} name={scene.showRecordedName ? playerAppearance.name : undefined} /> : null}
+          {scene.meetingRoom ? <MeetingStage player={playerAppearance} /> : null}
+          {scene.mirrorCloseup ? <MirrorStage player={{ ...playerAppearance, name: playerAppearance.name || scene.characters?.find((character) => character.id === playerCharacterId)?.name || '' }} /> : null}
+          {scene.restroomFixture ? <RestroomOccupant fixture={scene.restroomFixture} player={playerAppearance} /> : null}
+          {!scene.hallwayAction && !scene.mustardAction && scene.sceneLabel !== '' ? <div className="scene-title-strip">{scene.sceneLabel ?? 'Workplace conduct'}</div> : null}
           {scene.mustardAction ? <MustardStage key={scene.id} action={scene.mustardAction}
             player={playerAppearance}
             entryActive={entryActive} /> : null}
           {scene.hallwayAction ? <HallwayStage key={scene.id} action={scene.hallwayAction}
             player={playerAppearance}
             entryActive={entryActive} /> : null}
-          {scene.characters?.length ? (
+          {!scene.mirrorCloseup && scene.characters?.length ? (
             <div className="character-layer" aria-label="Scenario characters">
               {scene.characters.filter((character) => !scene.playerOnly || character.id === playerCharacterId).map((character) => (
                 <RiveCharacter
                   key={character.id}
                   {...character.clothing}
-                  {...(character.id === playerCharacterId ? playerAppearance : {})}
+                  {...(character.id === playerCharacterId ? playerAppearance : {
+                    hairColor: character.hairColor,
+                    hairAccentColor: character.hairAccentColor,
+                    eyeColor: character.eyeColor,
+                  })}
                   artboard={character.artboard}
                   name={character.id === playerCharacterId && playerAppearance.name ? playerAppearance.name : character.name}
                   side={character.side}
+                  facing={character.facing}
+                  seated={character.seated}
+                  sittingStyle={character.sittingStyle}
                   action={
                     entryActive
                       ? (character.entryAction ?? character.action ?? 'idle')

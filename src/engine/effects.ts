@@ -11,6 +11,10 @@ export function applyEffects(state: GameState, effects: EffectDef[]): GameState 
   let next = state;
 
   for (const effect of effects) {
+    if (effect.kind === 'setPlayerName') {
+      if (!effect.onlyIfEmpty || !next.playerName.trim()) next = { ...next, playerName: effect.name };
+      continue;
+    }
     if (effect.kind === 'setPlayerClothing') {
       const current = next.playerClothing ?? defaultClothing(next.playerCharacterId);
       const clothing = { ...current };

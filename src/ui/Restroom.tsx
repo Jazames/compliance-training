@@ -1,7 +1,11 @@
+import type { ChoiceDef } from '../engine/sceneTypes';
+
 /** A non-graphic training diagram: occupied fixture is unavailable. */
-export function Restroom({ male }: { male: boolean }) {
+export function Restroom({ male, choices, onChoose }: { male: boolean; choices: ChoiceDef[]; onChoose: (id: string) => void }) {
   return <div className="restroom-diagram" aria-label={male ? 'Four urinals; the first is occupied' : 'Four stalls; feet are visible under the first'}>
-    {[0, 1, 2, 3].map((index) => <div key={index}>
+    {[0, 1, 2, 3].map((index) => {
+      const choice = choices[index - 1];
+      const illustration = <>
       <svg viewBox="0 0 120 170" role="img" aria-label={index === 0 ? 'Occupied by coworker' : `Available ${male ? 'urinal' : 'stall'} ${index}`}>
         {male ? <>
           <path d="M32 30 H88 V115 Q60 150 32 115 Z" fill="#eef4f6" stroke="#647880" strokeWidth="3" />
@@ -15,7 +19,10 @@ export function Restroom({ male }: { male: boolean }) {
           {index === 0 ? <path d="M35 145 h18 v15 H30 Z M68 145 h18 l5 15 H68 Z" fill="#293843" /> : null}
         </>}
       </svg>
-      <span>{index === 0 ? 'Occupied' : index === 1 ? 'Neighboring' : index === 2 ? 'One space away' : 'Farthest'}</span>
-    </div>)}
+      <span>{index === 0 ? 'Occupied' : choice?.label}</span>
+    </>;
+      return index === 0 ? <div className="restroom-card restroom-card--occupied" key={index}>{illustration}</div>
+        : choice ? <button type="button" className="restroom-card choice-button" key={choice.id} onClick={() => onChoose(choice.id)}>{illustration}</button> : null;
+    })}
   </div>;
 }

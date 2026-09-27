@@ -9,6 +9,7 @@ export interface ConditionExpr {
 }
 
 export type EffectDef =
+  | { kind: 'setPlayerName'; name: string; onlyIfEmpty?: boolean }
   | { kind: 'setFlag'; key: string; value: boolean }
   | { kind: 'setPlayerCharacter'; characterId: 'daniel' | 'rachel' }
   | { kind: 'setPlayerEyeColor'; color: string }
@@ -42,6 +43,7 @@ export interface ChoiceDef {
 
 export interface DialogueLine {
   speaker: string;
+  speakerRole?: 'otherCharacter';
   text: string;
 }
 
@@ -50,15 +52,26 @@ export interface CharacterPlacement {
   name: string;
   artboard: 'generic-man' | 'generic-woman';
   side: 'left' | 'center' | 'right';
+  /** Orientation is independent of placement; omitted uses the rig's right-facing default. */
+  facing?: 'left' | 'right';
+  seated?: boolean;
+  sittingStyle?: 'front' | 'sideways' | 'three-quarter';
   action?: 'idle' | 'talk' | 'walk';
   entryAction?: 'idle' | 'talk' | 'walk';
   framing?: 'full' | 'presenter';
   pose?: string;
   x?: number;
   clothing?: Partial<PlayerClothing>;
+  hairColor?: string;
+  hairAccentColor?: string;
+  eyeColor?: string;
 }
 
 export interface SceneDef {
+  meetingRoom?: boolean;
+  showRecordedName?: boolean;
+  mirrorCloseup?: boolean;
+  restroomFixture?: 1 | 2 | 3;
   id: string;
   type: SceneType;
   sceneLabel?: string;
@@ -75,6 +88,7 @@ export interface SceneDef {
   mustardAction?: 'spill' | 'leave' | 'montage' | 'remove';
   autoAdvance?: { afterMs: number; choiceId: string };
   skinTonePicker?: boolean;
+  skinToneLabel?: string;
   interaction?: 'restroom' | 'nameplate';
   choices?: ChoiceDef[];
   email?: { from: string; subject: string; body: string; signoff: string };

@@ -22,6 +22,7 @@ function App() {
     setVisit({ sceneId: game.currentSceneId, index: game.currentSceneId === 'welcome' ? 0 : visit.index + 1 });
   }
   const [nameDraft, setNameDraft] = useState('');
+  const [eyePreview, setEyePreview] = useState<string>();
   const [dialogueIndex, setDialogueIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const scene = getCurrentBeat(game);
@@ -55,11 +56,15 @@ function App() {
   const entryActive = dialogueIndex < 0;
   const dialogueComplete = dialogue.length === 0 || dialogueIndex >= dialogue.length;
   const currentLine = !entryActive && !dialogueComplete ? dialogue[dialogueIndex] : undefined;
+  const currentSpeaker = currentLine?.speakerRole === 'otherCharacter'
+    ? scene.characters?.find((character) => character.id !== game.playerCharacterId)?.name ?? currentLine.speaker
+    : currentLine?.speaker;
   const playerName = game.playerName || (game.playerCharacterId
     ? game.playerCharacterId.slice(0, 1).toUpperCase() + game.playerCharacterId.slice(1)
     : undefined);
 
   const choose = (choiceId: string) => {
+    setEyePreview(undefined);
     if (isTransitioning) return;
     if (scene.choices?.find((choice) => choice.id === choiceId)?.restart) setNameDraft('');
     if (!scene.fadeOnExit) {
@@ -101,23 +106,17 @@ function App() {
         spiderVisit={visit.index}
         arachnophobia={arachnophobia}
         scene={scene}
-        playerAppearance={getPlayerAppearance(game)}
+        playerAppearance={{ ...getPlayerAppearance(game), ...(scene.mirrorCloseup && eyePreview ? { eyeColor: eyePreview } : {}) }}
         meters={game.meters}
         playerCharacterId={game.playerCharacterId}
-        activeSpeaker={currentLine?.speaker}
+        activeSpeaker={currentSpeaker}
         entryActive={entryActive}
       >
-        {scene.interaction === 'restroom' ? <Restroom male={game.playerCharacterId === 'daniel'} /> : null}
-        {scene.email ? <article className="facilities-email">
-          <p><strong>From:</strong> {scene.email.from}</p>
-          <p><strong>Subject:</strong> {scene.email.subject}</p>
-          <p>{scene.email.body}</p>
-          <p style={{ whiteSpace: 'pre-line' }}>{scene.email.signoff}</p>
-        </article> : null}
+
         {entryActive ? (
           <DialogueBox title={scene.sceneLabel} body={scene.entryText} />
         ) : currentLine ? (
-          <DialogueBox title={currentLine.speaker.toLowerCase() === game.playerCharacterId ? playerName : currentLine.speaker} body={currentLine.text} />
+          <DialogueBox title={currentSpeaker?.toLowerCase() === game.playerCharacterId ? playerName : currentSpeaker} body={currentLine.text} />
         ) : (
           <DialogueBox title={scene.title} body={scene.body} />
         )}
@@ -131,10 +130,10 @@ function App() {
           </button>
         ) : null}
         {!entryActive && dialogueComplete && scene.skinTonePicker ? (
-          <SkinToneSlider initialColor={game.playerSkinColor} onChange={(color) => setGame((previous) =>
+          <SkinToneSlider key={scene.id} initialColor={game.playerSkinColor} label={scene.skinToneLabel} onChange={(color) => setGame((previous) =>
             applyEffects(previous, [{ kind: 'setPlayerSkinColor', color }]))} />
         ) : null}
-        {!entryActive && dialogueComplete && scene.nameplate ? <form onSubmit={(event) => {
+        {!entryActive && dialogueComplete && scene.nameplate ? <><ChoiceList choices={(scene.choices ?? []).filter((choice) => choice.id !== scene.nameplate?.choiceId)} onChoose={choose} /><form onSubmit={(event) => {
           event.preventDefault();
           if (!nameDraft.trim() || !scene.nameplate) return;
           const choiceId = scene.nameplate.choiceId;
@@ -143,7 +142,8 @@ function App() {
           <label htmlFor="plaque-name">{scene.nameplate.label}</label>
           <input id="plaque-name" required maxLength={scene.nameplate.maxLength} value={nameDraft} onChange={(e) => setNameDraft(e.target.value)} />
           <button type="submit" disabled={!nameDraft.trim()}>{scene.choices?.find((choice) => choice.id === scene.nameplate?.choiceId)?.label}</button>
-        </form> : !entryActive && dialogueComplete && !scene.autoAdvance ? <ChoiceList choices={(scene.choices ?? []).filter((choice) => evaluateConditions(game, choice.conditions))} onChoose={choose} /> : null}
+        </form></> : !entryActive && dialogueComplete && !scene.autoAdvance ? scene.interaction === 'restroom' ? <Restroom male={game.playerCharacterId === 'daniel'} choices={(scene.choices ?? []).filter((choice) => evaluateConditions(game, choice.conditions))} onChoose={choose} /> : <ChoiceList choices={(scene.choices ?? []).filter((choice) => evaluateConditions(game, choice.conditions))} onChoose={choose}
+          onPreview={scene.mirrorCloseup ? (id) => setEyePreview(scene.choices?.find((choice) => choice.id === id)?.swatch) : undefined} /> : null}
       </SceneRoot>
       <div className="scene-transition" aria-hidden="true" />
     </div>

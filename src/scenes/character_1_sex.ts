@@ -36,6 +36,7 @@ const scene: ScenarioDef = {
                     name: 'Rachel',
                     artboard: 'generic-woman',
                     side: 'right',
+                    facing: 'left',
                 },
             ],
             choices: [
