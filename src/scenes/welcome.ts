@@ -22,7 +22,7 @@ const scene: ScenarioDef = {
                     framing: 'presenter',
                     seated: true,
                     sittingStyle: 'three-quarter',
-                    clothing: { topId: 1, bottomId: 1, suitColor: '#495169', pantsColor: '#495169' },
+                    clothing: { topId: 1, bottomId: 3, suitColor: '#495169', pantsColor: '#495169' },
                     hairColor: '#181412',
                     hairAccentColor: '#66617B',
                     eyeColor: '#528DC3',
