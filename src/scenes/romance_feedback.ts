@@ -4,7 +4,7 @@ const scene: ScenarioDef = {
     entryBeat: 'drink_feedback_romance',
     beats: {
         drink_feedback_romance: {
-            id: 'drink_feedback_romance',
+            id: 'drink_feedback_romance', feedback: 'incorrect',
             type: 'dialogueScene',
             
             title: 'Not quite',

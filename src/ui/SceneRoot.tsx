@@ -9,6 +9,7 @@ import { MirrorStage } from './MirrorStage';
 import { InboxStage } from './InboxStage';
 import { MeetingStage } from './MeetingStage';
 import type { PlayerAppearance } from '../engine/playerAppearance';
+import { FeedbackSheet } from './FeedbackSheet';
 
 interface SceneRootProps {
   spiderVisit: number;
@@ -20,6 +21,8 @@ interface SceneRootProps {
   activeSpeaker?: string;
   entryActive?: boolean;
   children: ReactNode;
+  feedback?: SceneDef['feedback'];
+  feedbackTitle?: string;
 }
 
 const BACKGROUNDS: Record<string, string> = {
@@ -38,6 +41,8 @@ export function SceneRoot({
   activeSpeaker,
   entryActive = false,
   children,
+  feedback,
+  feedbackTitle,
 }: SceneRootProps) {
   const romanceOverlay = Math.min(1, meters.romanceDrift);
   const heistOverlay = Math.min(1, meters.heistDrift);
@@ -64,7 +69,7 @@ export function SceneRoot({
           {scene.email ? <InboxStage email={scene.email} name={scene.showRecordedName ? playerAppearance.name : undefined} /> : null}
           {scene.meetingRoom ? <MeetingStage player={playerAppearance} /> : null}
           {scene.mirrorCloseup ? <MirrorStage player={{ ...playerAppearance, name: playerAppearance.name || scene.characters?.find((character) => character.id === playerCharacterId)?.name || '' }} /> : null}
-          {scene.restroomFixture ? <RestroomOccupant fixture={scene.restroomFixture} player={playerAppearance} /> : null}
+          {scene.backgroundKey === 'restroom' ? <RestroomOccupant fixture={scene.restroomFixture} player={playerAppearance} /> : null}
           {!scene.hallwayAction && !scene.mustardAction && scene.sceneLabel !== '' ? <div className="scene-title-strip">{scene.sceneLabel ?? 'Workplace conduct'}</div> : null}
           {scene.mustardAction ? <MustardStage key={scene.id} action={scene.mustardAction}
             player={playerAppearance}
@@ -104,7 +109,7 @@ export function SceneRoot({
           ) : null}
         </div>
       </div>
-      <div className="dialogue-panel">{children}</div>
+      {feedback ? <FeedbackSheet status={feedback} title={feedbackTitle}>{children}</FeedbackSheet> : <div className="dialogue-panel">{children}</div>}
     </main>
   );
 }

@@ -100,7 +100,7 @@ const scene: ScenarioDef = {
             ],
         },
         drink_feedback_correct: {
-            id: 'drink_feedback_correct',
+            id: 'drink_feedback_correct', feedback: 'correct',
             type: 'trainingSlide',
             
             title: 'Correct',
@@ -114,7 +114,7 @@ const scene: ScenarioDef = {
             ],
         },
         drink_feedback_pressure: {
-            id: 'drink_feedback_pressure',
+            id: 'drink_feedback_pressure', feedback: 'incorrect',
             type: 'trainingSlide',
             
             title: 'Incorrect',
@@ -128,7 +128,7 @@ const scene: ScenarioDef = {
             ],
         },
         drink_feedback_avoidance: {
-            id: 'drink_feedback_avoidance',
+            id: 'drink_feedback_avoidance', feedback: 'incorrect',
             type: 'trainingSlide',
             
             title: 'Not recommended',

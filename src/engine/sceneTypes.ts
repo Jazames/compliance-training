@@ -68,10 +68,11 @@ export interface CharacterPlacement {
 }
 
 export interface SceneDef {
+  feedback?: 'correct' | 'incorrect';
   meetingRoom?: boolean;
   showRecordedName?: boolean;
   mirrorCloseup?: boolean;
-  restroomFixture?: 1 | 2 | 3;
+  restroomFixture?: 0 | 1 | 2 | 3;
   id: string;
   type: SceneType;
   sceneLabel?: string;

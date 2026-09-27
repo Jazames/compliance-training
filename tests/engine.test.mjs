@@ -50,7 +50,7 @@ test('mustard branches preserve the player and add only a small romance effect f
   }
 });
 
-test('all 5,184 creation answer combinations preserve order and finish the course', () => {
+test('all 6,912 creation answer combinations preserve order and finish the course', () => {
   let endings = 0;
   function visit(state, visited, depth = 0) {
     assert.ok(depth < 25);
@@ -70,7 +70,7 @@ test('all 5,184 creation answer combinations preserve order and finish the cours
     }
   }
   visit(createInitialGameState(42), ['welcome']);
-  assert.equal(endings, 6 * 3 * 6 * 4 * 12);
+  assert.equal(endings, 6 * 4 * 6 * 4 * 12);
 });
 
 test('feedback beats do not consume pending scenes; creation takes its required successor', () => {
@@ -175,4 +175,17 @@ test('Facilities literal replies and fallback preserve names through required co
     assert.equal(next.playerName, name);
   }
   assert.equal(applyChoice({ ...start, playerName: 'Existing name' }, 'ignore_email').playerName, 'Existing name');
+});
+
+test('asking the occupied coworker adds mild romance drift and retains the mirror route', () => {
+  for (const playerCharacterId of ['daniel', 'rachel']) {
+    const before = { ...createInitialGameState(42), playerCharacterId,
+      currentSceneId: 'character_3_eyes', currentBeatId: 'restroom_question' };
+    const after = applyChoice(before, 'restroom_ask');
+    assert.equal(getCurrentBeat(after).restroomFixture, 0);
+    assert.equal(getCurrentBeat(after).feedback, 'correct');
+    assert.equal(after.meters.romanceDrift, before.meters.romanceDrift + 0.05);
+    assert.deepEqual(after.queue, before.queue);
+    assert.equal(applyChoice(after, 'look_in_mirror').currentBeatId, 'mirror_question');
+  }
 });

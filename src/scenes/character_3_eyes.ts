@@ -8,7 +8,7 @@ const scene: ScenarioDef = {
     milestone: true,
     beats: {
         restroom_question: {
-            id: 'restroom_question', type: 'dialogueScene', 
+            id: 'restroom_question', type: 'dialogueScene',
             sceneLabel: 'Restroom · Professional proximity', interaction: 'restroom',
             backgroundKey: 'restroom',
             title: 'Which available fixture is appropriate to use?',
@@ -17,23 +17,32 @@ const scene: ScenarioDef = {
                 { id: 'restroom_near', label: 'Use the neighboring fixture', nextBeat: 'restroom_comfort', effects: [] },
                 { id: 'restroom_middle', label: 'Leave one fixture between you', nextBeat: 'restroom_space', effects: [] },
                 { id: 'restroom_far', label: 'Use the farthest fixture', nextBeat: 'restroom_space_far', effects: [] },
+                // Wording supplied by the user with the four-fixture bathroom request.
+                { id: 'restroom_ask', label: 'knock on the door or tap the shoulder asking how much longer they should be', nextBeat: 'restroom_courtesy', effects: [{ kind: 'addMeter', key: 'romanceDrift', amount: 0.05 }] },
             ],
         },
         restroom_comfort: {
             backgroundKey: 'restroom', restroomFixture: 1,
-            id: 'restroom_comfort', type: 'trainingSlide', 
+            id: 'restroom_comfort', feedback: 'correct', type: 'trainingSlide',
             title: 'Good', body: 'Good, coworkers should be comfortable with each other in the restrooms.',
+            choices: [{ id: 'look_in_mirror', label: 'Wash your hands and look in the mirror', nextBeat: 'mirror_question', effects: [] }],
+        },
+        restroom_courtesy: {
+            id: 'restroom_courtesy', feedback: 'correct', type: 'trainingSlide',
+            backgroundKey: 'restroom', restroomFixture: 0,
+            // User-supplied feedback, preserved verbatim.
+            body: 'courteously asking how long something will take is always accepted at our workplace',
             choices: [{ id: 'look_in_mirror', label: 'Wash your hands and look in the mirror', nextBeat: 'mirror_question', effects: [] }],
         },
         restroom_space: {
             backgroundKey: 'restroom', restroomFixture: 2,
-            id: 'restroom_space', type: 'trainingSlide', 
+            id: 'restroom_space', feedback: 'correct', type: 'trainingSlide',
             title: 'Good', body: 'Giving coworkers space in the restroom is always polite.',
             choices: [{ id: 'look_in_mirror', label: 'Wash your hands and look in the mirror', nextBeat: 'mirror_question', effects: [] }],
         },
         mirror_question: {
             mirrorCloseup: true,
-            id: 'mirror_question', playerOnly: true, type: 'dialogueScene', 
+            id: 'mirror_question', playerOnly: true, type: 'dialogueScene',
             sceneLabel: 'Restroom mirror · Self-assessment', characters: BREAK_ROOM_CHARACTERS,
             title: 'You look into the bathroom mirror. What color are your eyes?',
             body: 'Please complete this brief reflection before returning to work.',

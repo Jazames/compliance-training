@@ -176,7 +176,7 @@ VN-style: one Rive canvas per character, positioned with CSS on a shared scene r
 
 - Background is HTML/CSS layers.
 - Characters are absolutely positioned canvases.
-- Dialogue UI overlays on top.
+- Prompt, dialogue, and response UI sits below the scene; assessment feedback slides up over the preserved scene.
 
 This is simple and deploys cleanly to GitHub Pages with Vite static assets.
 
@@ -325,3 +325,17 @@ Validation commands:
 ## Source of truth
 
 - `scratchpad.md` is the project's tone, purpose, and creative constraints. Use it as direction for writing scenes, UI humor, and genre drift beats.
+
+## Shared scene presentation
+
+All scenes use the presentation sequence in `src/ui/useScenePresentation.ts`:
+
+1. The scenario prompt/narration slides up from the bottom (300 ms). Non-dialogue copy belongs in `title` and `body`.
+2. Each spoken `dialogue` line streams automatically at approximately 16 ms per Unicode character, with a 200 ms pause between lines. Completed lines stay visible. Do not add Continue or Review responses controls between lines.
+3. Once the narration entrance and dialogue finish, response controls fade in (240 ms). Hidden controls cannot receive focus or input.
+
+A normal unmodified key skips presentation to its end state without selecting an answer. Tab, modifier keys, browser shortcuts, repeated keydown events, and typing in editable fields do not skip. Reduced-motion preferences reveal content immediately. Appearance editing suspends presentation; closing the editor restarts that beat's presentation. Entry staging delays still precede speech; animation-only beats use their existing `autoAdvance` outcome when skipped, so effects and routing are preserved.
+
+Mark existing assessment outcomes with `feedback: 'correct'` or `feedback: 'incorrect'`. They display in a bottom sheet over the preceding scene, with green or red heading treatment; incorrect feedback text is red. Preserve the background and character instances. Feedback choices retain normal engine routing. Bathroom outcomes may add `restroomFixture` (0 for approaching the occupied coworker, 1–3 for free fixtures), and hair outcomes apply the selected appearance behind the sheet.
+
+Keep wording in scene data. Presentation code must not generate dialogue, feedback, or new choice labels. See [the scene authoring guide](src/scenes/README.md) for the authoring contract.

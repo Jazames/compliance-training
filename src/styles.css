@@ -646,3 +646,38 @@ body {
 .meeting-stage figcaption { display: none; }
 .meeting-gift { overflow: visible; position: absolute; width: 22%; left: 73%; top: 47%; transform: rotate(-10deg); }
 @media (max-width: 600px) { .inbox-stage { grid-template-columns: 1fr; } .inbox-list { border: 0; } .inbox-skeleton { display: none; } .inbox-message { padding: 10px 14px; } .inbox-message p { margin: 4px 0 0; } .inbox-stage .facilities-email { padding: 16px; } }
+.feedback-sheet {
+  position: fixed;
+  inset: auto 0 0;
+  box-sizing: border-box;
+  width: min(100%, 1120px);
+  max-width: 100%;
+  max-height: 65dvh;
+  margin: 0 auto;
+  padding: 24px 24px max(24px, env(safe-area-inset-bottom));
+  overflow-y: auto;
+  border: 1px solid #b6c6cc;
+  border-radius: 20px 20px 0 0;
+  background: #f3f8f9;
+  color: #23313a;
+  box-shadow: 0 -12px 48px #172f3e30;
+  animation: feedback-rise 280ms ease-out;
+}
+.feedback-sheet::backdrop { background: #132b3820; }
+.feedback-sheet[data-status="incorrect"] .dialogue-box { color: #a12424; }
+.feedback-sheet[data-status="incorrect"] .dialogue-box h2 { color: #a12424; }
+.feedback-sheet[data-status="correct"] .dialogue-box h2 { color: #17643d; }
+@keyframes feedback-rise { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .feedback-sheet { animation: none; } }
+.prompt-card { animation: prompt-rise 300ms ease-out both; }
+.scene-responses { opacity: 0; }
+.scene-responses[data-ready="true"] { animation: response-fade 240ms ease-out both; }
+.animations-skipped .prompt-card, .animations-skipped .scene-responses { animation: none; opacity: 1; transform: none; }
+.streamed-dialogue p { min-height: 1.5em; }
+@keyframes prompt-rise { from { transform: translateY(100vh); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes response-fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .prompt-card, .scene-responses[data-ready="true"] { animation: none; opacity: 1; } }
+.feedback-sheet .prompt-card { animation: none; }
+.feedback-sheet:has(.animations-skipped) { animation: none; }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }

@@ -28,7 +28,7 @@ const scene: ScenarioDef = {
             })),
         },
         salon_natural: {
-            id: 'salon_natural',
+            id: 'salon_natural', feedback: 'correct',
             type: 'dialogueScene',
             
             sceneLabel: 'Salon reward redeemed',
@@ -39,7 +39,7 @@ const scene: ScenarioDef = {
             choices: [{ id: 'continue_after_natural_hair', label: 'Continue', complete: true, effects: [{ kind: 'enqueueScene', scene: { sceneId: 'hallway', mode: 'required' } },] }],
         },
         salon_bright: {
-            id: 'salon_bright',
+            id: 'salon_bright', feedback: 'correct',
             type: 'dialogueScene',
             
             sceneLabel: 'Salon reward redeemed',

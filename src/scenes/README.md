@@ -26,7 +26,7 @@ Each `.ts` scenario file owns one complete encounter: staging, dialogue, questio
 
 A **scenario** is a complete encounter. A **beat** is one screen within it. The queue contains scenarios, never feedback beats.
 
-Edit `title`, `body`, `dialogue[].text`, and `choices[].label` for copy. `email` owns Facilities' sender, subject, message, and signoff. Visual fields belong to each beat, so switching to feedback does not accidentally inherit question-specific controls.
+Edit `title`, `body`, `dialogue[].text`, and `choices[].label` for copy. `email` owns Facilities' sender, subject, message, and signoff. Visual fields belong to each beat. Assessment feedback explicitly preserves the preceding artwork, while rendering only the feedback controls.
 
 Each choice must specify exactly one outcome:
 
@@ -125,3 +125,13 @@ The course now routes hallway → mustard → cybersecurity. `mustard.ts` owns t
 `MustardStage.tsx` supplies a deliberately rough CSS/vector kitchen with two seated observers. The spill stroke terminates at a stain in the player's coordinate system so the stain travels with the character. The montage starts with an announcement to the seated coworkers and then cuts to four distinct standing coworkers, with no invented conversation text. Removing the outer shirt plays the wrapper's interaction gesture and slides an SVG shirt overlay forward and down, revealing the alternate-color T-shirt outfit. The two observers remain visible. Current export lacks an Interacting animation; the wrapper falls back to the available Arm Wave. Top 2 is the independent T-shirt slot; the current bottom selection and colors are preserved.
 
 Reusable text-free props live in `public/props/`: mustard bottle, hotdog, broom, mop, and shirt. `SceneProp.tsx` handles base-path-safe URLs. The hallway now uses these external broom/mop SVGs rather than inline copies. New prose must still come from the author; all additions here are internal implementation notes.
+
+## Standard presentation and feedback
+
+Every beat uses the shared animation sequence: the non-dialogue prompt card slides up first, character dialogue streams next, and responses fade in last. Put non-dialogue content in `title`/`body` and speech in `dialogue`; do not insert extra Review responses or dialogue Continue buttons. Lines play automatically and remain visible after streaming. Current timing is 300 ms for the prompt, 16 ms per character plus 200 ms between lines, then a 240 ms response fade.
+
+Normal unmodified key presses skip to the final presentation state without choosing a response. Tab/modifier keys, browser shortcuts, repeated keydown events, and editing text or form fields are excluded. Reduced-motion users receive immediate text and controls. Entry delays remain part of the sequence. Skipping an animation-only beat invokes its existing `autoAdvance` choice, preserving effects and routing.
+
+Set `feedback: 'correct'` or `feedback: 'incorrect'` on an assessment outcome. The renderer keeps the preceding artwork and characters mounted and slides feedback up over them. Incorrect feedback is red; correct headings are green. Keep existing feedback wording and continuation choices in the scenario. A feedback beat does not consume queued scenes until its completion choice is selected.
+
+The restroom stage derives its variant from player appearance: four urinals for Daniel, four stalls for Rachel, with the leftmost occupied. `restroomFixture: 0` shows the player approaching that coworker; 1–3 select the free fixtures in order. The occupied card's courtesy interaction adds 0.05 romance drift and returns to the existing mirror route. Its label and feedback are user-supplied wording.
