@@ -36,7 +36,7 @@ const scene: ScenarioDef = {
             meetingRoom: true,
             title: 'Dress code assessment',
             body: 'Excellent choice, natural hair colors are always appropriate.',
-            choices: [{ id: 'continue_after_natural_hair', label: 'Continue', complete: true, effects: [{ kind: 'enqueueScene', scene: { sceneId: 'hallway', mode: 'required' } },] }],
+            choices: [{ id: 'continue_after_natural_hair', label: 'Continue', complete: true, effects: [{ kind: 'enqueueScene', scene: { sceneId: 'exam_intro', mode: 'required' } },] }],
         },
         salon_bright: {
             id: 'salon_bright', feedback: 'correct',
@@ -47,7 +47,7 @@ const scene: ScenarioDef = {
             meetingRoom: true,
             title: 'Dress code assessment',
             body: `Excellent choice. Unnatural colors may have been frowned upon in the 1950s, but this is ${new Date().getFullYear()} and any color that is authentic to your personality is permitted.`,
-            choices: [{ id: 'continue_after_bright_hair', label: 'Continue', complete: true, effects: [{ kind: 'enqueueScene', scene: { sceneId: 'hallway', mode: 'required' } },] }],
+            choices: [{ id: 'continue_after_bright_hair', label: 'Continue', complete: true, effects: [{ kind: 'enqueueScene', scene: { sceneId: 'exam_intro', mode: 'required' } },] }],
         }
     },
 };

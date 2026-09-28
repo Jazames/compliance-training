@@ -7,7 +7,7 @@ import { applyEffects } from '../src/engine/effects.ts';
 import { validateScenes } from '../src/engine/validateScenes.ts';
 
 const order = ['welcome', 'character_1_sex', 'character_2_skin', 'character_3_eyes',
-  'character_4_name', 'character_5_hair', 'hallway', 'mustard', 'cybersecurity', 'course_complete'];
+  'character_4_name', 'character_5_hair', 'exam_intro', 'hallway', 'mustard', 'cybersecurity', 'course_complete'];
 const ready = () => ({ ...createInitialGameState(42), flags: { characterCreationComplete: true } });
 
 test('hallway choices cut to distinct action beats before scheduling the next scene', () => {
