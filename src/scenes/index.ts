@@ -7,7 +7,9 @@ import hair from './character_5_hair';
 import hallway from './hallway';
 import mustard from './mustard';
 import cybersecurity from './cybersecurity';
+import gastonUsb from './gaston_usb';
 import examIntro from './exam_intro';
+import survivalElevator from './survival_elevator';
 import romance from './romance_notification';
 import complete from './course_complete';
 import intro from './training_intro';
@@ -16,7 +18,7 @@ import type { ScenarioDef } from '../engine/sceneTypes';
 import { validateScenes } from '../engine/validateScenes';
 
 const definitions = [welcome, sex, skin, eyes, name, hair, hallway, mustard,
-  cybersecurity, examIntro, romance, complete, intro, romanceFeedback];
+  cybersecurity, gastonUsb, examIntro, survivalElevator, romance, complete, intro, romanceFeedback];
 export const SCENES: Record<string, ScenarioDef> = Object.fromEntries(
   definitions.map((scene) => [scene.id, scene]),
 );

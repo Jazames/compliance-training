@@ -20,9 +20,11 @@ test('hallway choices cut to distinct action beats before scheduling the next sc
       assert.equal(acting.currentBeatId, action);
       assert.equal(getCurrentBeat(acting).hallwayAction, action);
       assert.equal(acting.queue.length, 0);
-      assert.deepEqual(acting.meters, state.meters);
+      assert.deepEqual(acting.meters, { ...state.meters,
+        survivalDrift: state.meters.survivalDrift + (action === 'jump' ? 0.05 : 0) });
       const finished = applyChoice(acting, getCurrentBeat(acting).autoAdvance.choiceId);
       assert.equal(finished.currentSceneId, 'mustard');
+      assert.deepEqual(finished.meters, acting.meters);
       assert.deepEqual(finished.completedMilestones, ['hallway']);
       assert.equal(finished.playerCharacterId, character);
     }
@@ -36,7 +38,7 @@ test('mustard branches preserve the player and add only a small romance effect f
       assert.equal(getCurrentBeat(state).entryDelayMs, 3200);
       const acting = applyChoice(state, action);
       assert.equal(getCurrentBeat(acting).mustardAction, action);
-      assert.equal(acting.meters.romanceDrift, action === 'remove' ? 0.02 : 0);
+      assert.equal(acting.meters.romanceDrift, action === 'remove' ? 0.05 : 0);
       assert.equal(acting.meters.compliance, state.meters.compliance);
       assert.equal(acting.meters.heistDrift, state.meters.heistDrift);
       assert.equal(acting.meters.survivalDrift, state.meters.survivalDrift);

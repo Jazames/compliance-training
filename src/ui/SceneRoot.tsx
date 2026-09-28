@@ -4,6 +4,7 @@ import { RiveCharacter } from '../rive/RiveCharacter';
 import { HallwayStage } from './HallwayStage';
 import { MustardStage } from './MustardStage';
 import { CybersecurityStage } from './CybersecurityStage';
+import { ElevatorMarmotStage } from './ElevatorMarmotStage';
 import { SceneSpider } from './SceneSpider';
 import { RestroomOccupant } from './RestroomOccupant';
 import { MirrorStage } from './MirrorStage';
@@ -67,7 +68,19 @@ export function SceneRoot({
         <SceneSpider key={spiderVisit} enabled={arachnophobia} eligible={spiderVisit % 2 === 0}
           delayMs={spiderVisit === 0 ? 13_000 : 37_000} />
         <div className="scene-stage">
+          {scene.elevatorMarmot ? <ElevatorMarmotStage player={playerAppearance} entryActive={entryActive} action={scene.elevatorAction} phoneLabel={scene.body} /> : null}
           {scene.cyberAction ? <CybersecurityStage action={scene.cyberAction} player={playerAppearance} entryActive={entryActive} /> : null}
+          {scene.driveExplorer ? <section className={`drive-explorer${scene.cyberAction === 'photos' ? ' is-browsing' : ''}`} aria-label={scene.driveExplorer.name}>
+            <header>{scene.driveExplorer.name}</header>
+            <ul>{scene.driveExplorer.folders.map((folder) => <li key={folder} data-photos={folder === 'photos' || undefined} data-system={folder.startsWith('.') || undefined}>
+              <svg viewBox="0 0 64 48" aria-hidden="true"><path fill="#c8a252" d="M3 4h23l7 7h28v33H3z" /><path fill="#e2c171" d="M3 17h58l-5 27H3z" /></svg>
+              <span>{folder}</span>
+            </li>)}{scene.driveExplorer.files?.map(file => <li key={file} data-system="true">
+              <svg viewBox="0 0 64 48" aria-hidden="true"><path fill="#e1e7eb" stroke="#82939f" strokeWidth="2" d="M17 2h21l10 10v34H17z" /><path fill="#b5c3cc" d="M38 2v11h10z" /><path stroke="#899ba6" strokeWidth="2" d="M23 23h19M23 29h19M23 35h14" /></svg>
+              <span>{file}</span>
+            </li>)}</ul>
+            {scene.cyberAction === 'photos' ? <div className="drive-photos" aria-hidden="true">{[0, 1, 2].map(index => <svg key={index} viewBox="0 0 160 100"><path fill={['#9db5b8', '#b9aab9', '#c3b292'][index]} d="M0 0h160v100H0z" /><circle cx="120" cy="24" r="12" fill="#e8dfbd" /><path fill="#5c7770" d="m0 100 50-60 35 40 28-28 47 48z" /></svg>)}</div> : null}
+          </section> : null}
           {scene.email ? <InboxStage email={scene.email} name={scene.showRecordedName ? playerAppearance.name : undefined} /> : null}
           {scene.meetingRoom ? <MeetingStage player={playerAppearance} /> : null}
           {scene.mirrorCloseup ? <MirrorStage player={{ ...playerAppearance, name: playerAppearance.name || scene.characters?.find((character) => character.id === playerCharacterId)?.name || '' }} /> : null}

@@ -88,7 +88,10 @@ export interface SceneDef {
   entryText?: string;
   hallwayAction?: 'approach' | 'jump' | 'pickup' | 'report';
   mustardAction?: 'spill' | 'leave' | 'montage' | 'remove';
-  cyberAction?: 'discover' | 'ignore' | 'trash' | 'plug' | 'report';
+  cyberAction?: 'discover' | 'ignore' | 'trash' | 'plug' | 'report' | 'inspect' | 'photos' | 'return' | 'desk' | 'message';
+  driveExplorer?: { name: string; folders: string[]; files?: string[] };
+  elevatorMarmot?: boolean;
+  elevatorAction?: 'enter' | 'facilities' | 'emergency' | 'leave';
   autoAdvance?: { afterMs: number; choiceId: string };
   skinTonePicker?: boolean;
   skinToneLabel?: string;

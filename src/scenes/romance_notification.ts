@@ -20,7 +20,7 @@ const scene: ScenarioDef = {
                     label: 'Schedule a cross-functional copier alignment sync',
                     complete: true, effects: [
                         { kind: 'setFlag', key: 'romanceCommit', value: true },
-                        { kind: 'addMeter', key: 'romanceDrift', amount: 0.6 },
+                        { kind: 'addMeter', key: 'romanceDrift', amount: 0.05 },
                     ],
                 },
             ],

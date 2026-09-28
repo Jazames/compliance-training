@@ -28,7 +28,7 @@ const scene: ScenarioDef = {
       mustardAction: 'spill', entryDelayMs: 3200, body: narration,
       choices: [
         ...actions.map((action, index) => ({ id: action, label: responses[index], nextBeat: action,
-          effects: action === 'remove' ? [{ kind: 'addMeter', key: 'romanceDrift', amount: 0.02 } as const] : [],
+          effects: action === 'remove' ? [{ kind: 'addMeter', key: 'romanceDrift', amount: 0.05 } as const] : [],
         })),
         // Additional response wording supplied verbatim by the user.
         { id: 'ignore', label: 'Ignore it and go about your day as normal', complete: true,

@@ -726,3 +726,92 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .cyber-stage *, .cyber-stage .cyber-player { animation-duration: 1ms !important; }
 }
+
+.cyber-stage--inspect .cyber-interior { animation: none; opacity: 1; }
+.cyber-stage--inspect .cyber-player { left: 45%; }
+.cyber-stage--inspect .cyber-usb { left: 62%; top: 57.5%; }
+.cyber-stage--inspect .cyber-monitor { fill: #c0dacd; }
+.drive-explorer { position: absolute; z-index: 4; inset: 8% 6% auto; min-height: 58%; background: #f0f2f3; border: 1px solid #82919b; border-radius: 9px; box-shadow: 0 20px 60px #14273266; overflow: hidden; animation: drive-explorer-open 260ms ease-out both; color: #263843; }
+.drive-explorer header { padding: 16px 20px; background: #d7e0e5; border-bottom: 1px solid #adbac3; font-weight: 600; }
+.drive-explorer ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(95px, 1fr)); gap: 24px; padding: 24px; margin: 0; list-style: none; }
+.drive-explorer li { display: flex; flex-direction: column; align-items: center; gap: 8px; overflow-wrap: anywhere; }
+.drive-explorer svg { width: 64px; height: 48px; }
+@keyframes drive-explorer-open { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .drive-explorer { animation: none; } }
+
+.elevator-encounter, .elevator-hall { position: absolute; inset: 0; width: 100%; height: 100%; }
+.elevator-encounter { overflow: hidden; }
+.elevator-doors { position: absolute; left: 60.5%; top: 14%; width: 27%; height: 59.3%; overflow: hidden; }
+.elevator-door { position: absolute; inset-block: 0; width: 50%; background: linear-gradient(90deg, #87969e, #c0c9cc 45%, #9caab1); border: 1px solid #667981; animation: elevator-open-left 2.4s .3s ease-in-out both; }
+.elevator-door--right { left: 50%; animation-name: elevator-open-right; }
+.elevator-player { position: absolute; left: 36%; bottom: 10%; width: 22%; height: 76%; }
+.elevator-player .rive-character { width: 100%; height: 100%; display: block; animation: none; }
+.elevator-player .rive-character__canvas { min-height: 0; }
+.elevator-player figcaption { display: none; }
+.marmot-path { position: absolute; width: 14%; height: 14%; left: -15%; top: 75%; transform-origin: center bottom; animation: marmot-run 6s linear both; }
+.marmot { width: 100%; height: 100%; overflow: visible; animation: marmot-scuttle .16s ease-in-out infinite alternate; }
+.marmot-legs { transform-origin: center; animation: marmot-feet .16s linear infinite alternate; }
+@keyframes elevator-open-left { to { transform: translateX(-100%); } }
+@keyframes elevator-open-right { to { transform: translateX(100%); } }
+@keyframes marmot-run {
+  0% { left: -15%; top: 75%; transform: scale(1); }
+  40% { left: 39%; top: 78%; transform: scale(1); }
+  47% { left: 37%; top: 74%; transform: rotate(-12deg) scale(1.08); }
+  55% { left: 42%; top: 78%; transform: rotate(0) scale(1); }
+  75% { left: 62%; top: 77%; transform: scale(1); }
+  90%, 100% { left: 67%; top: 56%; transform: rotate(-15deg) scale(.6); }
+}
+@keyframes marmot-scuttle { to { transform: translateY(-2px); } }
+@keyframes marmot-feet { from { transform: translateX(-4px); } to { transform: translateX(4px); } }
+.elevator-encounter.is-settled .marmot-path { animation: none; left: 67%; top: 56%; transform: rotate(-15deg) scale(.6); }
+.elevator-encounter.is-settled .marmot, .elevator-encounter.is-settled .marmot-legs { animation: none; }
+.elevator-encounter.is-settled .elevator-door--left { animation: none; transform: translateX(-100%); }
+.elevator-encounter.is-settled .elevator-door--right { animation: none; transform: translateX(100%); }
+@media (prefers-reduced-motion: reduce) { .elevator-encounter * { animation-duration: 1ms !important; animation-delay: 0ms !important; animation-iteration-count: 1 !important; } }
+
+/* Decision cutaways retain the already loaded stage and character canvases. */
+.cyber-stage--photos .cyber-interior, .cyber-stage--desk .cyber-interior, .cyber-stage--message .cyber-interior { animation: none; opacity: 1; }
+.cyber-stage--photos .cyber-player, .cyber-stage--message .cyber-player { left: 45%; }
+.cyber-stage--photos .cyber-usb, .cyber-stage--message .cyber-usb { left: 62%; top: 57.5%; }
+.cyber-stage--return .cyber-interior { animation: usb-leave-office 6s linear both; }
+.cyber-stage--return .cyber-player { animation: usb-return-player 6s linear both; }
+.cyber-stage--return .cyber-usb { animation: usb-return-drive 6s linear both; }
+.cyber-stage--desk .cyber-player { animation: usb-desk-player 6s linear both; }
+.cyber-stage--desk .cyber-usb { animation: usb-desk-drive 6s linear both; }
+@keyframes usb-leave-office { 0%, 35% { opacity: 1; } 48%, 100% { opacity: 0; } }
+@keyframes usb-return-player { 0% { left: 45%; opacity: 1; } 35% { left: -20%; opacity: 0; } 45% { left: -20%; opacity: 0; } 70%, 100% { left: 34%; opacity: 1; } }
+@keyframes usb-return-drive { 0% { left: 62%; top: 57.5%; } 12% { left: 59%; top: 58%; opacity: 1; } 35%, 45% { left: -6%; top: 58%; opacity: 0; } 70% { left: 48%; top: 58%; opacity: 1; } 85%, 100% { left: 48%; top: 85%; opacity: 1; } }
+@keyframes usb-desk-player { 0%, 45% { left: 45%; } 100% { left: -25%; } }
+@keyframes usb-desk-drive { 0% { left: 62%; top: 57.5%; } 25% { left: 60%; top: 55%; } 45%, 100% { left: 72%; top: 61%; } }
+.drive-explorer.is-browsing li[data-photos] { animation: folder-selected 6s both; }
+.drive-photos { position: absolute; inset: 65px 20px 20px; display: flex; align-items: center; gap: 15px; padding: 20px; background: #eef2f3; animation: photos-open 6s both; }
+.drive-photos svg { width: 30%; height: auto; box-shadow: 0 3px 12px #26384344; }
+.drive-photos svg:nth-child(2) { animation: photo-view 6s both; }
+@keyframes folder-selected { 0%, 15% { background: transparent; } 20%, 100% { background: #b8d4e6; } }
+@keyframes photos-open { 0%, 25% { opacity: 0; transform: translateY(10px); } 35%, 100% { opacity: 1; transform: none; } }
+@keyframes photo-view { 0%, 55% { transform: none; } 75%, 100% { transform: scale(1.7); } }
+.usb-message { position: absolute; z-index: 5; left: 45%; top: 24%; width: 42%; animation: message-compose 6s both; }
+.message-lines { stroke-dasharray: 110; animation: message-type 3s linear both; }
+.message-send { animation: message-sent 6s both; }
+@keyframes message-compose { 0% { opacity: 0; transform: translateY(30px); } 15%, 80% { opacity: 1; transform: none; } 100% { opacity: 0; transform: translateY(-60px); } }
+@keyframes message-type { from { stroke-dashoffset: 110; } to { stroke-dashoffset: 0; } }
+@keyframes message-sent { 0%, 65% { transform: none; } 100% { transform: translate(60px, -40px); opacity: 0; } }
+.elevator-action--enter .elevator-player { animation: elevator-step-in 6s linear both; }
+.elevator-action--enter .elevator-doors { z-index: 5; }
+.elevator-action--enter .elevator-door--left { animation: elevator-close-left 6s both; }
+.elevator-action--enter .elevator-door--right { animation: elevator-close-right 6s both; }
+.elevator-action--leave .elevator-player { animation: elevator-walk-away 4s linear both; }
+@keyframes elevator-step-in { 0% { left: 36%; bottom: 10%; transform: scale(1); } 55%, 100% { left: 64%; bottom: 28%; transform: scale(.68); } }
+@keyframes elevator-close-left { 0%, 60% { transform: translateX(-100%); } 90%, 100% { transform: none; } }
+@keyframes elevator-close-right { 0%, 60% { transform: translateX(100%); } 90%, 100% { transform: none; } }
+@keyframes elevator-walk-away { to { left: -25%; } }
+.elevator-phone { position: absolute; z-index: 5; left: 52%; top: 22%; width: 28%; max-width: 240px; padding: 20px; border: 7px solid #293a44; border-radius: 20px; background: #eef3f1; text-align: center; animation: phone-lift 1s both; }
+.elevator-phone span { font-size: clamp(12px, 2vw, 20px); }
+.elevator-phone svg { width: 100%; }
+.call-pulse { transform-origin: center; animation: call-pulse 1.2s ease-out infinite; }
+@keyframes phone-lift { from { opacity: 0; transform: translateY(100px) rotate(15deg); } to { opacity: 1; transform: none; } }
+@keyframes call-pulse { to { transform: scale(1.2); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .drive-photos, .drive-photos *, .drive-explorer.is-browsing li, .usb-message, .usb-message *, .elevator-phone, .elevator-phone * { animation-duration: 1ms !important; animation-iteration-count: 1 !important; } }
+
+.drive-explorer { max-height: 84%; overflow-y: auto; }
+.drive-explorer li[data-system] { opacity: .65; }

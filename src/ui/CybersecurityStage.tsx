@@ -15,8 +15,9 @@ export function CybersecurityStage({ action, player, entryActive }: {
     const timers = [1200, 3600, 5000].map((delay, index) => window.setTimeout(() => setStep(index + 1), delay));
     return () => timers.forEach(window.clearTimeout);
   }, [action, playing]);
-  const indoors = action === 'plug' || action === 'report';
-  const motion = action === 'discover' ? (entryActive ? 'walk' : 'idle')
+  const indoors = ['plug', 'report', 'inspect', 'photos', 'return', 'desk', 'message'].includes(action);
+  const motion = ['inspect', 'photos', 'message'].includes(action) ? 'idle'
+    : action === 'return' || action === 'desk' ? (step < 2 ? 'walk' : 'grab') : action === 'discover' ? (entryActive ? 'walk' : 'idle')
     : step === 0 && action !== 'ignore' ? 'grab'
     : step < 2 ? 'walk' : action === 'report' ? 'talk' : action === 'plug' && step === 2 ? 'grab' : 'idle';
   return <div className={`cyber-stage cyber-stage--${action}`} aria-hidden="true">
@@ -51,6 +52,7 @@ export function CybersecurityStage({ action, player, entryActive }: {
     </svg>
     <div className="cyber-technician"><RiveCharacter artboard="generic-man" name="" side="right" facing="left" appearanceBlend={0} action={action === 'report' && step >= 2 ? 'talk' : 'idle'} outfitPrimaryColor="#697d78" hairColor="#535052" /></div>
     <div className="cyber-player"><RiveCharacter {...player} side="left" facing={action === 'trash' ? 'left' : 'right'} action={motion} /></div>
+    {action === 'message' ? <div className="usb-message" aria-hidden="true"><svg viewBox="0 0 180 120"><rect x="2" y="2" width="176" height="116" rx="12" fill="#edf3f4" stroke="#536f7c" strokeWidth="4" /><path className="message-lines" stroke="#8aa0a8" strokeWidth="7" d="M25 28h110M25 48h85M25 68h100" /><path className="message-send" fill="#286d79" d="m110 76 46 15-46 15 7-15z" /></svg></div> : null}
     <svg className="cyber-usb" viewBox="0 0 70 30"><path fill="#c7cdd0" stroke="#34434b" strokeWidth="2" d="M42 6h25v18H42z" /><path fill="#243c50" d="M3 2h44v26H3z" /><path stroke="#667987" strokeWidth="3" d="M54 10v10m7-10v10" /></svg>
   </div>;
 }

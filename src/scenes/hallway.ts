@@ -15,7 +15,11 @@ const actionBeats = Object.fromEntries(actions.map((action, index): [string, Sce
     autoAdvance: { afterMs: 4800, choiceId: 'finish_action' },
     choices: [{
       id: 'finish_action', label: responses[index], complete: true,
-      effects: [{ kind: 'enqueueScene', scene: { sceneId: 'mustard', mode: 'course' } }],
+      effects: [
+        { kind: 'enqueueScene', scene: { sceneId: 'mustard', mode: 'course' } },
+        { kind: 'enqueueScene', scene: { sceneId: 'survival_elevator', mode: 'optional', priority: 10,
+          oneShotKey: 'survival_elevator', conditions: [{ kind: 'meterAtLeast', key: 'survivalDrift', value: 0.3 }] } },
+      ],
     }],
   },
 ]));
@@ -30,7 +34,8 @@ const scene: ScenarioDef = {
       hallwayAction: 'approach', entryDelayMs: 2200,
       body: narration,
       choices: actions.map((action, index) => ({
-        id: action, label: responses[index], nextBeat: action, effects: [],
+        id: action, label: responses[index], nextBeat: action,
+        effects: action === 'jump' ? [{ kind: 'addMeter', key: 'survivalDrift', amount: 0.05 }] : [],
       })),
     },
     ...actionBeats,

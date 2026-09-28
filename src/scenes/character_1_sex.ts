@@ -47,7 +47,7 @@ const scene: ScenarioDef = {
                     nextBeat: 'drink_feedback_pressure', effects: [
                         { kind: 'setPlayerCharacter', characterId: 'daniel' },
                         { kind: 'addMeter', key: 'compliance', amount: -0.2 },
-                        { kind: 'addMeter', key: 'romanceDrift', amount: 0.1 },
+                        { kind: 'addMeter', key: 'romanceDrift', amount: 0.05 },
                     ],
                 },
                 {
@@ -75,7 +75,7 @@ const scene: ScenarioDef = {
                     nextBeat: 'drink_feedback_pressure', effects: [
                         { kind: 'setPlayerCharacter', characterId: 'rachel' },
                         { kind: 'addMeter', key: 'compliance', amount: -0.2 },
-                        { kind: 'addMeter', key: 'romanceDrift', amount: 0.1 },
+                        { kind: 'addMeter', key: 'romanceDrift', amount: 0.05 },
                     ],
                 },
                 {
@@ -85,7 +85,7 @@ const scene: ScenarioDef = {
                     nextBeat: 'drink_feedback_avoidance', effects: [
                         { kind: 'setPlayerCharacter', characterId: 'rachel' },
                         { kind: 'addMeter', key: 'compliance', amount: -0.05 },
-                        { kind: 'addMeter', key: 'survivalDrift', amount: 0.1 },
+                        { kind: 'addMeter', key: 'survivalDrift', amount: 0.05 },
                     ],
                 },
                 {

@@ -19,7 +19,7 @@ const scene: ScenarioDef = {
                     id: 'flirt_with_module',
                     label: 'Compliment the training slide on its visual hierarchy',
                     complete: true, effects: [{ kind: 'enqueueScene', scene: { sceneId: 'hallway', mode: 'course' } },
-                        { kind: 'addMeter', key: 'romanceDrift', amount: 0.25 },
+                        { kind: 'addMeter', key: 'romanceDrift', amount: 0.05 },
                         {
                             kind: 'enqueueScene', scene: { sceneId: 'romance_notification', mode: 'optional', priority: 10, oneShotKey: 'romance_ping' },
                         },
