@@ -678,3 +678,51 @@ body {
 @media (prefers-reduced-motion: reduce) { .scene-curtain { animation: none !important; } }
 .feedback-sheet.is-leaving { animation: feedback-leave 300ms ease both; pointer-events: none; }
 @keyframes feedback-leave { to { opacity: 0; } }
+
+/* Parking-lot USB encounter: all actors and vector props persist across beats. */
+.cyber-stage, .cyber-backdrop, .cyber-interior { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cyber-stage { overflow: hidden; }
+.cyber-interior { opacity: 0; }
+.cyber-interior.is-visible { animation: cyber-enter-office 7s linear both; }
+.cyber-player, .cyber-technician { position: absolute; left: 34%; bottom: 10%; width: 22%; height: 76%; z-index: 2; }
+.cyber-technician { left: 65%; opacity: 0; }
+.cyber-stage .rive-character { display: block; width: 100%; height: 100%; animation: none; }
+.cyber-stage .rive-character__canvas { min-height: 0; }
+.cyber-stage figcaption { display: none; }
+.cyber-usb { position: absolute; left: 48%; top: 85%; width: 5%; height: 3%; z-index: 3; }
+.cyber-stage--discover .cyber-player { animation: cyber-discover 2.6s linear both; }
+.cyber-stage--ignore .cyber-player { animation: cyber-car 3.6s linear both; }
+.cyber-stage--trash .cyber-player { animation: cyber-bin 7s linear both; }
+.cyber-stage--trash .cyber-usb { animation: cyber-discard 7s linear both; }
+.cyber-stage--plug .cyber-player, .cyber-stage--report .cyber-player { animation: cyber-return 7s linear both; }
+.cyber-stage--plug .cyber-usb { animation: cyber-insert 7s linear both; }
+.cyber-stage--report .cyber-usb { animation: cyber-handoff 7s linear both; }
+.cyber-stage--report .cyber-technician { animation: cyber-enter-office 7s linear both; }
+.cyber-stage--plug .cyber-monitor { animation: cyber-screen 7s linear both; }
+@keyframes cyber-discover { from { left: -20%; } to { left: 34%; } }
+@keyframes cyber-car { from { left: 34%; } to { left: 76%; } }
+@keyframes cyber-bin { 0%, 17% { left: 34%; } 51%, 100% { left: 15%; } }
+@keyframes cyber-discard {
+  0% { left: 48%; top: 85%; } 17% { left: 43%; top: 52%; }
+  51% { left: 23%; top: 52%; } 63% { left: 15%; top: 63%; opacity: 1; }
+  72%, 100% { left: 15%; top: 72%; opacity: 0; }
+}
+@keyframes cyber-enter-office { 0%, 36% { opacity: 0; } 48%, 100% { opacity: 1; } }
+@keyframes cyber-return {
+  0%, 17% { left: 34%; opacity: 1; } 36% { left: 0%; opacity: 0; }
+  40% { left: 25%; opacity: 0; } 51%, 100% { left: 45%; opacity: 1; }
+}
+@keyframes cyber-insert {
+  0% { left: 48%; top: 85%; } 17% { left: 48%; top: 52%; opacity: 1; }
+  36% { left: 14%; top: 52%; opacity: 0; } 40% { left: 39%; top: 52%; opacity: 0; }
+  51% { left: 59%; top: 52%; opacity: 1; } 72%, 100% { left: 62%; top: 57.5%; opacity: 1; }
+}
+@keyframes cyber-handoff {
+  0% { left: 48%; top: 85%; } 17% { left: 48%; top: 52%; opacity: 1; }
+  36% { left: 14%; top: 52%; opacity: 0; } 40% { left: 39%; top: 52%; opacity: 0; }
+  51% { left: 59%; top: 52%; opacity: 1; } 72%, 100% { left: 71%; top: 62%; opacity: 1; }
+}
+@keyframes cyber-screen { 0%, 71% { fill: #718f9c; } 80%, 100% { fill: #c0dacd; } }
+@media (prefers-reduced-motion: reduce) {
+  .cyber-stage *, .cyber-stage .cyber-player { animation-duration: 1ms !important; }
+}

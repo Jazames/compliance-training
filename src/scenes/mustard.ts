@@ -26,9 +26,16 @@ const scene: ScenarioDef = {
     mustard_question: {
       id: 'mustard_question', type: 'dialogueScene', backgroundKey: 'mustard-kitchen',
       mustardAction: 'spill', entryDelayMs: 3200, body: narration,
-      choices: actions.map((action, index) => ({ id: action, label: responses[index], nextBeat: action,
-        effects: action === 'remove' ? [{ kind: 'addMeter', key: 'romanceDrift', amount: 0.02 }] : [],
-      })),
+      choices: [
+        ...actions.map((action, index) => ({ id: action, label: responses[index], nextBeat: action,
+          effects: action === 'remove' ? [{ kind: 'addMeter', key: 'romanceDrift', amount: 0.02 } as const] : [],
+        })),
+        // Additional response wording supplied verbatim by the user.
+        { id: 'ignore', label: 'Ignore it and go about your day as normal', complete: true,
+          effects: [{ kind: 'enqueueScene', scene: { sceneId: 'cybersecurity', mode: 'course' } }] },
+        { id: 'wipe', label: 'wipe it up as best as you can with a napkin', complete: true,
+          effects: [{ kind: 'enqueueScene', scene: { sceneId: 'cybersecurity', mode: 'course' } }] },
+      ],
     },
     ...actionBeats,
   },

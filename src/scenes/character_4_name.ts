@@ -1,5 +1,4 @@
 import type { ScenarioDef } from '../engine/sceneTypes';
-import { BREAK_ROOM_CHARACTERS } from './shared';
 const scene: ScenarioDef = {
     id: 'character_4_name',
     entryBeat: 'facilities_email',
@@ -15,9 +14,9 @@ const scene: ScenarioDef = {
             // Prompt and named choices supplied verbatim by the user.
             body: 'You receive an email while diligently laboring at your workstation from facilities, asking what name should go on your name plaque. How do you respond?',
             choices: [
-                { id: 'literal_name', label: 'Just put my name in it', nextBeat: 'nameplate_recorded', effects: [{ kind: 'setPlayerName', name: 'Just put my name in it' }] },
-                { id: 'slim_shady', label: 'Slim Shady', nextBeat: 'nameplate_recorded', effects: [{ kind: 'setPlayerName', name: 'Slim Shady' }] },
-                { id: 'submit_nameplate', label: 'Send reply to Facilities', nextBeat: 'nameplate_recorded', effects: [] },
+                { id: 'literal_name', label: 'Just put my name in it', complete: true, effects: [{ kind: 'setPlayerName', name: 'Just put my name in it' }, { kind: 'enqueueScene', scene: { sceneId: 'character_5_hair', mode: 'required' } }] },
+                { id: 'slim_shady', label: 'Slim Shady', complete: true, effects: [{ kind: 'setPlayerName', name: 'Slim Shady' }, { kind: 'enqueueScene', scene: { sceneId: 'character_5_hair', mode: 'required' } }] },
+                { id: 'submit_nameplate', label: 'Send reply to Facilities', complete: true, effects: [{ kind: 'enqueueScene', scene: { sceneId: 'character_5_hair', mode: 'required' } }] },
                 { id: 'ignore_email', label: 'Do not respond', nextBeat: 'facilities_followup', effects: [{ kind: 'setPlayerName', name: 'johnny tightlipps', onlyIfEmpty: true }] },
             ],
         },
@@ -28,16 +27,8 @@ const scene: ScenarioDef = {
             showRecordedName: true,
             choices: [{ id: 'collect_reward', label: 'Collect your employee reward', complete: true, effects: [{ kind: 'enqueueScene', scene: { sceneId: 'character_5_hair', mode: 'required' } }] }],
         },
-        nameplate_recorded: {
-            id: 'nameplate_recorded', type: 'dialogueScene',
-            characters: BREAK_ROOM_CHARACTERS, title: 'Your nameplate has entered production.',
-            body: 'This is now your name. Corrections can be requested through your employee record.',
-            choices: [{ id: 'redeem_salon_reward', label: 'Collect your employee reward', complete: true, effects: [{ kind: 'enqueueScene', scene: { sceneId: 'character_5_hair', mode: 'required' } }] }],
-        },
     },
 };
 // Visual identity persists across local beats and compatible scenario handoffs.
 for (const beat of Object.values(scene.beats)) beat.stageKey = 'inbox';
-scene.beats.nameplate_recorded.stageKey = 'break-room';
-scene.beats.nameplate_recorded.backgroundKey = 'break-room';
 export default scene;

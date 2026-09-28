@@ -3,6 +3,7 @@ import type { MeterState, SceneDef } from '../engine/sceneTypes';
 import { RiveCharacter } from '../rive/RiveCharacter';
 import { HallwayStage } from './HallwayStage';
 import { MustardStage } from './MustardStage';
+import { CybersecurityStage } from './CybersecurityStage';
 import { SceneSpider } from './SceneSpider';
 import { RestroomOccupant } from './RestroomOccupant';
 import { MirrorStage } from './MirrorStage';
@@ -66,6 +67,7 @@ export function SceneRoot({
         <SceneSpider key={spiderVisit} enabled={arachnophobia} eligible={spiderVisit % 2 === 0}
           delayMs={spiderVisit === 0 ? 13_000 : 37_000} />
         <div className="scene-stage">
+          {scene.cyberAction ? <CybersecurityStage action={scene.cyberAction} player={playerAppearance} entryActive={entryActive} /> : null}
           {scene.email ? <InboxStage email={scene.email} name={scene.showRecordedName ? playerAppearance.name : undefined} /> : null}
           {scene.meetingRoom ? <MeetingStage player={playerAppearance} /> : null}
           {scene.mirrorCloseup ? <MirrorStage player={{ ...playerAppearance, name: playerAppearance.name || scene.characters?.find((character) => character.id === playerCharacterId)?.name || '' }} /> : null}

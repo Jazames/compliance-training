@@ -170,11 +170,14 @@ test('Facilities literal replies and fallback preserve names through required co
   for (const [choice, name] of [['literal_name', 'Just put my name in it'], ['slim_shady', 'Slim Shady'], ['ignore_email', 'johnny tightlipps']]) {
     const named = applyChoice(start, choice);
     assert.equal(named.playerName, name);
-    const next = applyChoice(named, getCurrentBeat(named).choices[0].id);
+    const next = choice === 'ignore_email' ? applyChoice(named, getCurrentBeat(named).choices[0].id) : named;
     assert.equal(next.currentSceneId, 'character_5_hair');
     assert.equal(next.playerName, name);
   }
   assert.equal(applyChoice({ ...start, playerName: 'Existing name' }, 'ignore_email').playerName, 'Existing name');
+  const custom = applyChoice({ ...start, playerName: 'Bungus' }, 'submit_nameplate');
+  assert.equal(custom.currentSceneId, 'character_5_hair');
+  assert.equal(custom.playerName, 'Bungus');
 });
 
 test('asking the occupied coworker adds mild romance drift and retains the mirror route', () => {

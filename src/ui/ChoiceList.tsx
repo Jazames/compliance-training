@@ -14,7 +14,8 @@ export function ChoiceList({ choices, onChoose, onPreview }: ChoiceListProps) {
       <div className="choice-groups" aria-label="Character responses">
         {speakerNames.map((speaker) => (
           <section className="choice-group" key={speaker} aria-labelledby={`choices-${speaker}`}>
-            <h3 id={`choices-${speaker}`}>Play as {speaker}</h3>
+            {/* Response headings supplied by the user: "Daniel responses" / "Rachel responses". */}
+            <h3 id={`choices-${speaker}`}>{speaker} responses</h3>
             <div className="choice-list">
               {choices
                 .filter((choice) => choice.speaker === speaker)

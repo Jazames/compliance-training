@@ -88,6 +88,7 @@ export interface SceneDef {
   entryText?: string;
   hallwayAction?: 'approach' | 'jump' | 'pickup' | 'report';
   mustardAction?: 'spill' | 'leave' | 'montage' | 'remove';
+  cyberAction?: 'discover' | 'ignore' | 'trash' | 'plug' | 'report';
   autoAdvance?: { afterMs: number; choiceId: string };
   skinTonePicker?: boolean;
   skinToneLabel?: string;
