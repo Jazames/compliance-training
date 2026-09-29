@@ -68,6 +68,26 @@ settles immediately after playback is allowed. Unmount cancels pending frames.
 
 ## Local visual verification
 
+### Joint cleanup, September 29
+
+The recovered editable file is https://editor.rive.app/file/generic_man_-_compliance_training/2617294.
+Select `generic-man` or `generic-woman`, not the wrapper `Artboard`, to see each
+character's 15 timelines. The wrapper has only `Timeline 1`.
+
+Corrected 26 position keys in the man's `Anime Transformation` preview which
+still used artboard coordinates after wardrobe shapes had been reparented.
+Sleeves, cuffs, upper/lower trousers, and pelvis details now use their local
+coordinates. Added skin/suit elbow joins on both near forearms, with wardrobe
+visibility and palette bindings, to cover seams during sharp bends. Existing
+actions, far-arm pivots, and posture bindings are preserved.
+
+Latest editable/runtime exports: `../rive-revisions/joint-cleanup-final/`.
+The production runtime copy matches this export. Earlier revisions are retained.
+`contact-sheet.html?mode=romance&steps&timeline=Anime%20Transformation` freezes
+the transformation at quarter-second intervals. `action=Arm%20Wave&time=0.42`
+freezes a live action pose; combine with `wardrobe` to inspect all combinations.
+`steps` also accepts `sex=man|woman` and `top=0|1|2`.
+
 Run the Vite server, then open `/art/drift/contact-sheet.html` for live endpoints.
 Default order matches the SVG reference sheet. The page is text-free; diagnostic
 counts are in `main.dataset.ready` and `main.dataset.expected`.
