@@ -70,6 +70,21 @@ settles immediately after playback is allowed. Unmount cancels pending frames.
 
 ### Joint cleanup, September 29
 
+Subsequent outfit seam pass: casual sleeve openings are centered over the
+upper arms on both rigs, and the female sleeve shoulder curves widen to meet
+those openings. All four casual upper-arm rectangles end four units below the
+elbow instead of sixteen, preventing a square protrusion during bends.
+Female trouser/jeans/shorts pelvis tops and thigh-top corners are rounded to
+remove rectangular corners showing beside fitted shirt hems. No action
+keyframes, palette bindings, wardrobe selections, or game text were changed.
+The latest editable/runtime exports are now `../rive-revisions/outfit-seams-pivots/`.
+The far forearm pivots on both rigs were also moved from y=141.666656 to
+y=81.999969, matching the elbow. Child artwork was offset by the inverse
+59.666687-unit change, preserving standing geometry while fixing seated bends.
+`outfit-seams-review.png` shows all 24 clothing combinations at full romance
+drift in a bent-arm pose. Additional checks use neutral walking, intermediate
+drift, contrasting palettes, and seated reaching.
+
 The recovered editable file is https://editor.rive.app/file/generic_man_-_compliance_training/2617294.
 Select `generic-man` or `generic-woman`, not the wrapper `Artboard`, to see each
 character's 15 timelines. The wrapper has only `Timeline 1`.
