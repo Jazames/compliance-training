@@ -69,8 +69,9 @@ function AnimationPreview({ buffer, rig, outfit, animation }: {
       onAdvance: (event) => {
         elapsed += Number(event.data);
         if (driftInputs.includes(animation)) {
-          const phase = elapsed % 6;
-          const progress = phase < 2 ? phase / 2 : phase < 3 ? 1 : phase < 5 ? (5 - phase) / 2 : 0;
+          // Five-second round trip: 2.5 seconds out, 2.5 seconds back, no holds.
+          const phase = elapsed % 5;
+          const progress = phase <= 2.5 ? phase / 2.5 : (5 - phase) / 2.5;
           const input = posture?.number(animation);
           if (input) input.value = progress * progress * (3 - 2 * progress);
         }
