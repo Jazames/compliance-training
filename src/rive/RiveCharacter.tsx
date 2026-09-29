@@ -1,9 +1,12 @@
-import { useEffect, useId, useRef, useState } from 'react';
+import { useContext, useEffect, useId, useRef, useState } from 'react';
 import { Alignment, Fit, Layout, useRive } from '@rive-app/react-canvas';
-import { DEFAULT_HAIR } from '../engine/hairColors';
+import { DEFAULT_HAIR, getHairAccentColor } from '../engine/hairColors';
 import { resolveWardrobe } from './wardrobe';
 import { useStageRuntime } from '../ui/stageContext';
 import { prepareCharacter } from '../ui/stageAssets';
+import type { DriftAppearance } from './driftAppearance';
+import { useDriftAppearance } from './useDriftAppearance';
+import { DriftContext } from './driftContext';
 
 type CharacterArtboard = 'generic-man' | 'generic-woman';
 
@@ -15,6 +18,7 @@ interface RiveCharacterProps {
   onGrabStart?: () => void;
   framing?: 'full' | 'presenter';
   appearanceBlend: number;
+  driftAppearance?: DriftAppearance;
   seated?: boolean;
   sittingStyle?: 'front' | 'sideways' | 'three-quarter';
   facing?: 'left' | 'right';
@@ -41,13 +45,14 @@ export function RiveCharacter({
   onGrabStart,
   framing = 'full',
   appearanceBlend,
+  driftAppearance,
   seated = false,
   sittingStyle = 'three-quarter',
   facing = 'right',
   eyeColor = '#58616A',
   skinColor = '#CFA17E',
   hairColor = DEFAULT_HAIR.color,
-  hairAccentColor = DEFAULT_HAIR.accentColor,
+  hairAccentColor = getHairAccentColor(hairColor),
   outfitId = 0,
   topId,
   bottomId,
@@ -61,6 +66,7 @@ export function RiveCharacter({
   const [buffer, setBuffer] = useState<ArrayBuffer>();
   const [renderReady, setRenderReady] = useState(false);
   const { playing, register } = useStageRuntime();
+  const stageDrift = useContext(DriftContext);
   const identity = useId();
   const release = useRef<(() => void) | undefined>(undefined);
   const resolved = useRef(false);
@@ -118,14 +124,7 @@ export function RiveCharacter({
     };
   }, [rive, playing]);
 
-  useEffect(() => {
-    if (!rive?.viewModelInstance) return;
-
-    const appearance = rive.viewModelInstance.number('numberProperty');
-    if (appearance) {
-      appearance.value = Math.max(0, Math.min(1, appearanceBlend));
-    }
-  }, [appearanceBlend, rive]);
+  useDriftAppearance(rive, driftAppearance ?? stageDrift ?? { romance: appearanceBlend, heist: 0, survival: 0 }, playing);
 
   useEffect(() => {
     const amount = rive?.viewModelInstance?.number('sitAmount');

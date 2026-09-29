@@ -1,4 +1,4 @@
-/** Paired base/highlight colors; the rig reveals highlights as anime drift grows. */
+/** Paired base/highlight colors shared by the regular and drift appearances. */
 export const HAIR_COLORS = [
   { label: 'Black', color: '#181412', accentColor: '#66617B', natural: true },
   { label: 'Dark brown', color: '#3D302C', accentColor: '#94705A', natural: true },
@@ -15,3 +15,14 @@ export const HAIR_COLORS = [
 ];
 
 export const DEFAULT_HAIR = HAIR_COLORS[1];
+
+/** Base-only NPC palettes must never inherit unrelated brown highlights. */
+export function getHairAccentColor(color: string): string {
+  const pair = HAIR_COLORS.find(hair => hair.color.toLowerCase() === color.toLowerCase());
+  if (pair) return pair.accentColor;
+  if (!/^#[0-9a-f]{6}$/i.test(color)) return DEFAULT_HAIR.accentColor;
+  return '#' + [1, 3, 5].map(offset => {
+    const channel = parseInt(color.slice(offset, offset + 2), 16);
+    return Math.round(channel + (255 - channel) * 0.35).toString(16).padStart(2, '0');
+  }).join('');
+}

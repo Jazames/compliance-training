@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import type { PlayerAppearance } from '../engine/playerAppearance';
 import { RiveCharacter } from '../rive/RiveCharacter';
+import { getHairAccentColor } from '../engine/hairColors';
 
 export function MeetingStage({ player }: { player: PlayerAppearance }) {
   const [guests] = useState(() => Array.from({ length: 4 }, (_, index) => {
     const pick = (colors: string[]) => colors[Math.floor(Math.random() * colors.length)];
+    const hairColor = pick(['#181412', '#3D302C', '#794B35', '#A8A8A8']);
     return { artboard: index % 2 ? 'generic-woman' as const : 'generic-man' as const,
       skinColor: pick(['#F3D9C6', '#CFA17E', '#805238', '#593A29']),
-      hairColor: pick(['#181412', '#3D302C', '#794B35', '#A8A8A8']),
+      hairColor, hairAccentColor: getHairAccentColor(hairColor),
       outfitPrimaryColor: pick(['#647885', '#7C776F', '#6D7F70', '#8D7889']),
     };
   }));

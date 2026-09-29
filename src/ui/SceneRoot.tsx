@@ -14,6 +14,7 @@ import type { PlayerAppearance } from '../engine/playerAppearance';
 import { FeedbackSheet } from './FeedbackSheet';
 import { useStageRuntime } from './stageContext';
 import { BACKGROUNDS } from './stageAssets';
+import { DriftContext } from '../rive/driftContext';
 
 interface SceneRootProps {
   spiderVisit: number;
@@ -45,12 +46,12 @@ export function SceneRoot({
   leaving,
 }: SceneRootProps) {
   const { playing, failed } = useStageRuntime();
-  const romanceOverlay = Math.min(1, meters.romanceDrift);
-  const heistOverlay = Math.min(1, meters.heistDrift);
+  const romanceOverlay = playerAppearance.driftAppearance.romance;
+  const heistOverlay = playerAppearance.driftAppearance.heist;
   const backgroundImage = scene.backgroundKey ? BACKGROUNDS[scene.backgroundKey] : undefined;
 
   return (
-    <main className="scene-layout">
+    <DriftContext.Provider value={playerAppearance.driftAppearance}><main className="scene-layout">
       <div
         className="scene-root"
         data-background={scene.backgroundKey}
@@ -61,10 +62,12 @@ export function SceneRoot({
           {
             ['--romance-overlay' as string]: romanceOverlay,
             ['--heist-overlay' as string]: heistOverlay,
+            ['--survival-overlay' as string]: playerAppearance.driftAppearance.survival,
             backgroundImage: backgroundImage && !failed.has(backgroundImage) ? `url(${backgroundImage})` : undefined,
           } as CSSProperties
         }
       >
+        <div className="survival-atmosphere" aria-hidden="true" />
         <SceneSpider key={spiderVisit} enabled={arachnophobia} eligible={spiderVisit % 2 === 0}
           delayMs={spiderVisit === 0 ? 13_000 : 37_000} />
         <div className="scene-stage">
@@ -118,6 +121,7 @@ export function SceneRoot({
                   }
                   framing={character.framing}
                   appearanceBlend={meters.romanceDrift}
+                  driftAppearance={playerAppearance.driftAppearance}
                 />
               ))}
             </div>
@@ -125,6 +129,6 @@ export function SceneRoot({
         </div>
       </div>
       {feedback ? <FeedbackSheet status={feedback} title={feedbackTitle} leaving={leaving}>{children}</FeedbackSheet> : <div className="dialogue-panel">{children}</div>}
-    </main>
+    </main></DriftContext.Provider>
   );
 }

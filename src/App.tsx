@@ -28,6 +28,7 @@ function App() {
   }
   const [nameDraft, setNameDraft] = useState('');
   const [eyePreview, setEyePreview] = useState<string>();
+  const [hairPreview, setHairPreview] = useState<{ hairColor: string; hairAccentColor: string }>();
   const [feedbackBackground, setFeedbackBackground] = useState<SceneDef>();
 
   const transition = useSceneTransition();
@@ -42,6 +43,7 @@ function App() {
     if (!nextScene || next === source) return;
     enter(scene, nextScene, () => {
       setEyePreview(undefined);
+      setHairPreview(undefined);
       if (scene.choices?.find((choice) => choice.id === choiceId)?.restart) setNameDraft('');
       setFeedbackBackground(nextScene.feedback ? feedbackBackground ?? scene : undefined);
       setGame(next);
@@ -80,11 +82,13 @@ function App() {
           setEditing(false);
           setNameDraft('');
           setFeedbackBackground(undefined);
+          setHairPreview(undefined);
+          setEyePreview(undefined);
           setGame(createInitialGameState());
           setVisit({ sceneId: 'welcome', index: 0 });
         }}
       >
-        <CourseMenu game={game} open={editing} onOpenChange={setEditing}
+        <CourseMenu game={game} open={editing} onOpenChange={(open) => { setHairPreview(undefined); setEyePreview(undefined); setEditing(open); }}
           arachnophobia={arachnophobia} onToggle={() => setArachnophobia((value) => !value)}
           onSave={(draft) => setGame((previous) => ({ ...previous,
             playerName: draft.playerName, playerCharacterId: draft.playerCharacterId,
@@ -102,7 +106,7 @@ function App() {
         feedback={transition.playing || transition.phase === 'out' ? scene.feedback : undefined}
         leaving={transition.phase === 'out'}
         feedbackTitle={scene.title ?? scene.body}
-        playerAppearance={{ ...getPlayerAppearance(game), ...(scene.mirrorCloseup && eyePreview ? { eyeColor: eyePreview } : {}) }}
+        playerAppearance={{ ...getPlayerAppearance(game), ...hairPreview, ...(scene.mirrorCloseup && eyePreview ? { eyeColor: eyePreview } : {}) }}
         meters={game.meters}
         playerCharacterId={game.playerCharacterId}
         activeSpeaker={currentSpeaker}
@@ -138,7 +142,12 @@ function App() {
           <input id="plaque-name" required maxLength={scene.nameplate.maxLength} value={nameDraft} onChange={(e) => setNameDraft(e.target.value)} />
           <button type="submit" disabled={!nameDraft.trim()}>{scene.choices?.find((choice) => choice.id === scene.nameplate?.choiceId)?.label}</button>
         </form></> : !entryActive && dialogueComplete && !scene.autoAdvance ? scene.interaction === 'restroom' ? <Restroom male={game.playerCharacterId === 'daniel'} choices={(scene.choices ?? []).filter((choice) => evaluateConditions(game, choice.conditions))} onChoose={choose} /> : <ChoiceList choices={(scene.choices ?? []).filter((choice) => evaluateConditions(game, choice.conditions))} onChoose={choose}
-          onPreview={scene.mirrorCloseup ? (id) => setEyePreview(scene.choices?.find((choice) => choice.id === id)?.swatch) : undefined} /> : null}
+          onPreview={(id) => {
+            const choice = scene.choices?.find((choice) => choice.id === id);
+            if (scene.mirrorCloseup) setEyePreview(choice?.swatch);
+            const hair = choice?.effects.find(effect => effect.kind === 'setPlayerHairColor');
+            setHairPreview(hair ? { hairColor: hair.color, hairAccentColor: hair.accentColor } : undefined);
+          }} /> : null}
           </div>
         </div>}
       </SceneRoot>

@@ -1,5 +1,6 @@
 import type { GameState } from './gameState';
 import { resolveWardrobe } from '../rive/wardrobe';
+import { resolveDriftAppearance } from '../rive/driftAppearance';
 
 export interface PlayerClothing {
   topId: number;
@@ -30,6 +31,7 @@ export function getPlayerAppearance(state: GameState) {
     skinColor: state.playerSkinColor, eyeColor: state.playerEyeColor,
     hairColor: state.playerHairColor, hairAccentColor: state.playerHairAccentColor,
     appearanceBlend: state.meters.romanceDrift,
+    driftAppearance: resolveDriftAppearance(state.meters, state.locks),
   };
 }
 export type PlayerAppearance = ReturnType<typeof getPlayerAppearance>;

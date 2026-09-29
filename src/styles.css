@@ -154,6 +154,19 @@ body {
   grid-template-rows: 1fr;
 }
 
+.survival-atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 40%, transparent 25%, rgba(28, 25, 18, .65)),
+    linear-gradient(rgba(92, 83, 51, .14), rgba(34, 42, 39, .3));
+  opacity: var(--survival-overlay, 0);
+  transition: opacity 800ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .survival-atmosphere { transition: none; }
+}
+
 .scene-title-strip {
   align-self: start;
   justify-self: start;

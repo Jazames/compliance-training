@@ -1,5 +1,5 @@
 const base = import.meta.env?.BASE_URL ?? '/';
-export const CHARACTER_SOURCE = `${base}rive/compliance-characters.riv?v=20260927-curled-hair`;
+export const CHARACTER_SOURCE = `${base}rive/compliance-characters.riv?v=20260928-genre-drift`;
 export const BACKGROUNDS: Record<string, string> = {
   'studio-chair': `${base}bg/studio-chair.png`,
   'break-room': `${base}bg/break-room.png`,

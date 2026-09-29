@@ -1,0 +1,3934 @@
+[
+  {
+    "sex": "man",
+    "mode": "romance",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_man_romance_CheekLightNear",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 34,
+              "y": 39
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 40,
+              "control1Y": 35.666666666666664,
+              "control2X": 45,
+              "control2Y": 33,
+              "endX": 49,
+              "endY": 31
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 48.333333333333336,
+              "control1Y": 40.333333333333336,
+              "control2X": 43.666666666666664,
+              "control2Y": 45.666666666666664,
+              "endX": 35,
+              "endY": 47
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#24ffffff"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "romance",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_man_romance_CheekLightFar",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -43,
+              "y": 35
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -37,
+              "control1Y": 37,
+              "control2X": -31.666666666666668,
+              "control2Y": 38.666666666666664,
+              "endX": -27,
+              "endY": 40
+            },
+            {
+              "commandType": "lineTo",
+              "x": -31,
+              "y": 46
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -38.333333333333336,
+              "control1Y": 44,
+              "control2X": -42.333333333333336,
+              "control2Y": 40.333333333333336,
+              "endX": -43,
+              "endY": 35
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#1cffffff"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "romance",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_man_romance_JawShade",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -51,
+              "y": 48
+            },
+            {
+              "commandType": "lineTo",
+              "x": -39,
+              "y": 76
+            },
+            {
+              "commandType": "lineTo",
+              "x": -9,
+              "y": 91
+            },
+            {
+              "commandType": "lineTo",
+              "x": -28,
+              "y": 86
+            },
+            {
+              "commandType": "lineTo",
+              "x": -47,
+              "y": 71
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#22000000"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "romance",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_man_romance_NoseBridgeLight",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 7,
+              "y": 25
+            },
+            {
+              "commandType": "lineTo",
+              "x": 9,
+              "y": 38
+            },
+            {
+              "commandType": "lineTo",
+              "x": 6,
+              "y": 42
+            },
+            {
+              "commandType": "lineTo",
+              "x": 5,
+              "y": 34
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#38ffffff"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "romance",
+    "region": "head",
+    "phase": "middle",
+    "colorProperty": "hairAccentColor",
+    "shape": {
+      "name": "Drift_man_romance_HairSweep",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -42,
+              "y": -47
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -18,
+              "control1Y": -61.666666666666664,
+              "control2X": 8.333333333333332,
+              "control2Y": -60.66666666666667,
+              "endX": 37,
+              "endY": -44
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 17.666666666666668,
+              "control1Y": -52,
+              "control2X": 1.333333333333334,
+              "control2Y": -51.333333333333336,
+              "endX": -12,
+              "endY": -42
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -21.333333333333336,
+              "control1Y": -36,
+              "control2X": -30.666666666666664,
+              "control2Y": -33.666666666666664,
+              "endX": -40,
+              "endY": -35
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -28.666666666666664,
+              "control1Y": -39,
+              "control2X": -19.333333333333332,
+              "control2Y": -43.666666666666664,
+              "endX": -12,
+              "endY": -49
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -21.333333333333336,
+              "control1Y": -49,
+              "control2X": -31.333333333333336,
+              "control2Y": -48.333333333333336,
+              "endX": -42,
+              "endY": -47
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#94705a"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "romance",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_man_romance_CheekContour",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 25,
+              "y": 49
+            },
+            {
+              "commandType": "lineTo",
+              "x": 42,
+              "y": 43
+            },
+            {
+              "commandType": "lineTo",
+              "x": 36,
+              "y": 50
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#22000000"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "romance",
+    "region": "head",
+    "phase": "early",
+    "colorProperty": "hairColor",
+    "shape": {
+      "name": "Drift_man_romance_BrowDefinition",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -42,
+              "y": 0
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -32.666666666666664,
+              "control1Y": -6,
+              "control2X": -23,
+              "control2Y": -6.666666666666667,
+              "endX": -13,
+              "endY": -2
+            },
+            {
+              "commandType": "lineTo",
+              "x": -13,
+              "y": 1
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -23.666666666666664,
+              "control1Y": -1.6666666666666665,
+              "control2X": -33.333333333333336,
+              "control2Y": -0.666666666666667,
+              "endX": -42,
+              "endY": 4
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#3d302c"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "romance",
+    "region": "torso",
+    "phase": "middle",
+    "shape": {
+      "name": "Drift_man_romance_FabricLight",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 58,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -37,
+              "y": -54
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -21.666666666666664,
+              "control1Y": -61.333333333333336,
+              "control2X": -12.333333333333334,
+              "control2Y": -60.666666666666664,
+              "endX": -9,
+              "endY": -52
+            },
+            {
+              "commandType": "lineTo",
+              "x": -18,
+              "y": -49
+            },
+            {
+              "commandType": "lineTo",
+              "x": -32,
+              "y": -47
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#25ffffff"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "heist",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_man_heist_CheekPlane",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 38,
+              "y": 32
+            },
+            {
+              "commandType": "lineTo",
+              "x": 52,
+              "y": 26
+            },
+            {
+              "commandType": "lineTo",
+              "x": 47,
+              "y": 52
+            },
+            {
+              "commandType": "lineTo",
+              "x": 27,
+              "y": 65
+            },
+            {
+              "commandType": "lineTo",
+              "x": 38,
+              "y": 48
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#320d2634"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "heist",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_man_heist_JawPlane",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -49,
+              "y": 45
+            },
+            {
+              "commandType": "lineTo",
+              "x": -37,
+              "y": 70
+            },
+            {
+              "commandType": "lineTo",
+              "x": -13,
+              "y": 83
+            },
+            {
+              "commandType": "lineTo",
+              "x": -29,
+              "y": 79
+            },
+            {
+              "commandType": "lineTo",
+              "x": -46,
+              "y": 62
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#230b2534"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "heist",
+    "region": "head",
+    "phase": "early",
+    "colorProperty": "hairColor",
+    "shape": {
+      "name": "Drift_man_heist_FocusedLidNear",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 13,
+              "y": 14
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 25,
+              "control1Y": 7.333333333333333,
+              "control2X": 37,
+              "control2Y": 7,
+              "endX": 49,
+              "endY": 13
+            },
+            {
+              "commandType": "lineTo",
+              "x": 49,
+              "y": 17
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 35.666666666666664,
+              "control1Y": 12.333333333333332,
+              "control2X": 23.666666666666664,
+              "control2Y": 12.666666666666668,
+              "endX": 13,
+              "endY": 18
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#3d302c"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "heist",
+    "region": "head",
+    "phase": "early",
+    "colorProperty": "hairColor",
+    "shape": {
+      "name": "Drift_man_heist_FocusedLidFar",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -43,
+              "y": 13
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -33,
+              "control1Y": 7,
+              "control2X": -22.333333333333336,
+              "control2Y": 7,
+              "endX": -11,
+              "endY": 13
+            },
+            {
+              "commandType": "lineTo",
+              "x": -11,
+              "y": 17
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -22.333333333333336,
+              "control1Y": 13,
+              "control2X": -33,
+              "control2Y": 13,
+              "endX": -43,
+              "endY": 17
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#3d302c"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "heist",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_man_heist_EyeCreaseNear",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 19,
+              "y": 30
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 29,
+              "control1Y": 32,
+              "control2X": 37.666666666666664,
+              "control2Y": 31,
+              "endX": 45,
+              "endY": 27
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#550d2634",
+          "thickness": 1.6
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "heist",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_man_heist_SmirkCrease",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 29,
+              "y": 62
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 33,
+              "control1Y": 60,
+              "control2X": 35,
+              "control2Y": 57.333333333333336,
+              "endX": 35,
+              "endY": 54
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#55342c2c",
+          "thickness": 1.5
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "heist",
+    "region": "head",
+    "phase": "middle",
+    "colorProperty": "hairAccentColor",
+    "shape": {
+      "name": "Drift_man_heist_SleekHair",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -42,
+              "y": -44
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -22.666666666666668,
+              "control1Y": -55.333333333333336,
+              "control2X": 0.6666666666666679,
+              "control2Y": -55.333333333333336,
+              "endX": 28,
+              "endY": -44
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 13.333333333333334,
+              "control1Y": -46.666666666666664,
+              "control2X": 0,
+              "control2Y": -46,
+              "endX": -12,
+              "endY": -42
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -22,
+              "control1Y": -38,
+              "control2X": -32,
+              "control2Y": -36,
+              "endX": -42,
+              "endY": -36
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#94705a"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "heist",
+    "region": "torso",
+    "phase": "middle",
+    "shape": {
+      "name": "Drift_man_heist_TailoredShade",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 58,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -44,
+              "y": -43
+            },
+            {
+              "commandType": "lineTo",
+              "x": -36,
+              "y": 36
+            },
+            {
+              "commandType": "lineTo",
+              "x": -42,
+              "y": 87
+            },
+            {
+              "commandType": "lineTo",
+              "x": -48,
+              "y": 84
+            },
+            {
+              "commandType": "lineTo",
+              "x": -46,
+              "y": 9
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 40,
+              "y": -45
+            },
+            {
+              "commandType": "lineTo",
+              "x": 46,
+              "y": 9
+            },
+            {
+              "commandType": "lineTo",
+              "x": 44,
+              "y": 84
+            },
+            {
+              "commandType": "lineTo",
+              "x": 38,
+              "y": 87
+            },
+            {
+              "commandType": "lineTo",
+              "x": 33,
+              "y": 39
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#200b2332"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_man_survival_FatigueNear",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 12,
+              "y": 28
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 24.666666666666664,
+              "control1Y": 35.333333333333336,
+              "control2X": 37.333333333333336,
+              "control2Y": 34.666666666666664,
+              "endX": 50,
+              "endY": 26
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 46.666666666666664,
+              "control1Y": 37.333333333333336,
+              "control2X": 39.333333333333336,
+              "control2Y": 42.333333333333336,
+              "endX": 28,
+              "endY": 41
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 21.333333333333332,
+              "control1Y": 39.666666666666664,
+              "control2X": 16,
+              "control2Y": 35.333333333333336,
+              "endX": 12,
+              "endY": 28
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#51423844"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_man_survival_FatigueFar",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -45,
+              "y": 27
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -33,
+              "control1Y": 33.666666666666664,
+              "control2X": -21.333333333333336,
+              "control2Y": 33.666666666666664,
+              "endX": -10,
+              "endY": 27
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -11.333333333333334,
+              "control1Y": 36.333333333333336,
+              "control2X": -17.666666666666664,
+              "control2Y": 40.666666666666664,
+              "endX": -29,
+              "endY": 40
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -37,
+              "control1Y": 38.666666666666664,
+              "control2X": -42.333333333333336,
+              "control2Y": 34.333333333333336,
+              "endX": -45,
+              "endY": 27
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#51423844"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "head",
+    "phase": "early",
+    "colorProperty": "skinColor",
+    "shape": {
+      "name": "Drift_man_survival_LidNear",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 13,
+              "y": 11
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 25,
+              "control1Y": 4.333333333333333,
+              "control2X": 37.333333333333336,
+              "control2Y": 4.666666666666667,
+              "endX": 50,
+              "endY": 12
+            },
+            {
+              "commandType": "lineTo",
+              "x": 49,
+              "y": 18
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 36.333333333333336,
+              "control1Y": 14,
+              "control2X": 24.333333333333336,
+              "control2Y": 14,
+              "endX": 13,
+              "endY": 18
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#CFA17E"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "head",
+    "phase": "early",
+    "colorProperty": "skinColor",
+    "shape": {
+      "name": "Drift_man_survival_LidFar",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -45,
+              "y": 12
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -33,
+              "control1Y": 5.333333333333333,
+              "control2X": -21.333333333333336,
+              "control2Y": 5.333333333333333,
+              "endX": -10,
+              "endY": 12
+            },
+            {
+              "commandType": "lineTo",
+              "x": -11,
+              "y": 18
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -23,
+              "control1Y": 14,
+              "control2X": -34,
+              "control2Y": 14,
+              "endX": -44,
+              "endY": 18
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#CFA17E"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "head",
+    "phase": "middle",
+    "shape": {
+      "name": "Drift_man_survival_CheekDirt",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -49,
+              "y": 45
+            },
+            {
+              "commandType": "lineTo",
+              "x": -35,
+              "y": 42
+            },
+            {
+              "commandType": "lineTo",
+              "x": -23,
+              "y": 51
+            },
+            {
+              "commandType": "lineTo",
+              "x": -36,
+              "y": 53
+            },
+            {
+              "commandType": "lineTo",
+              "x": -43,
+              "y": 60
+            },
+            {
+              "commandType": "lineTo",
+              "x": -49,
+              "y": 56
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#66594b37"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "head",
+    "phase": "middle",
+    "shape": {
+      "name": "Drift_man_survival_TempleDirt",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 43,
+              "y": -11
+            },
+            {
+              "commandType": "lineTo",
+              "x": 52,
+              "y": -5
+            },
+            {
+              "commandType": "lineTo",
+              "x": 49,
+              "y": 8
+            },
+            {
+              "commandType": "lineTo",
+              "x": 43,
+              "y": 3
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#55594b37"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "head",
+    "phase": "late",
+    "shape": {
+      "name": "Drift_man_survival_ScarShadow",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 37,
+              "y": 34
+            },
+            {
+              "commandType": "lineTo",
+              "x": 29,
+              "y": 48
+            },
+            {
+              "commandType": "lineTo",
+              "x": 33,
+              "y": 50
+            },
+            {
+              "commandType": "lineTo",
+              "x": 25,
+              "y": 66
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#885b3837",
+          "thickness": 3.2
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "head",
+    "phase": "late",
+    "shape": {
+      "name": "Drift_man_survival_ScarLight",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 38,
+              "y": 34
+            },
+            {
+              "commandType": "lineTo",
+              "x": 31,
+              "y": 47
+            },
+            {
+              "commandType": "lineTo",
+              "x": 35,
+              "y": 50
+            },
+            {
+              "commandType": "lineTo",
+              "x": 27,
+              "y": 66
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#99edc0ad",
+          "thickness": 1.4
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "head",
+    "phase": "late",
+    "shape": {
+      "name": "Drift_man_survival_ScarCross",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 29,
+              "y": 45
+            },
+            {
+              "commandType": "lineTo",
+              "x": 35,
+              "y": 48
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 27,
+              "y": 54
+            },
+            {
+              "commandType": "lineTo",
+              "x": 32,
+              "y": 57
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#885b3837",
+          "thickness": 1.4
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "head",
+    "phase": "middle",
+    "colorProperty": "hairColor",
+    "shape": {
+      "name": "Drift_man_survival_StrayHair",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -47,
+              "y": -48
+            },
+            {
+              "commandType": "lineTo",
+              "x": -42,
+              "y": -9
+            },
+            {
+              "commandType": "lineTo",
+              "x": -33,
+              "y": -36
+            },
+            {
+              "commandType": "lineTo",
+              "x": -18,
+              "y": -11
+            },
+            {
+              "commandType": "lineTo",
+              "x": -25,
+              "y": -47
+            },
+            {
+              "commandType": "lineTo",
+              "x": -11,
+              "y": -28
+            },
+            {
+              "commandType": "lineTo",
+              "x": -13,
+              "y": -54
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#3d302c"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "head",
+    "phase": "middle",
+    "colorProperty": "hairColor",
+    "shape": {
+      "name": "Drift_man_survival_Flyaways",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -49,
+              "y": -57
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -59.666666666666664,
+              "control1Y": -68.33333333333333,
+              "control2X": -69.66666666666667,
+              "control2Y": -70.33333333333333,
+              "endX": -79,
+              "endY": -63
+            },
+            {
+              "commandType": "lineTo",
+              "x": -65,
+              "y": -80
+            },
+            {
+              "commandType": "lineTo",
+              "x": -80,
+              "y": -84
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -66.66666666666667,
+              "control1Y": -88.66666666666667,
+              "control2X": -56,
+              "control2Y": -82.66666666666667,
+              "endX": -48,
+              "endY": -66
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 28,
+              "y": -66
+            },
+            {
+              "commandType": "lineTo",
+              "x": 35,
+              "y": -88
+            },
+            {
+              "commandType": "lineTo",
+              "x": 39,
+              "y": -71
+            },
+            {
+              "commandType": "lineTo",
+              "x": 55,
+              "y": -83
+            },
+            {
+              "commandType": "lineTo",
+              "x": 49,
+              "y": -64
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#3d302c"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_man_survival_DryLip",
+      "parentId": "0-392",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -8,
+              "y": 73
+            },
+            {
+              "commandType": "lineTo",
+              "x": -4,
+              "y": 72
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 7,
+              "y": 74
+            },
+            {
+              "commandType": "lineTo",
+              "x": 12,
+              "y": 73
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#665b3837",
+          "thickness": 1.2
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "torso",
+    "phase": "middle",
+    "shape": {
+      "name": "Drift_man_survival_FabricDirt",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 58,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -43,
+              "y": -12
+            },
+            {
+              "commandType": "lineTo",
+              "x": -23,
+              "y": -2
+            },
+            {
+              "commandType": "lineTo",
+              "x": -34,
+              "y": 10
+            },
+            {
+              "commandType": "lineTo",
+              "x": -20,
+              "y": 27
+            },
+            {
+              "commandType": "lineTo",
+              "x": -40,
+              "y": 17
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 20,
+              "y": 76
+            },
+            {
+              "commandType": "lineTo",
+              "x": 40,
+              "y": 67
+            },
+            {
+              "commandType": "lineTo",
+              "x": 45,
+              "y": 86
+            },
+            {
+              "commandType": "lineTo",
+              "x": 30,
+              "y": 91
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#664b4534"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "torso",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_man_survival_FabricCreases",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 58,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -40,
+              "y": -29
+            },
+            {
+              "commandType": "lineTo",
+              "x": -27,
+              "y": -18
+            },
+            {
+              "commandType": "lineTo",
+              "x": -39,
+              "y": -13
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 40,
+              "y": 37
+            },
+            {
+              "commandType": "lineTo",
+              "x": 24,
+              "y": 46
+            },
+            {
+              "commandType": "lineTo",
+              "x": 39,
+              "y": 49
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -33,
+              "y": 69
+            },
+            {
+              "commandType": "lineTo",
+              "x": -15,
+              "y": 75
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#550d2028",
+          "thickness": 2
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "torso",
+    "phase": "late",
+    "shape": {
+      "name": "Drift_man_survival_FabricScuffs",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 58,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -38,
+              "y": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": -30,
+              "y": -5
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -40,
+              "y": -4
+            },
+            {
+              "commandType": "lineTo",
+              "x": -31,
+              "y": 1
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 32,
+              "y": 78
+            },
+            {
+              "commandType": "lineTo",
+              "x": 40,
+              "y": 74
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 30,
+              "y": 84
+            },
+            {
+              "commandType": "lineTo",
+              "x": 40,
+              "y": 80
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#70e6ddc8",
+          "thickness": 1.5
+        }
+      ]
+    }
+  },
+  {
+    "sex": "man",
+    "mode": "survival",
+    "region": "torso",
+    "phase": "late",
+    "shape": {
+      "name": "Drift_man_survival_FabricTear",
+      "parentId": "0-391",
+      "x": 0,
+      "y": 58,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 18,
+              "y": 9
+            },
+            {
+              "commandType": "lineTo",
+              "x": 32,
+              "y": 17
+            },
+            {
+              "commandType": "lineTo",
+              "x": 21,
+              "y": 15
+            },
+            {
+              "commandType": "lineTo",
+              "x": 31,
+              "y": 23
+            },
+            {
+              "commandType": "lineTo",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#77132027"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "romance",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_woman_romance_CheekLightNear",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 34,
+              "y": 39
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 40,
+              "control1Y": 35.666666666666664,
+              "control2X": 45,
+              "control2Y": 33,
+              "endX": 49,
+              "endY": 31
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 48.333333333333336,
+              "control1Y": 40.333333333333336,
+              "control2X": 43.666666666666664,
+              "control2Y": 45.666666666666664,
+              "endX": 35,
+              "endY": 47
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#24ffffff"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "romance",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_woman_romance_CheekLightFar",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -43,
+              "y": 35
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -37,
+              "control1Y": 37,
+              "control2X": -31.666666666666668,
+              "control2Y": 38.666666666666664,
+              "endX": -27,
+              "endY": 40
+            },
+            {
+              "commandType": "lineTo",
+              "x": -31,
+              "y": 46
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -38.333333333333336,
+              "control1Y": 44,
+              "control2X": -42.333333333333336,
+              "control2Y": 40.333333333333336,
+              "endX": -43,
+              "endY": 35
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#1cffffff"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "romance",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_woman_romance_JawShade",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -48,
+              "y": 53
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -37.333333333333336,
+              "control1Y": 71,
+              "control2X": -21,
+              "control2Y": 83.66666666666667,
+              "endX": 1,
+              "endY": 91
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -18.333333333333332,
+              "control1Y": 89.66666666666667,
+              "control2X": -33.333333333333336,
+              "control2Y": 83.33333333333333,
+              "endX": -44,
+              "endY": 72
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#22000000"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "romance",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_woman_romance_NoseBridgeLight",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 7,
+              "y": 25
+            },
+            {
+              "commandType": "lineTo",
+              "x": 9,
+              "y": 38
+            },
+            {
+              "commandType": "lineTo",
+              "x": 6,
+              "y": 42
+            },
+            {
+              "commandType": "lineTo",
+              "x": 5,
+              "y": 34
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#38ffffff"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "romance",
+    "region": "head",
+    "phase": "middle",
+    "colorProperty": "hairAccentColor",
+    "shape": {
+      "name": "Drift_woman_romance_HairSweep",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -42,
+              "y": -47
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -18,
+              "control1Y": -61.666666666666664,
+              "control2X": 8.333333333333332,
+              "control2Y": -60.66666666666667,
+              "endX": 37,
+              "endY": -44
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 17.666666666666668,
+              "control1Y": -52,
+              "control2X": 1.333333333333334,
+              "control2Y": -51.333333333333336,
+              "endX": -12,
+              "endY": -42
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -21.333333333333336,
+              "control1Y": -36,
+              "control2X": -30.666666666666664,
+              "control2Y": -33.666666666666664,
+              "endX": -40,
+              "endY": -35
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -28.666666666666664,
+              "control1Y": -39,
+              "control2X": -19.333333333333332,
+              "control2Y": -43.666666666666664,
+              "endX": -12,
+              "endY": -49
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -21.333333333333336,
+              "control1Y": -49,
+              "control2X": -31.333333333333336,
+              "control2Y": -48.333333333333336,
+              "endX": -42,
+              "endY": -47
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#94705a"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "romance",
+    "region": "head",
+    "phase": "early",
+    "colorProperty": "hairColor",
+    "shape": {
+      "name": "Drift_woman_romance_LashesNear",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 14,
+              "y": 15
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 24.666666666666664,
+              "control1Y": 6.333333333333334,
+              "control2X": 36.666666666666664,
+              "control2Y": 6,
+              "endX": 50,
+              "endY": 14
+            },
+            {
+              "commandType": "lineTo",
+              "x": 56,
+              "y": 8
+            },
+            {
+              "commandType": "lineTo",
+              "x": 53,
+              "y": 17
+            },
+            {
+              "commandType": "lineTo",
+              "x": 59,
+              "y": 15
+            },
+            {
+              "commandType": "lineTo",
+              "x": 53,
+              "y": 21
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 41.666666666666664,
+              "control1Y": 13,
+              "control2X": 28.666666666666664,
+              "control2Y": 12,
+              "endX": 14,
+              "endY": 18
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#3d302c"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "romance",
+    "region": "head",
+    "phase": "early",
+    "colorProperty": "hairColor",
+    "shape": {
+      "name": "Drift_woman_romance_LashesFar",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -45,
+              "y": 15
+            },
+            {
+              "commandType": "lineTo",
+              "x": -51,
+              "y": 9
+            },
+            {
+              "commandType": "lineTo",
+              "x": -48,
+              "y": 19
+            },
+            {
+              "commandType": "lineTo",
+              "x": -54,
+              "y": 17
+            },
+            {
+              "commandType": "lineTo",
+              "x": -47,
+              "y": 23
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -36.333333333333336,
+              "control1Y": 15,
+              "control2X": -24,
+              "control2Y": 13.666666666666668,
+              "endX": -10,
+              "endY": 19
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -21.333333333333336,
+              "control1Y": 9.666666666666666,
+              "control2X": -33,
+              "control2Y": 8.333333333333332,
+              "endX": -45,
+              "endY": 15
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#3d302c"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "romance",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_woman_romance_LipLight",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -5,
+              "y": 74
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 3,
+              "control1Y": 76,
+              "control2X": 10,
+              "control2Y": 75.33333333333333,
+              "endX": 16,
+              "endY": 72
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 12,
+              "control1Y": 76.66666666666667,
+              "control2X": 6.666666666666667,
+              "control2Y": 79,
+              "endX": 0,
+              "endY": 79
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#45ffffff"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "romance",
+    "region": "head",
+    "phase": "middle",
+    "colorProperty": "hairAccentColor",
+    "shape": {
+      "name": "Drift_woman_romance_HairRibbonNear",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 61,
+              "y": -32
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 69,
+              "control1Y": -5.333333333333332,
+              "control2X": 70.33333333333333,
+              "control2Y": 24,
+              "endX": 65,
+              "endY": 56
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 63,
+              "control1Y": 71.33333333333333,
+              "control2X": 66.33333333333333,
+              "control2Y": 81.66666666666667,
+              "endX": 75,
+              "endY": 87
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 63,
+              "control1Y": 84.33333333333333,
+              "control2X": 57.666666666666664,
+              "control2Y": 76.33333333333333,
+              "endX": 59,
+              "endY": 63
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 65,
+              "control1Y": 32.33333333333333,
+              "control2X": 64.66666666666667,
+              "control2Y": 2,
+              "endX": 58,
+              "endY": -28
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#94705a"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "romance",
+    "region": "torso",
+    "phase": "middle",
+    "shape": {
+      "name": "Drift_woman_romance_FabricLight",
+      "parentId": "0-1771",
+      "x": 0,
+      "y": 58,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -37,
+              "y": -54
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -21.666666666666664,
+              "control1Y": -61.333333333333336,
+              "control2X": -12.333333333333334,
+              "control2Y": -60.666666666666664,
+              "endX": -9,
+              "endY": -52
+            },
+            {
+              "commandType": "lineTo",
+              "x": -18,
+              "y": -49
+            },
+            {
+              "commandType": "lineTo",
+              "x": -32,
+              "y": -47
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#25ffffff"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "heist",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_woman_heist_CheekPlane",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 38,
+              "y": 32
+            },
+            {
+              "commandType": "lineTo",
+              "x": 52,
+              "y": 26
+            },
+            {
+              "commandType": "lineTo",
+              "x": 47,
+              "y": 52
+            },
+            {
+              "commandType": "lineTo",
+              "x": 27,
+              "y": 65
+            },
+            {
+              "commandType": "lineTo",
+              "x": 38,
+              "y": 48
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#320d2634"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "heist",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_woman_heist_JawPlane",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -49,
+              "y": 45
+            },
+            {
+              "commandType": "lineTo",
+              "x": -37,
+              "y": 70
+            },
+            {
+              "commandType": "lineTo",
+              "x": -13,
+              "y": 83
+            },
+            {
+              "commandType": "lineTo",
+              "x": -29,
+              "y": 79
+            },
+            {
+              "commandType": "lineTo",
+              "x": -46,
+              "y": 62
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#230b2534"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "heist",
+    "region": "head",
+    "phase": "early",
+    "colorProperty": "hairColor",
+    "shape": {
+      "name": "Drift_woman_heist_FocusedLidNear",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 13,
+              "y": 14
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 25,
+              "control1Y": 7.333333333333333,
+              "control2X": 37,
+              "control2Y": 7,
+              "endX": 49,
+              "endY": 13
+            },
+            {
+              "commandType": "lineTo",
+              "x": 49,
+              "y": 17
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 35.666666666666664,
+              "control1Y": 12.333333333333332,
+              "control2X": 23.666666666666664,
+              "control2Y": 12.666666666666668,
+              "endX": 13,
+              "endY": 18
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#3d302c"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "heist",
+    "region": "head",
+    "phase": "early",
+    "colorProperty": "hairColor",
+    "shape": {
+      "name": "Drift_woman_heist_FocusedLidFar",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -43,
+              "y": 13
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -33,
+              "control1Y": 7,
+              "control2X": -22.333333333333336,
+              "control2Y": 7,
+              "endX": -11,
+              "endY": 13
+            },
+            {
+              "commandType": "lineTo",
+              "x": -11,
+              "y": 17
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -22.333333333333336,
+              "control1Y": 13,
+              "control2X": -33,
+              "control2Y": 13,
+              "endX": -43,
+              "endY": 17
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#3d302c"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "heist",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_woman_heist_EyeCreaseNear",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 19,
+              "y": 30
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 29,
+              "control1Y": 32,
+              "control2X": 37.666666666666664,
+              "control2Y": 31,
+              "endX": 45,
+              "endY": 27
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#550d2634",
+          "thickness": 1.6
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "heist",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_woman_heist_SmirkCrease",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 29,
+              "y": 62
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 33,
+              "control1Y": 60,
+              "control2X": 35,
+              "control2Y": 57.333333333333336,
+              "endX": 35,
+              "endY": 54
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#55342c2c",
+          "thickness": 1.5
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "heist",
+    "region": "head",
+    "phase": "middle",
+    "colorProperty": "hairAccentColor",
+    "shape": {
+      "name": "Drift_woman_heist_SleekHair",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -42,
+              "y": -44
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -22.666666666666668,
+              "control1Y": -55.333333333333336,
+              "control2X": 0.6666666666666679,
+              "control2Y": -55.333333333333336,
+              "endX": 28,
+              "endY": -44
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 13.333333333333334,
+              "control1Y": -46.666666666666664,
+              "control2X": 0,
+              "control2Y": -46,
+              "endX": -12,
+              "endY": -42
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -22,
+              "control1Y": -38,
+              "control2X": -32,
+              "control2Y": -36,
+              "endX": -42,
+              "endY": -36
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#94705a"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "heist",
+    "region": "torso",
+    "phase": "middle",
+    "shape": {
+      "name": "Drift_woman_heist_TailoredShade",
+      "parentId": "0-1771",
+      "x": 0,
+      "y": 58,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -44,
+              "y": -43
+            },
+            {
+              "commandType": "lineTo",
+              "x": -36,
+              "y": 36
+            },
+            {
+              "commandType": "lineTo",
+              "x": -42,
+              "y": 87
+            },
+            {
+              "commandType": "lineTo",
+              "x": -48,
+              "y": 84
+            },
+            {
+              "commandType": "lineTo",
+              "x": -46,
+              "y": 9
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 40,
+              "y": -45
+            },
+            {
+              "commandType": "lineTo",
+              "x": 46,
+              "y": 9
+            },
+            {
+              "commandType": "lineTo",
+              "x": 44,
+              "y": 84
+            },
+            {
+              "commandType": "lineTo",
+              "x": 38,
+              "y": 87
+            },
+            {
+              "commandType": "lineTo",
+              "x": 33,
+              "y": 39
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#200b2332"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_woman_survival_FatigueNear",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 12,
+              "y": 28
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 24.666666666666664,
+              "control1Y": 35.333333333333336,
+              "control2X": 37.333333333333336,
+              "control2Y": 34.666666666666664,
+              "endX": 50,
+              "endY": 26
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 46.666666666666664,
+              "control1Y": 37.333333333333336,
+              "control2X": 39.333333333333336,
+              "control2Y": 42.333333333333336,
+              "endX": 28,
+              "endY": 41
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 21.333333333333332,
+              "control1Y": 39.666666666666664,
+              "control2X": 16,
+              "control2Y": 35.333333333333336,
+              "endX": 12,
+              "endY": 28
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#51423844"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_woman_survival_FatigueFar",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -45,
+              "y": 27
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -33,
+              "control1Y": 33.666666666666664,
+              "control2X": -21.333333333333336,
+              "control2Y": 33.666666666666664,
+              "endX": -10,
+              "endY": 27
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -11.333333333333334,
+              "control1Y": 36.333333333333336,
+              "control2X": -17.666666666666664,
+              "control2Y": 40.666666666666664,
+              "endX": -29,
+              "endY": 40
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -37,
+              "control1Y": 38.666666666666664,
+              "control2X": -42.333333333333336,
+              "control2Y": 34.333333333333336,
+              "endX": -45,
+              "endY": 27
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#51423844"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "head",
+    "phase": "early",
+    "colorProperty": "skinColor",
+    "shape": {
+      "name": "Drift_woman_survival_LidNear",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 13,
+              "y": 11
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 25,
+              "control1Y": 4.333333333333333,
+              "control2X": 37.333333333333336,
+              "control2Y": 4.666666666666667,
+              "endX": 50,
+              "endY": 12
+            },
+            {
+              "commandType": "lineTo",
+              "x": 49,
+              "y": 18
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 36.333333333333336,
+              "control1Y": 14,
+              "control2X": 24.333333333333336,
+              "control2Y": 14,
+              "endX": 13,
+              "endY": 18
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#CFA17E"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "head",
+    "phase": "early",
+    "colorProperty": "skinColor",
+    "shape": {
+      "name": "Drift_woman_survival_LidFar",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -45,
+              "y": 12
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -33,
+              "control1Y": 5.333333333333333,
+              "control2X": -21.333333333333336,
+              "control2Y": 5.333333333333333,
+              "endX": -10,
+              "endY": 12
+            },
+            {
+              "commandType": "lineTo",
+              "x": -11,
+              "y": 18
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -23,
+              "control1Y": 14,
+              "control2X": -34,
+              "control2Y": 14,
+              "endX": -44,
+              "endY": 18
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#CFA17E"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "head",
+    "phase": "middle",
+    "shape": {
+      "name": "Drift_woman_survival_CheekDirt",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -49,
+              "y": 45
+            },
+            {
+              "commandType": "lineTo",
+              "x": -35,
+              "y": 42
+            },
+            {
+              "commandType": "lineTo",
+              "x": -23,
+              "y": 51
+            },
+            {
+              "commandType": "lineTo",
+              "x": -36,
+              "y": 53
+            },
+            {
+              "commandType": "lineTo",
+              "x": -43,
+              "y": 60
+            },
+            {
+              "commandType": "lineTo",
+              "x": -49,
+              "y": 56
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#66594b37"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "head",
+    "phase": "middle",
+    "shape": {
+      "name": "Drift_woman_survival_TempleDirt",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 43,
+              "y": -11
+            },
+            {
+              "commandType": "lineTo",
+              "x": 52,
+              "y": -5
+            },
+            {
+              "commandType": "lineTo",
+              "x": 49,
+              "y": 8
+            },
+            {
+              "commandType": "lineTo",
+              "x": 43,
+              "y": 3
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#55594b37"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "head",
+    "phase": "late",
+    "shape": {
+      "name": "Drift_woman_survival_ScarShadow",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 37,
+              "y": 34
+            },
+            {
+              "commandType": "lineTo",
+              "x": 29,
+              "y": 48
+            },
+            {
+              "commandType": "lineTo",
+              "x": 33,
+              "y": 50
+            },
+            {
+              "commandType": "lineTo",
+              "x": 25,
+              "y": 66
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#885b3837",
+          "thickness": 3.2
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "head",
+    "phase": "late",
+    "shape": {
+      "name": "Drift_woman_survival_ScarLight",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 38,
+              "y": 34
+            },
+            {
+              "commandType": "lineTo",
+              "x": 31,
+              "y": 47
+            },
+            {
+              "commandType": "lineTo",
+              "x": 35,
+              "y": 50
+            },
+            {
+              "commandType": "lineTo",
+              "x": 27,
+              "y": 66
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#99edc0ad",
+          "thickness": 1.4
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "head",
+    "phase": "late",
+    "shape": {
+      "name": "Drift_woman_survival_ScarCross",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 29,
+              "y": 45
+            },
+            {
+              "commandType": "lineTo",
+              "x": 35,
+              "y": 48
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 27,
+              "y": 54
+            },
+            {
+              "commandType": "lineTo",
+              "x": 32,
+              "y": 57
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#885b3837",
+          "thickness": 1.4
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "head",
+    "phase": "middle",
+    "colorProperty": "hairColor",
+    "shape": {
+      "name": "Drift_woman_survival_StrayHair",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -43,
+              "y": -48
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -37.666666666666664,
+              "control1Y": -26,
+              "control2X": -29.333333333333336,
+              "control2Y": -8.333333333333334,
+              "endX": -18,
+              "endY": 5
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -33.333333333333336,
+              "control1Y": -3.666666666666666,
+              "control2X": -43.333333333333336,
+              "control2Y": -17,
+              "endX": -48,
+              "endY": -35
+            },
+            {
+              "commandType": "lineTo",
+              "x": -54,
+              "y": -20
+            },
+            {
+              "commandType": "lineTo",
+              "x": -51,
+              "y": -47
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 42,
+              "y": -44
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 40,
+              "control1Y": -26.666666666666668,
+              "control2X": 42.333333333333336,
+              "control2Y": -11.333333333333334,
+              "endX": 49,
+              "endY": 2
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": 37.666666666666664,
+              "control1Y": -7.333333333333334,
+              "control2X": 32.666666666666664,
+              "control2Y": -21,
+              "endX": 34,
+              "endY": -39
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#3d302c"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "head",
+    "phase": "middle",
+    "colorProperty": "hairColor",
+    "shape": {
+      "name": "Drift_woman_survival_Flyaways",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -49,
+              "y": -57
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -59.666666666666664,
+              "control1Y": -68.33333333333333,
+              "control2X": -69.66666666666667,
+              "control2Y": -70.33333333333333,
+              "endX": -79,
+              "endY": -63
+            },
+            {
+              "commandType": "lineTo",
+              "x": -65,
+              "y": -80
+            },
+            {
+              "commandType": "lineTo",
+              "x": -80,
+              "y": -84
+            },
+            {
+              "commandType": "cubicTo",
+              "control1X": -66.66666666666667,
+              "control1Y": -88.66666666666667,
+              "control2X": -56,
+              "control2Y": -82.66666666666667,
+              "endX": -48,
+              "endY": -66
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 28,
+              "y": -66
+            },
+            {
+              "commandType": "lineTo",
+              "x": 35,
+              "y": -88
+            },
+            {
+              "commandType": "lineTo",
+              "x": 39,
+              "y": -71
+            },
+            {
+              "commandType": "lineTo",
+              "x": 55,
+              "y": -83
+            },
+            {
+              "commandType": "lineTo",
+              "x": 49,
+              "y": -64
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#3d302c"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "head",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_woman_survival_DryLip",
+      "parentId": "0-1772",
+      "x": 0,
+      "y": 0,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -8,
+              "y": 73
+            },
+            {
+              "commandType": "lineTo",
+              "x": -4,
+              "y": 72
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 7,
+              "y": 74
+            },
+            {
+              "commandType": "lineTo",
+              "x": 12,
+              "y": 73
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#665b3837",
+          "thickness": 1.2
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "torso",
+    "phase": "middle",
+    "shape": {
+      "name": "Drift_woman_survival_FabricDirt",
+      "parentId": "0-1771",
+      "x": 0,
+      "y": 58,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -43,
+              "y": -12
+            },
+            {
+              "commandType": "lineTo",
+              "x": -23,
+              "y": -2
+            },
+            {
+              "commandType": "lineTo",
+              "x": -34,
+              "y": 10
+            },
+            {
+              "commandType": "lineTo",
+              "x": -20,
+              "y": 27
+            },
+            {
+              "commandType": "lineTo",
+              "x": -40,
+              "y": 17
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 20,
+              "y": 76
+            },
+            {
+              "commandType": "lineTo",
+              "x": 40,
+              "y": 67
+            },
+            {
+              "commandType": "lineTo",
+              "x": 45,
+              "y": 86
+            },
+            {
+              "commandType": "lineTo",
+              "x": 30,
+              "y": 91
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#664b4534"
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "torso",
+    "phase": "early",
+    "shape": {
+      "name": "Drift_woman_survival_FabricCreases",
+      "parentId": "0-1771",
+      "x": 0,
+      "y": 58,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -40,
+              "y": -29
+            },
+            {
+              "commandType": "lineTo",
+              "x": -27,
+              "y": -18
+            },
+            {
+              "commandType": "lineTo",
+              "x": -39,
+              "y": -13
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 40,
+              "y": 37
+            },
+            {
+              "commandType": "lineTo",
+              "x": 24,
+              "y": 46
+            },
+            {
+              "commandType": "lineTo",
+              "x": 39,
+              "y": 49
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -33,
+              "y": 69
+            },
+            {
+              "commandType": "lineTo",
+              "x": -15,
+              "y": 75
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#550d2028",
+          "thickness": 2
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "torso",
+    "phase": "late",
+    "shape": {
+      "name": "Drift_woman_survival_FabricScuffs",
+      "parentId": "0-1771",
+      "x": 0,
+      "y": 58,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -38,
+              "y": -10
+            },
+            {
+              "commandType": "lineTo",
+              "x": -30,
+              "y": -5
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": -40,
+              "y": -4
+            },
+            {
+              "commandType": "lineTo",
+              "x": -31,
+              "y": 1
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 32,
+              "y": 78
+            },
+            {
+              "commandType": "lineTo",
+              "x": 40,
+              "y": 74
+            }
+          ],
+          "isClosed": false
+        },
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 30,
+              "y": 84
+            },
+            {
+              "commandType": "lineTo",
+              "x": 40,
+              "y": 80
+            }
+          ],
+          "isClosed": false
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "stroke",
+          "color": "#70e6ddc8",
+          "thickness": 1.5
+        }
+      ]
+    }
+  },
+  {
+    "sex": "woman",
+    "mode": "survival",
+    "region": "torso",
+    "phase": "late",
+    "shape": {
+      "name": "Drift_woman_survival_FabricTear",
+      "parentId": "0-1771",
+      "x": 0,
+      "y": 58,
+      "paths": [
+        {
+          "commands": [
+            {
+              "commandType": "moveTo",
+              "x": 18,
+              "y": 9
+            },
+            {
+              "commandType": "lineTo",
+              "x": 32,
+              "y": 17
+            },
+            {
+              "commandType": "lineTo",
+              "x": 21,
+              "y": 15
+            },
+            {
+              "commandType": "lineTo",
+              "x": 31,
+              "y": 23
+            },
+            {
+              "commandType": "lineTo",
+              "x": 16,
+              "y": 14
+            },
+            {
+              "commandType": "close"
+            }
+          ],
+          "isClosed": true
+        }
+      ],
+      "paints": [
+        {
+          "paintType": "fill",
+          "color": "#77132027"
+        }
+      ]
+    }
+  }
+]

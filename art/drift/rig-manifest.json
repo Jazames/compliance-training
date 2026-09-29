@@ -1,0 +1,1293 @@
+{
+  "characterData": "0-197",
+  "properties": {
+    "romance": "0-1759",
+    "heist": "7-7818",
+    "survival": "7-7821"
+  },
+  "shapes": [
+    {
+      "id": "7-8151",
+      "name": "Drift_man_survival_FabricTear"
+    },
+    {
+      "id": "7-8136",
+      "name": "Drift_man_survival_FabricScuffs"
+    },
+    {
+      "id": "7-8122",
+      "name": "Drift_man_survival_FabricCreases"
+    },
+    {
+      "id": "7-8108",
+      "name": "Drift_man_survival_FabricDirt"
+    },
+    {
+      "id": "7-7985",
+      "name": "Drift_man_heist_TailoredShade"
+    },
+    {
+      "id": "7-7923",
+      "name": "Drift_man_romance_FabricLight"
+    },
+    {
+      "id": "7-8099",
+      "name": "Drift_man_survival_DryLip"
+    },
+    {
+      "id": "7-8084",
+      "name": "Drift_man_survival_Flyaways"
+    },
+    {
+      "id": "7-8073",
+      "name": "Drift_man_survival_StrayHair"
+    },
+    {
+      "id": "7-8064",
+      "name": "Drift_man_survival_ScarCross"
+    },
+    {
+      "id": "7-8056",
+      "name": "Drift_man_survival_ScarLight"
+    },
+    {
+      "id": "7-8048",
+      "name": "Drift_man_survival_ScarShadow"
+    },
+    {
+      "id": "7-8040",
+      "name": "Drift_man_survival_TempleDirt"
+    },
+    {
+      "id": "7-8030",
+      "name": "Drift_man_survival_CheekDirt"
+    },
+    {
+      "id": "7-8022",
+      "name": "Drift_man_survival_LidFar"
+    },
+    {
+      "id": "7-8014",
+      "name": "Drift_man_survival_LidNear"
+    },
+    {
+      "id": "7-8007",
+      "name": "Drift_man_survival_FatigueFar"
+    },
+    {
+      "id": "7-8000",
+      "name": "Drift_man_survival_FatigueNear"
+    },
+    {
+      "id": "7-7977",
+      "name": "Drift_man_heist_SleekHair"
+    },
+    {
+      "id": "7-7971",
+      "name": "Drift_man_heist_SmirkCrease"
+    },
+    {
+      "id": "7-7965",
+      "name": "Drift_man_heist_EyeCreaseNear"
+    },
+    {
+      "id": "7-7957",
+      "name": "Drift_man_heist_FocusedLidFar"
+    },
+    {
+      "id": "7-7949",
+      "name": "Drift_man_heist_FocusedLidNear"
+    },
+    {
+      "id": "7-7940",
+      "name": "Drift_man_heist_JawPlane"
+    },
+    {
+      "id": "7-7931",
+      "name": "Drift_man_heist_CheekPlane"
+    },
+    {
+      "id": "7-7915",
+      "name": "Drift_man_romance_BrowDefinition"
+    },
+    {
+      "id": "7-7908",
+      "name": "Drift_man_romance_CheekContour"
+    },
+    {
+      "id": "7-7899",
+      "name": "Drift_man_romance_HairSweep"
+    },
+    {
+      "id": "7-7891",
+      "name": "Drift_man_romance_NoseBridgeLight"
+    },
+    {
+      "id": "7-7882",
+      "name": "Drift_man_romance_JawShade"
+    },
+    {
+      "id": "7-7875",
+      "name": "Drift_man_romance_CheekLightFar"
+    },
+    {
+      "id": "7-7868",
+      "name": "Drift_man_romance_CheekLightNear"
+    },
+    {
+      "id": "7-8465",
+      "name": "Drift_woman_survival_FabricTear"
+    },
+    {
+      "id": "7-8450",
+      "name": "Drift_woman_survival_FabricScuffs"
+    },
+    {
+      "id": "7-8436",
+      "name": "Drift_woman_survival_FabricCreases"
+    },
+    {
+      "id": "7-8422",
+      "name": "Drift_woman_survival_FabricDirt"
+    },
+    {
+      "id": "7-8297",
+      "name": "Drift_woman_heist_TailoredShade"
+    },
+    {
+      "id": "7-8235",
+      "name": "Drift_woman_romance_FabricLight"
+    },
+    {
+      "id": "7-8413",
+      "name": "Drift_woman_survival_DryLip"
+    },
+    {
+      "id": "7-8398",
+      "name": "Drift_woman_survival_Flyaways"
+    },
+    {
+      "id": "7-8385",
+      "name": "Drift_woman_survival_StrayHair"
+    },
+    {
+      "id": "7-8376",
+      "name": "Drift_woman_survival_ScarCross"
+    },
+    {
+      "id": "7-8368",
+      "name": "Drift_woman_survival_ScarLight"
+    },
+    {
+      "id": "7-8360",
+      "name": "Drift_woman_survival_ScarShadow"
+    },
+    {
+      "id": "7-8352",
+      "name": "Drift_woman_survival_TempleDirt"
+    },
+    {
+      "id": "7-8342",
+      "name": "Drift_woman_survival_CheekDirt"
+    },
+    {
+      "id": "7-8334",
+      "name": "Drift_woman_survival_LidFar"
+    },
+    {
+      "id": "7-8326",
+      "name": "Drift_woman_survival_LidNear"
+    },
+    {
+      "id": "7-8319",
+      "name": "Drift_woman_survival_FatigueFar"
+    },
+    {
+      "id": "7-8312",
+      "name": "Drift_woman_survival_FatigueNear"
+    },
+    {
+      "id": "7-8289",
+      "name": "Drift_woman_heist_SleekHair"
+    },
+    {
+      "id": "7-8283",
+      "name": "Drift_woman_heist_SmirkCrease"
+    },
+    {
+      "id": "7-8277",
+      "name": "Drift_woman_heist_EyeCreaseNear"
+    },
+    {
+      "id": "7-8269",
+      "name": "Drift_woman_heist_FocusedLidFar"
+    },
+    {
+      "id": "7-8261",
+      "name": "Drift_woman_heist_FocusedLidNear"
+    },
+    {
+      "id": "7-8252",
+      "name": "Drift_woman_heist_JawPlane"
+    },
+    {
+      "id": "7-8243",
+      "name": "Drift_woman_heist_CheekPlane"
+    },
+    {
+      "id": "7-8226",
+      "name": "Drift_woman_romance_HairRibbonNear"
+    },
+    {
+      "id": "7-8219",
+      "name": "Drift_woman_romance_LipLight"
+    },
+    {
+      "id": "7-8209",
+      "name": "Drift_woman_romance_LashesFar"
+    },
+    {
+      "id": "7-8198",
+      "name": "Drift_woman_romance_LashesNear"
+    },
+    {
+      "id": "7-8189",
+      "name": "Drift_woman_romance_HairSweep"
+    },
+    {
+      "id": "7-8181",
+      "name": "Drift_woman_romance_NoseBridgeLight"
+    },
+    {
+      "id": "7-8174",
+      "name": "Drift_woman_romance_JawShade"
+    },
+    {
+      "id": "7-8167",
+      "name": "Drift_woman_romance_CheekLightFar"
+    },
+    {
+      "id": "7-8160",
+      "name": "Drift_woman_romance_CheekLightNear"
+    }
+  ],
+  "bindings": [
+    {
+      "objectId": "7-8151",
+      "propertyKey": 18,
+      "converterId": "7-7852",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8136",
+      "propertyKey": 18,
+      "converterId": "7-7852",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8122",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8108",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-7985",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-7923",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-8099",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8084",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8098",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-203"
+    },
+    {
+      "objectId": "7-8073",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8083",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-203"
+    },
+    {
+      "objectId": "7-8064",
+      "propertyKey": 18,
+      "converterId": "7-7852",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8056",
+      "propertyKey": 18,
+      "converterId": "7-7852",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8048",
+      "propertyKey": 18,
+      "converterId": "7-7852",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8040",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8030",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8022",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8029",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-199"
+    },
+    {
+      "objectId": "7-8014",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8021",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-199"
+    },
+    {
+      "objectId": "7-8007",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8000",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-7977",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-7984",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-4195"
+    },
+    {
+      "objectId": "7-7971",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-7965",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-7957",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-7964",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-203"
+    },
+    {
+      "objectId": "7-7949",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-7956",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-203"
+    },
+    {
+      "objectId": "7-7940",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-7931",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-7915",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-7922",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-203"
+    },
+    {
+      "objectId": "7-7908",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-7899",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-7907",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-4195"
+    },
+    {
+      "objectId": "7-7891",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-7882",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-7875",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-7868",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-8465",
+      "propertyKey": 18,
+      "converterId": "7-7852",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8450",
+      "propertyKey": 18,
+      "converterId": "7-7852",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8436",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8422",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8297",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-8235",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-8413",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8398",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8412",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-203"
+    },
+    {
+      "objectId": "7-8385",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8397",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-203"
+    },
+    {
+      "objectId": "7-8376",
+      "propertyKey": 18,
+      "converterId": "7-7852",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8368",
+      "propertyKey": 18,
+      "converterId": "7-7852",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8360",
+      "propertyKey": 18,
+      "converterId": "7-7852",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8352",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8342",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8334",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8341",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-199"
+    },
+    {
+      "objectId": "7-8326",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8333",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-199"
+    },
+    {
+      "objectId": "7-8319",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8312",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7821"
+    },
+    {
+      "objectId": "7-8289",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-8296",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-4195"
+    },
+    {
+      "objectId": "7-8283",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-8277",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-8269",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-8276",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-203"
+    },
+    {
+      "objectId": "7-8261",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-8268",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-203"
+    },
+    {
+      "objectId": "7-8252",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-8243",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "7-7818"
+    },
+    {
+      "objectId": "7-8226",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-8234",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-4195"
+    },
+    {
+      "objectId": "7-8219",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-8209",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-8218",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-203"
+    },
+    {
+      "objectId": "7-8198",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-8208",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-203"
+    },
+    {
+      "objectId": "7-8189",
+      "propertyKey": 18,
+      "converterId": "7-7836",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-8197",
+      "propertyKey": 37,
+      "viewModelPropertyId": "0-4195"
+    },
+    {
+      "objectId": "7-8181",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-8174",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-8167",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "0-1759"
+    },
+    {
+      "objectId": "7-8160",
+      "propertyKey": 18,
+      "converterId": "7-7824",
+      "viewModelPropertyId": "0-1759"
+    }
+  ],
+  "groups": [
+    {
+      "id": "7-8560",
+      "name": "Drift_HeistBrow",
+      "children": [
+        "0-422"
+      ],
+      "prop": "7-7818",
+      "key": 14,
+      "formula": "-7.0*{Input}"
+    },
+    {
+      "id": "7-8561",
+      "name": "Drift_Smirk",
+      "children": [],
+      "prop": "7-7818",
+      "key": 15,
+      "formula": "-0.12*{Input}"
+    },
+    {
+      "id": "7-8562",
+      "name": "Drift_TiredMouth",
+      "children": [
+        "0-394",
+        "0-401"
+      ],
+      "prop": "7-7821",
+      "key": 17,
+      "formula": "1.0-0.65*{Input}"
+    },
+    {
+      "id": "7-8563",
+      "name": "Drift_FatiguePosture",
+      "children": [
+        "0-392"
+      ],
+      "prop": "7-7821",
+      "key": 14,
+      "formula": "7.0*{Input}"
+    },
+    {
+      "id": "7-8564",
+      "name": "Drift_HeistBrow",
+      "children": [
+        "0-1806"
+      ],
+      "prop": "7-7818",
+      "key": 14,
+      "formula": "-7.0*{Input}"
+    },
+    {
+      "id": "7-8565",
+      "name": "Drift_Smirk",
+      "children": [],
+      "prop": "7-7818",
+      "key": 15,
+      "formula": "-0.12*{Input}"
+    },
+    {
+      "id": "7-8566",
+      "name": "Drift_TiredMouth",
+      "children": [
+        "0-1774",
+        "0-1782"
+      ],
+      "prop": "7-7821",
+      "key": 17,
+      "formula": "1.0-0.65*{Input}"
+    },
+    {
+      "id": "7-8567",
+      "name": "Drift_FatiguePosture",
+      "children": [
+        "0-1772"
+      ],
+      "prop": "7-7821",
+      "key": 14,
+      "formula": "7.0*{Input}"
+    }
+  ],
+  "converters": [
+    {
+      "id": "7-8596",
+      "name": "Drift_HeistBrow",
+      "converterType": "formula",
+      "formula": "-7.0*{Input}"
+    },
+    {
+      "id": "7-8600",
+      "name": "Drift_Smirk",
+      "converterType": "formula",
+      "formula": "-0.12*{Input}"
+    },
+    {
+      "id": "7-8604",
+      "name": "Drift_TiredMouth",
+      "converterType": "formula",
+      "formula": "1.0-0.65*{Input}"
+    },
+    {
+      "id": "7-8610",
+      "name": "Drift_FatiguePosture",
+      "converterType": "formula",
+      "formula": "7.0*{Input}"
+    }
+  ],
+  "faceChanges": [
+    {
+      "animid": "0-1480",
+      "changes": [
+        {
+          "keyframeId": "0-1594",
+          "value": -53.5
+        },
+        {
+          "keyframeId": "0-1596",
+          "value": 49.3
+        },
+        {
+          "keyframeId": "0-1597",
+          "value": 49.3
+        },
+        {
+          "keyframeId": "0-1599",
+          "value": 23.692827594846236
+        },
+        {
+          "keyframeId": "0-1600",
+          "value": 23.692827594846236
+        },
+        {
+          "keyframeId": "0-1602",
+          "value": 11.786044883728028
+        },
+        {
+          "keyframeId": "0-1603",
+          "value": 11.786044883728028
+        },
+        {
+          "keyframeId": "0-1605",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-1607",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-1575",
+          "value": 2.3
+        },
+        {
+          "keyframeId": "0-1576",
+          "value": 2.3
+        },
+        {
+          "keyframeId": "0-1578",
+          "value": 87.7
+        },
+        {
+          "keyframeId": "0-1579",
+          "value": 87.7
+        },
+        {
+          "keyframeId": "0-1581",
+          "value": -13.180819872784918
+        },
+        {
+          "keyframeId": "0-1582",
+          "value": -13.180819872784918
+        },
+        {
+          "keyframeId": "0-1584",
+          "value": 13.309508347511292
+        },
+        {
+          "keyframeId": "0-1585",
+          "value": 13.309508347511292
+        },
+        {
+          "keyframeId": "0-1587",
+          "value": -169.9857646969534
+        },
+        {
+          "keyframeId": "0-1588",
+          "value": -169.9857646969534
+        },
+        {
+          "keyframeId": "0-1590",
+          "value": 14.530393433570861
+        },
+        {
+          "keyframeId": "0-1591",
+          "value": 14.530393433570861
+        },
+        {
+          "keyframeId": "0-1558",
+          "value": 53.9
+        },
+        {
+          "keyframeId": "0-1559",
+          "value": 53.9
+        },
+        {
+          "keyframeId": "0-1561",
+          "value": 44.75
+        },
+        {
+          "keyframeId": "0-1562",
+          "value": 44.75
+        },
+        {
+          "keyframeId": "0-1564",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-1566",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-1568",
+          "value": 152.79267454837606
+        },
+        {
+          "keyframeId": "0-1569",
+          "value": 152.79267454837606
+        },
+        {
+          "keyframeId": "0-1571",
+          "value": 11.634029102325439
+        },
+        {
+          "keyframeId": "0-1572",
+          "value": 11.634029102325439
+        }
+      ],
+      "previewid": "0-891",
+      "previewChanges": [
+        {
+          "keyframeId": "0-3834",
+          "value": -53.5
+        },
+        {
+          "keyframeId": "0-1102",
+          "value": 49.3
+        },
+        {
+          "keyframeId": "0-1112",
+          "value": 23.692827594846236
+        },
+        {
+          "keyframeId": "0-1111",
+          "value": 11.786044883728028
+        },
+        {
+          "keyframeId": "0-3835",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-3836",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-1100",
+          "value": 2.3
+        },
+        {
+          "keyframeId": "0-1101",
+          "value": 87.7
+        },
+        {
+          "keyframeId": "0-1108",
+          "value": -13.180819872784918
+        },
+        {
+          "keyframeId": "0-1107",
+          "value": 13.309508347511292
+        },
+        {
+          "keyframeId": "0-1110",
+          "value": -169.9857646969534
+        },
+        {
+          "keyframeId": "0-1109",
+          "value": 14.530393433570861
+        },
+        {
+          "keyframeId": "0-1104",
+          "value": 53.9
+        },
+        {
+          "keyframeId": "0-1103",
+          "value": 44.75
+        },
+        {
+          "keyframeId": "0-3814",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-3815",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-1106",
+          "value": 152.79267454837606
+        },
+        {
+          "keyframeId": "0-1105",
+          "value": 11.634029102325439
+        }
+      ]
+    },
+    {
+      "animid": "0-2577",
+      "changes": [
+        {
+          "keyframeId": "0-2739",
+          "value": -48.3
+        },
+        {
+          "keyframeId": "0-3453",
+          "value": -48.3
+        },
+        {
+          "keyframeId": "0-2737",
+          "value": 51.1
+        },
+        {
+          "keyframeId": "0-2736",
+          "value": 51.1
+        },
+        {
+          "keyframeId": "0-2734",
+          "value": 13.538758625626414
+        },
+        {
+          "keyframeId": "0-2733",
+          "value": 13.538758625626414
+        },
+        {
+          "keyframeId": "0-2731",
+          "value": 8.020597076416013
+        },
+        {
+          "keyframeId": "0-2730",
+          "value": 8.020597076416013
+        },
+        {
+          "keyframeId": "0-2728",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-2726",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-2758",
+          "value": 1.0999999999999996
+        },
+        {
+          "keyframeId": "0-2757",
+          "value": 1.0999999999999996
+        },
+        {
+          "keyframeId": "0-2755",
+          "value": 82.5
+        },
+        {
+          "keyframeId": "0-2754",
+          "value": 82.5
+        },
+        {
+          "keyframeId": "0-2752",
+          "value": -2.3184351430008956
+        },
+        {
+          "keyframeId": "0-2751",
+          "value": -2.3184351430008956
+        },
+        {
+          "keyframeId": "0-2749",
+          "value": 11.708274459838867
+        },
+        {
+          "keyframeId": "0-2748",
+          "value": 11.708274459838867
+        },
+        {
+          "keyframeId": "0-2746",
+          "value": -179.49103989352295
+        },
+        {
+          "keyframeId": "0-2745",
+          "value": -179.49103989352295
+        },
+        {
+          "keyframeId": "0-2743",
+          "value": 12.405923080444335
+        },
+        {
+          "keyframeId": "0-2742",
+          "value": 12.405923080444335
+        },
+        {
+          "keyframeId": "0-2775",
+          "value": 48.1
+        },
+        {
+          "keyframeId": "0-2774",
+          "value": 48.1
+        },
+        {
+          "keyframeId": "0-2772",
+          "value": 48.5
+        },
+        {
+          "keyframeId": "0-2771",
+          "value": 48.5
+        },
+        {
+          "keyframeId": "0-2769",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-2767",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-2765",
+          "value": 164.4529590314819
+        },
+        {
+          "keyframeId": "0-2764",
+          "value": 164.4529590314819
+        },
+        {
+          "keyframeId": "0-2762",
+          "value": 7.076588058471678
+        },
+        {
+          "keyframeId": "0-2761",
+          "value": 7.076588058471678
+        }
+      ],
+      "previewid": "0-2303",
+      "previewChanges": [
+        {
+          "keyframeId": "0-4089",
+          "value": -48.3
+        },
+        {
+          "keyframeId": "0-2368",
+          "value": 51.1
+        },
+        {
+          "keyframeId": "0-2365",
+          "value": 13.538758625626414
+        },
+        {
+          "keyframeId": "0-2362",
+          "value": 8.020597076416013
+        },
+        {
+          "keyframeId": "0-4090",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-4091",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-2389",
+          "value": 1.0999999999999996
+        },
+        {
+          "keyframeId": "0-2386",
+          "value": 82.5
+        },
+        {
+          "keyframeId": "0-2383",
+          "value": -2.3184351430008956
+        },
+        {
+          "keyframeId": "0-2380",
+          "value": 11.708274459838867
+        },
+        {
+          "keyframeId": "0-2377",
+          "value": -179.49103989352295
+        },
+        {
+          "keyframeId": "0-2374",
+          "value": 12.405923080444335
+        },
+        {
+          "keyframeId": "0-2406",
+          "value": 48.1
+        },
+        {
+          "keyframeId": "0-2403",
+          "value": 48.5
+        },
+        {
+          "keyframeId": "0-4145",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-4146",
+          "value": 0
+        },
+        {
+          "keyframeId": "0-2396",
+          "value": 164.4529590314819
+        },
+        {
+          "keyframeId": "0-2393",
+          "value": 7.076588058471678
+        }
+      ]
+    }
+  ],
+  "notes": "Detail eyelids/lashes are parented to their respective EyeNear/EyeFar groups at (-31.5,-17.5)/(25.5,-17.5). Lip details are parented to Mouth at (-7,-65.333328). Torso overlays are at y=58. Anime forearm widening uses converter 7-8772. Exported assets are authoritative."
+}
