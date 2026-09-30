@@ -25,6 +25,12 @@ eye enlargement and curled hair remain, with additional lashes and shading.
 
 Source file: https://editor.rive.app/file/generic-man---compliance-training/2617294
 
+### Complete endpoint audit, 2026-09-29
+
+Current runtime/editable export: `../rive-revisions/endpoint-audit-final/`.
+Pre-edit backup: `../rive-revisions/three-quarter-before/`.
+See `endpoint-audit.md` for coverage and remaining scope boundaries.
+
 ### Seated seam review, 2026-09-29
 
 Latest runtime/editable exports: `../rive-revisions/seated-seams-profile/`.

@@ -76,7 +76,9 @@ function AnimationPreview({ buffer, rig, outfit, animation }: {
           if (input) input.value = progress * progress * (3 - 2 * progress);
         }
         if (seated) {
-          const progress = Math.min(1, elapsed);
+          // Match the saved pose keys and the production posture transition.
+          const t = Math.min(1, elapsed);
+          const progress = t * t * (3 - 2 * t);
           const input = posture?.number(side ? 'sideSitAmount' : 'sitAmount');
           if (input) input.value = target * (standing ? 1 - progress : progress);
         }
