@@ -1,6 +1,7 @@
 import { Rive, RuntimeLoader, Layout, Fit } from '@rive-app/canvas';
 RuntimeLoader.setWasmUrl('/node_modules/@rive-app/canvas/rive.wasm');
 const q = new URLSearchParams(location.search);
+const posture = Math.max(0, Math.min(1, Number(q.get('posture') ?? 1)));
 const root = document.querySelector('main');
 const variants = [];
 const modes = q.has('mode') ? [q.get('mode')] : ['romance', 'heist', 'survival'];
@@ -18,7 +19,7 @@ if (!q.has('steps') && !q.has('wardrobe')) {
 }
 let ready=0;
 root.dataset.expected=String(variants.length);
-const buffer=await (await fetch('/rive/compliance-characters.riv?v=drift-review')).arrayBuffer();
+const buffer=await (await fetch('/rive/compliance-characters.riv?v=seated-review-2')).arrayBuffer();
 for(const v of variants) {
   let elapsed=0;
   const canvas=document.createElement('canvas'); canvas.width=400;canvas.height=640;
@@ -31,7 +32,7 @@ for(const v of variants) {
       if(q.has('timeline') && elapsed>=Math.max(.001,v.blend)) r.pause();
     },onLoad(){
       const vm=r.viewModelByName('CharacterData').instanceByName(v.sex==='man'?'Instance':'Instance 1'); r.bindViewModelInstance(vm);
-      for(const [key,value] of Object.entries({numberProperty:v.mode==='romance'?v.blend:0,heistDrift:v.mode==='heist'?v.blend:0,survivalDrift:v.mode==='survival'?v.blend:0,topId:v.top,bottomId:v.bottom,sitAmount:q.has('front')?1:0,sideSitAmount:q.has('profile')?1:q.has('sit')?-1:0})) {
+      for(const [key,value] of Object.entries({numberProperty:v.mode==='romance'?v.blend:0,heistDrift:v.mode==='heist'?v.blend:0,survivalDrift:v.mode==='survival'?v.blend:0,topId:v.top,bottomId:v.bottom,sitAmount:q.has('front')?posture:0,sideSitAmount:q.has('profile')?posture:q.has('sit')?-posture:0})) {
         const prop=vm.number(key); if(!prop)throw new Error(`Missing rig property: ${key}`); prop.value=value;
       }
       const palette=q.has('palette')?{skinColor:q.get('palette')==='dark'?'#442b25':'#f0d5bf',hairColor:'#492f8c',hairAccentColor:'#b294e7',eyeColor:'#4ca487',outfitPrimaryColor:'#9b594b',pantsColor:'#486579'}:{};

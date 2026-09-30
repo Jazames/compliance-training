@@ -23,7 +23,26 @@ eye enlargement and curled hair remain, with additional lashes and shading.
 
 ## Native Rive contract
 
-Source file: https://editor.rive.app/file/generic-man---compliance-training/2557700
+Source file: https://editor.rive.app/file/generic-man---compliance-training/2617294
+
+### Seated seam review, 2026-09-29
+
+Latest runtime/editable exports: `../rive-revisions/seated-seams-profile/`.
+The production `.riv` matches that runtime export. The pre-edit backup is in
+`../rive-revisions/seated-seams-before/`.
+
+- The male business pelvis offset now binds to its unkeyed wardrobe parent.
+  Appearance timelines were overwriting the shape's seated position, leaving
+  a detached strip below the shirt. Its local baseline remains 80.
+- Both skirt lap edges slope toward the knees and have softer corners.
+- Head-local face overlays fade out as the head turns into full profile;
+  eye-attached lids, hair, and clothing details retain their existing bindings.
+  This avoids front-view scratches and highlights floating outside the profile.
+- The contact sheet accepts `posture=0..1` for intermediate seated poses.
+
+Visually checked all 24 outfit combinations in standing wave, three-quarter
+seating, and profile seating, plus a halfway profile pose. These are sampled
+poses, not an exhaustive frame-by-frame proof. No player-facing copy changed.
 
 - `CharacterData.numberProperty`: existing romance blend, 0..1.
 - `CharacterData.heistDrift`: new number, 0..1, default 0.
