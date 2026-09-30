@@ -27,7 +27,9 @@ Source file: https://editor.rive.app/file/generic-man---compliance-training/2617
 
 ### Complete endpoint audit, 2026-09-29
 
-Current runtime/editable export: `../rive-revisions/endpoint-audit-final/`.
+Current runtime/editable export: `../rive-revisions/seated-redraw-verified/`.
+See `seated-redraw-progress.md` for the subsequent seated contour repair.
+Earlier endpoint audit export: `../rive-revisions/endpoint-audit-final/`.
 Pre-edit backup: `../rive-revisions/three-quarter-before/`.
 See `endpoint-audit.md` for coverage and remaining scope boundaries.
 
