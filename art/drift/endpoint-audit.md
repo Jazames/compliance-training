@@ -5,6 +5,15 @@ Coverage: 15 saved timelines plus 3 drift previews, each with all 9 male and
 This is a visual endpoint audit with selected transition checks, not a claim
 that every frame and every custom palette has been exhaustively inspected.
 
+## Follow-up: gallery playback conflict
+
+The isolated endpoint checks did not validate the gallery's animation mixing.
+The gallery also ran `State Machine 1` alongside each named action; the runtime
+applies that machine after standalone timelines, overwriting keyed poses.
+Named previews now run only their selected timeline. The three drift previews
+retain the state machine. The production character state machine is unchanged.
+The earlier gallery check was insufficient to catch this discrepancy.
+
 | Preview | Endpoint reviewed | Outcome |
 | --- | --- | --- |
 | Idle | 1 s | Shared shoulder and female trouser-waist repairs |

@@ -7,7 +7,7 @@ type Rig = 'generic-man' | 'generic-woman';
 type Outfit = { topId: number; bottomId: number };
 const driftInputs = ['numberProperty', 'heistDrift', 'survivalDrift'];
 const playbackNames = (animation: string) => driftInputs.includes(animation) ? 'State Machine 1'
-  : /Appearance|Transformation/.test(animation) ? animation : ['State Machine 1', animation];
+  : animation;
 
 function AnimationPreview({ buffer, rig, outfit, animation }: {
   buffer: ArrayBuffer; rig: Rig; outfit: Outfit; animation: string;
@@ -36,7 +36,7 @@ function AnimationPreview({ buffer, rig, outfit, animation }: {
     let disposed = false;
     let restart: number | undefined;
     let elapsed = 0;
-    const appearance = /Appearance|Transformation/.test(animation);
+    const drift = driftInputs.includes(animation);
     const side = /Sideways|Three Quarter/.test(animation);
     const seated = side || /Sitting Down|Standing Up/.test(animation);
     const standing = /Standing/.test(animation);
@@ -44,7 +44,9 @@ function AnimationPreview({ buffer, rig, outfit, animation }: {
     let posture: ReturnType<NonNullable<ReturnType<Rive['viewModelByName']>>['instanceByName']> | undefined;
     const rive = new Rive({
       canvas: canvas.current, buffer: buffer.slice(0), artboard: rig,
-      stateMachines: appearance ? undefined : 'State Machine 1',
+      // Named previews must run alone: the state machine applies after timelines
+      // and overwrites their keyed pose. Drift previews exercise the live machine.
+      stateMachines: drift ? 'State Machine 1' : undefined,
       autoBind: false, autoplay: false,
       layout: new Layout({ fit: Fit.Contain, alignment: Alignment.Center }),
       onLoad: () => {
