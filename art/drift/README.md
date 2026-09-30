@@ -27,8 +27,9 @@ Source file: https://editor.rive.app/file/generic-man---compliance-training/2617
 
 ### Complete endpoint audit, 2026-09-29
 
-Current runtime/editable export: `../rive-revisions/seated-redraw-verified/`.
-See `seated-redraw-progress.md` for the subsequent seated contour repair.
+Current runtime/editable export: `../rive-revisions/pose-perspective-polish/`.
+See `pose-perspective-audit.md` for the latest native pose and hand-layering pass.
+The preceding contour repair is documented in `seated-redraw-progress.md`.
 Earlier endpoint audit export: `../rive-revisions/endpoint-audit-final/`.
 Pre-edit backup: `../rive-revisions/three-quarter-before/`.
 See `endpoint-audit.md` for coverage and remaining scope boundaries.
